@@ -27,10 +27,16 @@ title: Title for Page
       ↓CallSequence [ngx.components.UIDynamicAction-1572939315358]: 
         beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_OAuth.SignOut"}'
   ↓UseSharedComponent [ngx.components.UIUseShared-1572626026023]: 
+    isEnabled: false
     sharedcomponent: lib_UserManager_Ngx.MobileApplication.Application.LoginComponent
 ↓Subscribe_Handler [ngx.components.UIEventSubscriber-1572609277501]: 
   topic: login
   ↓Toast [ngx.components.UIDynamicAction-1572609298870]: 
-    beanData: '{"ionBean":"ToastAction","message":"script:''Login sucessful'' + JSON.stringify(out)"}'
+    beanData: |
+      '{
+       "ionBean": "ToastAction",
+       "message": "script:''Login: '' + JSON.stringify(out)",
+       "position": "plain:middle"
+      }'
   ↓CloseModal [ngx.components.UIDynamicAction-1572625352885]: 
     beanData: '{"ionBean":"CloseModalAction"}'
