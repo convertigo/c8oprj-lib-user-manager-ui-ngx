@@ -1,1 +1,1 @@
-# c8oprj-lib-user-manager-ngx
+# lib_UserManager_Ngx
