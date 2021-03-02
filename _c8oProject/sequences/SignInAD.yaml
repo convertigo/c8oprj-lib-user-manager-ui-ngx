@@ -345,22 +345,22 @@ comment: Sign in using an ActiveDirectory account. Will also return the list of 
   visibility: '-1'
 ↓adminUser [variables.RequestableVariable-1582388405870]: 
   comment: A valid ActiveDirectory Admin Account with read privileges used to search for the user attributes. If this is not provided, the group membership information will not be returned.
-  value: ${lib_UserManager.adminUser}
+  value: ${lib_UserManager_Ngx.adminUser}
 ↓adminPassword [variables.RequestableVariable-1582388405873]: 
   comment: The Active Directory admin account password. If not  provided or invalid, the group membership information will not be provided.
   value: 
     - ↑ciphered: true
     - ↑traceable: false
-    - →→: x530464aa1e63d0f98506f75047888822cd14101585f94218a48f6594c8d671cc5363d6aa941b84b949231422a2651cd9
+    - →→: x530464aa1e63d0f98506f75047888822a621816ca4693f8bc9f487445d88940eb9ea9a0d19bd6e9f773d20ea6aeb0bde
   visibility: '-1'
 ↓ldapServer [variables.RequestableVariable-1582444766404]: 
   comment: The Active Directory server ldap url as ldap(s)://server:port. Mandatory.
-  value: ${lib_UserManager.ldapServer}
+  value: ${lib_UserManager_Ngx.ldapServer}
 ↓ldapBasePath [variables.RequestableVariable-1587995394837]: 
   comment: 'The active directory user user to sign in. May be a valid domain account ex: ''DOMAIN\user'' or the user''s email ex: ''user@domain.com'' or just the users full name ex:  ''John doe'''
-  value: ${lib_UserManager.ldapBasePath}
+  value: ${lib_UserManager_Ngx.ldapBasePath}
 ↓domainNameUser [variables.RequestableVariable-1588005622006]: 
-  value: ${lib_UserManager.ldapDomainName}
+  value: ${lib_UserManager_Ngx.ldapDomainName}
 ↓TestInvalidPassword [core.TestCase]: 
   ↓user [variables.TestCaseVariable-1582356986589]: 
     value: test@mail.com
