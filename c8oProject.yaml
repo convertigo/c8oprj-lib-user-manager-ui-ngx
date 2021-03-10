@@ -27,6 +27,6 @@
   ↓Project_reference [references.ProjectSchemaReference]: 
     projectName: mobilebuilder_tpl_8_0_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl.git:branch=mobilebuilder_tpl_8_0_0_ngx:autoPull=true
   ↓Project_reference1 [references.ProjectSchemaReference]: 
-    projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=1.0.1:autoPull=true
+    projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=7.9.0:autoPull=true
   ↓MobileApplication [core.MobileApplication]: 
     ↓Application [ngx.components.ApplicationComponent]: 🗏 mobileApplication.yaml
