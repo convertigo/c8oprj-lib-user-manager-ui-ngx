@@ -4,4 +4,4 @@ title: Title for ModalPopup
   beanData: '{"ionBean":"Content"}'
   tagName: ion-content
   ↓UseSharedComponent [ngx.components.UIUseShared-1572623676068]: 
-    sharedcomponent: lib_UserManager_Ngx.MobileApplication.Application.LoginComponent
+    sharedcomponent: lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent

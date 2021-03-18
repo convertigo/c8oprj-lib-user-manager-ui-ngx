@@ -14,7 +14,7 @@ title: Title for Page
           - MobileSmartSourceType: plain:Show Login popup
     ↓Event [ngx.components.UIControlEvent-1572623622961]: 
       ↓ModalPage [ngx.components.UIDynamicAction-1572623631585]: 
-        beanData: '{"ionBean":"ModalAction","page":"plain:lib_UserManager_Ngx.MobileApplication.Application.ModalPopup"}'
+        beanData: '{"ionBean":"ModalAction","page":"plain:lib_UserManager_ui_ngx.MobileApplication.Application.ModalPopup"}'
   ↓Button1 [ngx.components.UIDynamicElement-1572935670185]: 
     beanData: '{"ionBean":"Button"}'
     tagName: ion-button
@@ -28,7 +28,7 @@ title: Title for Page
         beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_OAuth.SignOut"}'
   ↓UseSharedComponent [ngx.components.UIUseShared-1572626026023]: 
     isEnabled: false
-    sharedcomponent: lib_UserManager_Ngx.MobileApplication.Application.LoginComponent
+    sharedcomponent: lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent
 ↓Subscribe_Handler [ngx.components.UIEventSubscriber-1572609277501]: 
   topic: login
   ↓Toast [ngx.components.UIDynamicAction-1572609298870]: 

@@ -45,7 +45,7 @@ comment: |
           attrName: (ngSubmit)
           eventName: onSubmit
           ↓Login [ngx.components.UIDynamicAction-1572604498898]: 
-            beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager_Ngx.SignIn"}'
+            beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.SignIn"}'
             ↓IfElse [ngx.components.UIDynamicIf-1572604498901]: 
               beanData: '{"ionBean":"IfElseAction","condition":"script:out.user"}'
               ↓PublishEvent [ngx.components.UIDynamicAction-1572609114606]: 
@@ -127,7 +127,7 @@ comment: |
                             '{
                              "ionBean": "OAuthLoginAction",
                              "provider": "plain:openid",
-                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_Ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.GoogleClientID\"}",
+                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.GoogleClientID\"}",
                              "scope": "plain:openid email",
                              "response_type": "plain:code",
                              "loginRequestable": "plain:lib_OAuth.loginGoogleWithCode",
@@ -180,7 +180,7 @@ comment: |
                             '{
                              "ionBean": "OAuthLoginAction",
                              "provider": "plain:linkedin",
-                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_Ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.LinkedInClientID\"}",
+                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.LinkedInClientID\"}",
                              "scope": "plain:r_liteprofile,r_emailaddress",
                              "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenLinkedIn.html"
                             }'
@@ -220,7 +220,7 @@ comment: |
                           beanData: |
                             '{
                              "ionBean": "OAuthLoginAction",
-                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_Ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.AzureAdClientID\"}",
+                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.AzureAdClientID\"}",
                              "tenantid": "plain:8a22dd7e-cfa3-4d41-8370-e59bb65a8a72",
                              "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
                             }'
