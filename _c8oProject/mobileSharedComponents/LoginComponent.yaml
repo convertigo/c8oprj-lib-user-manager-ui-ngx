@@ -48,6 +48,13 @@ comment: |
             beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.SignIn"}'
             ↓IfElse [ngx.components.UIDynamicIf-1572604498901]: 
               beanData: '{"ionBean":"IfElseAction","condition":"script:out.user"}'
+              ↓Toast [ngx.components.UIDynamicAction-1631713504929]: 
+                beanData: |
+                  '{
+                   "ionBean": "ToastAction",
+                   "message": "plain:User sucessfully logged in...",
+                   "position": "plain:top"
+                  }'
               ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897867]: 
                 beanData: |
                   '{
