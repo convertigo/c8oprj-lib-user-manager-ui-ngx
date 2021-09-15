@@ -29,12 +29,12 @@ comment: |
         directiveSource: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1572604124714.logoImage
+            - MobileSmartSourceType: script:this.logoImage
         ↓Image [ngx.components.UIDynamicElement-1572625924015]: 
           beanData: |
             '{
              "ionBean": "Image",
-             "url": "script:params1572604124714.logoImage",
+             "url": "script:this.logoImage",
              "width": "plain:64px"
             }'
           selfClose: true
@@ -48,6 +48,13 @@ comment: |
             beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.SignIn"}'
             ↓IfElse [ngx.components.UIDynamicIf-1572604498901]: 
               beanData: '{"ionBean":"IfElseAction","condition":"script:out.user"}'
+              ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897867]: 
+                beanData: |
+                  '{
+                   "ionBean": "EmitEventAction",
+                   "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                   "data": "script:''ok''"
+                  }'
               ↓PublishEvent [ngx.components.UIDynamicAction-1572609114606]: 
                 beanData: |
                   '{
@@ -62,6 +69,13 @@ comment: |
                      "ionBean": "ToastAction",
                      "message": "script:stack[''Login''].out.error.message",
                      "position": "plain:top"
+                    }'
+                ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897871]: 
+                  beanData: |
+                    '{
+                     "ionBean": "EmitEventAction",
+                     "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                     "data": "script:stack[''Login''].out.error.message"
                     }'
                 ↓PublishEvent [ngx.components.UIDynamicAction-1572609119931]: 
                   beanData: |
@@ -79,9 +93,9 @@ comment: |
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
                 - MobileSmartSourceType: |
-                    script:params1572604124714.enableGoogleLogin ||
-                    params1572604124714.enableLinkedInLogin ||
-                    params1572604124714.enableAzureADLogin
+                    script:this.enableGoogleLogin ||
+                    this.enableLinkedInLogin ||
+                    this.enableAzureADLogin
                     
             ↓Heading [ngx.components.UIDynamicTag-1572622742742]: 
               beanData: '{"ionBean":"Heading"}'
@@ -102,7 +116,7 @@ comment: |
                   directiveSource: 
                     - xmlizable: 
                       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                      - MobileSmartSourceType: script:params1572604124714.enableGoogleLogin
+                      - MobileSmartSourceType: script:this.enableGoogleLogin
                   ↓GridCol [ngx.components.UIDynamicElement-1572621943687]: 
                     beanData: '{"ionBean":"GridCol"}'
                     tagName: ion-col
@@ -135,6 +149,13 @@ comment: |
                              "authorization_endpoint": "plain:https:\/\/accounts.google.com\/o\/oauth2\/v2\/auth",
                              "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenGoogle.html"
                             }'
+                          ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897875]: 
+                            beanData: |
+                              '{
+                               "ionBean": "EmitEventAction",
+                               "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                               "data": "script:out"
+                              }'
                           ↓PublishEvent [ngx.components.UIDynamicAction-1572734593593]: 
                             beanData: |
                               '{
@@ -155,7 +176,7 @@ comment: |
                   directiveSource: 
                     - xmlizable: 
                       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                      - MobileSmartSourceType: script:params1572604124714.enableLinkedInLogin
+                      - MobileSmartSourceType: script:this.enableLinkedInLogin
                   ↓GridCol1 [ngx.components.UIDynamicElement-1572621945501]: 
                     beanData: '{"ionBean":"GridCol"}'
                     tagName: ion-col
@@ -184,6 +205,13 @@ comment: |
                              "scope": "plain:r_liteprofile,r_emailaddress",
                              "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenLinkedIn.html"
                             }'
+                          ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897879]: 
+                            beanData: |
+                              '{
+                               "ionBean": "EmitEventAction",
+                               "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                               "data": "script:out"
+                              }'
                           ↓PublishEvent [ngx.components.UIDynamicAction-1572687075042]: 
                             beanData: |
                               '{
@@ -196,7 +224,7 @@ comment: |
                   directiveSource: 
                     - xmlizable: 
                       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                      - MobileSmartSourceType: script:params1572604124714.enableAzureADLogin
+                      - MobileSmartSourceType: script:this.enableAzureADLogin
                   ↓GridCol2 [ngx.components.UIDynamicElement-1572621947476]: 
                     beanData: '{"ionBean":"GridCol"}'
                     tagName: ion-col
@@ -224,6 +252,13 @@ comment: |
                              "tenantid": "plain:8a22dd7e-cfa3-4d41-8370-e59bb65a8a72",
                              "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
                             }'
+                          ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897883]: 
+                            beanData: |
+                              '{
+                               "ionBean": "EmitEventAction",
+                               "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                               "data": "script:out"
+                              }'
                           ↓PublishEvent [ngx.components.UIDynamicAction-1572936360464]: 
                             beanData: |
                               '{
@@ -302,7 +337,7 @@ comment: |
             directiveSource: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: script:params1572604124714.enableCancelDismiss
+                - MobileSmartSourceType: script:this.enableCancelDismiss
             ↓Button [ngx.components.UIDynamicElement-1572627421643]: 
               beanData: '{"ionBean":"Button"}'
               tagName: ion-button
@@ -348,3 +383,5 @@ comment: |
 ↓enableCancelDismiss [ngx.components.UICompVariable-1572627157072]: 
   comment: Set to true if you want a cancel button to be displayed causing a Modal Page dismiss
   value: true
+↓login [ngx.components.UICompEvent-1631708897857]: 
+  attrName: login
