@@ -48,26 +48,12 @@ comment: |
             beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.SignIn"}'
             ↓IfElse [ngx.components.UIDynamicIf-1572604498901]: 
               beanData: '{"ionBean":"IfElseAction","condition":"script:out.user"}'
-              ↓Toast [ngx.components.UIDynamicAction-1631713504929]: 
-                beanData: |
-                  '{
-                   "ionBean": "ToastAction",
-                   "message": "plain:User sucessfully logged in...",
-                   "position": "plain:top"
-                  }'
               ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897867]: 
                 beanData: |
                   '{
                    "ionBean": "EmitEventAction",
                    "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
-                   "data": "script:''ok''"
-                  }'
-              ↓PublishEvent [ngx.components.UIDynamicAction-1572609114606]: 
-                beanData: |
-                  '{
-                   "ionBean": "PublishEventAction",
-                   "topic": "plain:login",
-                   "data": "script:''ok''"
+                   "data": "script:{error: false, message: ''''}"
                   }'
               ↓Else_Handler [ngx.components.UIActionElseEvent-1572604498916]: 
                 ↓Toast [ngx.components.UIDynamicAction-1572604498919]: 
@@ -82,14 +68,7 @@ comment: |
                     '{
                      "ionBean": "EmitEventAction",
                      "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
-                     "data": "script:stack[''Login''].out.error.message"
-                    }'
-                ↓PublishEvent [ngx.components.UIDynamicAction-1572609119931]: 
-                  beanData: |
-                    '{
-                     "ionBean": "PublishEventAction",
-                     "topic": "plain:login",
-                     "data": "script:stack[''Login''].out.error.message"
+                     "data": "script:{error: true, message: stack[''Login''].out.error.message}"
                     }'
         ↓Div [ngx.components.UIDynamicElement-1572604498922]: 
           beanData: '{"ionBean":"DivTag"}'

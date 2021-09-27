@@ -38,5 +38,6 @@ title: Title for Page
        "message": "script:''Login: '' + JSON.stringify(out)",
        "position": "plain:middle"
       }'
+    isEnabled: false
   ↓CloseModal [ngx.components.UIDynamicAction-1572625352885]: 
     beanData: '{"ionBean":"CloseModalAction"}'
