@@ -53,7 +53,7 @@ comment: |
                   '{
                    "ionBean": "EmitEventAction",
                    "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
-                   "data": "script:{error: false, message: ''''}"
+                   "data": "script:{error: false, message: '''', user: this.user}"
                   }'
               ↓Else_Handler [ngx.components.UIActionElseEvent-1572604498916]: 
                 ↓Toast [ngx.components.UIDynamicAction-1572604498919]: 
@@ -276,6 +276,7 @@ comment: |
                 '{
                  "ionBean": "Input",
                  "ControlName": "plain:user",
+                 "DoubleBinding": "script:user",
                  "Debounce": "plain:0",
                  "Required": "plain:true",
                  "Type": "plain:email",
@@ -371,5 +372,10 @@ comment: |
   value: true
 ↓login [ngx.components.UICompEvent-1631708897857]: 
   attrName: login
+  comment: |
+    This event will be fired when a login occurs :
+    	Check out.error and out.message  for login errors
+    	The out.user will be user logged in
+    
 ↓logoWidth [ngx.components.UICompVariable-1632754516203]: 
   value: '''300'''
