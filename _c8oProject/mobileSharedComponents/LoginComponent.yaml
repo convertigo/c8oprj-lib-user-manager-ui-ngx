@@ -35,7 +35,7 @@ comment: |
             '{
              "ionBean": "Image",
              "url": "script:this.logoImage",
-             "width": "plain:64px"
+             "width": "source:{\"filter\":\"Shared\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"\",\"model\":{\"data\":[{\"priority\":1572604124714,\"regular\":true}],\"path\":\"?.logoWidth\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}"
             }'
           selfClose: true
           tagName: img
@@ -392,3 +392,5 @@ comment: |
   value: true
 ↓login [ngx.components.UICompEvent-1631708897857]: 
   attrName: login
+↓logoWidth [ngx.components.UICompVariable-1632754516203]: 
+  value: '''300'''
