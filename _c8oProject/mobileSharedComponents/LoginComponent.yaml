@@ -270,7 +270,7 @@ comment: |
                 textValue: 
                   - xmlizable: 
                     - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:email
+                    - MobileSmartSourceType: plain:Email
             ↓TextInput [ngx.components.UIDynamicElement-1572604498934]: 
               beanData: |
                 '{
@@ -278,6 +278,9 @@ comment: |
                  "ControlName": "plain:user",
                  "DoubleBinding": "script:user",
                  "Debounce": "plain:0",
+                 "EnterKeyHint": "plain:enter",
+                 "InputMode": "plain:email",
+                 "Placeholder": "plain:myemail@domain.com",
                  "Required": "plain:true",
                  "Type": "plain:email",
                  "Value": "plain:test@mail.com"
@@ -293,7 +296,7 @@ comment: |
                 textValue: 
                   - xmlizable: 
                     - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:password
+                    - MobileSmartSourceType: plain:Password
             ↓TextInput [ngx.components.UIDynamicElement-1572604498958]: 
               beanData: |
                 '{
