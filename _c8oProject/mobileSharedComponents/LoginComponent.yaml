@@ -276,7 +276,7 @@ comment: |
                 '{
                  "ionBean": "Input",
                  "ControlName": "plain:user",
-                 "DoubleBinding": "script:user",
+                 "DoubleBinding": "script:local.user",
                  "Debounce": "plain:0",
                  "EnterKeyHint": "plain:enter",
                  "InputMode": "plain:email",
