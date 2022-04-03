@@ -188,7 +188,7 @@ comment: |
                              "ionBean": "OAuthLoginAction",
                              "provider": "plain:linkedin",
                              "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.LinkedInClientID\"}",
-                             "scope": "plain:r_liteprofile,r_emailaddress",
+                             "scope": "script:this.scope ? this.scope: ''r_liteprofile,r_emailaddress''",
                              "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenLinkedIn.html"
                             }'
                           ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897879]: 
@@ -236,6 +236,7 @@ comment: |
                              "ionBean": "OAuthLoginAction",
                              "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.AzureAdClientID\"}",
                              "tenantid": "plain:8a22dd7e-cfa3-4d41-8370-e59bb65a8a72",
+                             "scope": "script:''openid+profile+email+https:\/\/graph.microsoft.com\/Files.ReadWrite+https:\/\/graph.microsoft.com\/User.Read'' + this.scope",
                              "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
                             }'
                           ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897883]: 
@@ -382,3 +383,8 @@ comment: |
     
 ↓logoWidth [ngx.components.UICompVariable-1632754516203]: 
   value: '''300'''
+↓scope [ngx.components.UICompVariable-1648974977950]: 
+  comment: |
+    Additional Scope to be added to the standard Scope. This will be concatenated to to the scopr string. For Azure AD start with a + sign
+    
+  value: 
