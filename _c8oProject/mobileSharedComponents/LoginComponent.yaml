@@ -235,7 +235,7 @@ comment: |
                             '{
                              "ionBean": "OAuthLoginAction",
                              "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.AzureAdClientID\"}",
-                             "tenantid": "plain:8a22dd7e-cfa3-4d41-8370-e59bb65a8a72",
+                             "tenantid": "source:{\"filter\":\"Shared\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"\",\"model\":{\"data\":[{\"priority\":1572604124714,\"regular\":true}],\"path\":\"?.tenantid\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}",
                              "scope": "script:''openid+profile+email+https:\/\/graph.microsoft.com\/Files.ReadWrite+https:\/\/graph.microsoft.com\/User.Read'' + this.scope",
                              "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
                             }'
@@ -384,6 +384,11 @@ comment: |
 ↓logoWidth [ngx.components.UICompVariable-1632754516203]: 
   value: '''300'''
 ↓scope [ngx.components.UICompVariable-1648974977950]: 
+  comment: |
+    Additional Scope to be added to the standard Scope. This will be concatenated to to the scopr string. For Azure AD start with a + sign
+    
+  value: 
+↓tenantid [ngx.components.UICompVariable-1649003622841]: 
   comment: |
     Additional Scope to be added to the standard Scope. This will be concatenated to to the scopr string. For Azure AD start with a + sign
     
