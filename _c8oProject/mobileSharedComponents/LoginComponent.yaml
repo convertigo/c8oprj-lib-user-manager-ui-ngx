@@ -390,6 +390,6 @@ comment: |
   value: 
 ↓tenantid [ngx.components.UICompVariable-1649003622841]: 
   comment: |
-    Additional Scope to be added to the standard Scope. This will be concatenated to to the scopr string. For Azure AD start with a + sign
+    The tenant ID you want to restrict to, leave blank for no tenant.
     
   value: 
