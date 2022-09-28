@@ -1,4 +1,4 @@
-↑convertigo: 8.0.0.m006
+↑convertigo: 8.1.0.m006
 ↓lib_UserManager_ui_ngx [core.Project]: 
   comment: |
     'The lib_UserManager enables your projects to include user management and authentication in your apps. This library will handle :
@@ -14,6 +14,6 @@
   ↓Project_reference2 [references.ProjectSchemaReference]: 
     projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=7.9.0:autoPull=true
   ↓Project_reference_1 [references.ProjectSchemaReference]: 
-    projectName: lib_UserManager=https://github.com/convertigo/c8oprj-lib-user-manager.git:branch=7.9.0
+    projectName: lib_UserManager=https://github.com/convertigo/c8oprj-lib-user-manager.git:branch=8.0.X
   ↓MobileApplication [core.MobileApplication]: 
     ↓Application [ngx.components.ApplicationComponent]: 🗏 mobileApplication.yaml
