@@ -1,9 +1,31 @@
-tplProjectName: mobilebuilder_tpl_8_0_0_ngx
+componentScriptContent: 
+  - xmlizable: 
+    - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+    - com.twinsoft.convertigo.beans.common.FormatedContent: 
+      →: |
+        /*Begin_c8o_AppImport*/
+        /*End_c8o_AppImport*/
+        /*Begin_c8o_AppDeclaration*/
+            /*End_c8o_AppDeclaration*/
+        /*Begin_c8o_AppSettings*/
+                /*End_c8o_AppSettings*/
+        /*Begin_c8o_AppConstructor*/
+                /*End_c8o_AppConstructor*/
+        /*Begin_c8o_AppInitialization*/
+                        translate.setDefaultLang('en');
+                        translate.use(translate.getBrowserLang());
+                        /*End_c8o_AppInitialization*/
+        /*Begin_c8o_AppFunction*/
+            /*End_c8o_AppFunction*/
+        
+tplProjectName: mobilebuilder_tpl_8_1_0_ngx
 ↓LoginComponent [ngx.components.UISharedRegularComponent-1572604124714]: 🗏 mobileSharedComponents/LoginComponent.yaml
 ↓ForgotPassword [ngx.components.UISharedRegularComponent-1582131761883]: 🗏 mobileSharedComponents/ForgotPassword.yaml
+↓ConfirmAccount [ngx.components.UISharedRegularComponent-1674728184917]: 🗏 mobileSharedComponents/ConfirmAccount.yaml
 ↓Page [ngx.components.PageComponent-1572604056200]: 🗏 mobilePages/Page.yaml
 ↓ModalPopup [ngx.components.PageComponent-1572623654326]: 🗏 mobilePages/ModalPopup.yaml
 ↓ForgotPasswordPage [ngx.components.PageComponent-1582131661217]: 🗏 mobilePages/ForgotPasswordPage.yaml
+↓ConfirmAccountPage [ngx.components.PageComponent-1674728251673]: 🗏 mobilePages/ConfirmAccountPage.yaml
 ↓Style [ngx.components.UIStyle-1648831743449]: 
   comment: You can add some global application styles here
   styleContent: 
@@ -130,6 +152,10 @@ tplProjectName: mobilebuilder_tpl_8_0_0_ngx
           ion-item.selected {
             --color: var(--ion-color-primary);
           }
+          
+          .button {
+          	text-transform: unset !important;
+          }
           '
 ↓Theme [ngx.components.UITheme-1648831743452]: 
   styleContent: 
@@ -142,8 +168,7 @@ tplProjectName: mobilebuilder_tpl_8_0_0_ngx
           
           /** Ionic CSS Variables **/
           :root {
-            /** primary **/
-            --ion-color-primary: rgb(0, 0, 255);
+          --ion-color-primary: #3880ff;
             --ion-color-primary-rgb: 56, 128, 255;
             --ion-color-primary-contrast: #ffffff;
             --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -214,4 +239,54 @@ tplProjectName: mobilebuilder_tpl_8_0_0_ngx
             --ion-color-light-shade: #d7d8da;
             --ion-color-light-tint: #f5f6f9;
           }
+          
+          '
+↓Font [ngx.components.UIFont-1674728013863]: 
+  fontSource: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FontSource
+      - com.twinsoft.convertigo.beans.common.FontSource: 
+        →: '{"fontId":"open-sans","fontFamily":"Open Sans","fontWeight":"400","fontStyle":"normal","fontSubset":"latin"}'
+  isDefault: true
+  styleContent: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          'font-family: "Open Sans";
+          font-weight: 400;
+          font-style: "normal";
+          font-variant: "latin";
+          '
+↓Font1 [ngx.components.UIFont-1674728032848]: 
+  fontSource: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FontSource
+      - com.twinsoft.convertigo.beans.common.FontSource: 
+        →: '{"fontId":"open-sans","fontFamily":"Open Sans","fontWeight":"600","fontStyle":"normal","fontSubset":"latin"}'
+  styleContent: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          'font-family: "Open Sans";
+          font-weight: 600;
+          font-style: "normal";
+          font-variant: "latin";
+          '
+↓Font2 [ngx.components.UIFont-1674728048441]: 
+  fontSource: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FontSource
+      - com.twinsoft.convertigo.beans.common.FontSource: 
+        →: '{"fontId":"open-sans","fontFamily":"Open Sans","fontWeight":"700","fontStyle":"normal","fontSubset":"latin"}'
+  styleContent: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          'font-family: "Open Sans";
+          font-weight: 700;
+          font-style: "normal";
+          font-variant: "latin";
           '
