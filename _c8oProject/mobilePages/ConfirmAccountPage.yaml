@@ -13,7 +13,7 @@ scriptContent:
         /*Begin_c8o_PageFunction*/
         	/*End_c8o_PageFunction*/
         '
-segment: ConfirmAccountPage/:resetKey/:appName
+segment: ConfirmAccountPage/:resetKey
 title: Title for ForgotPasswordPage1
 ↓UseSharedComponent [ngx.components.UIUseShared-1674728251684]: 
   sharedcomponent: lib_UserManager_ui_ngx.MobileApplication.Application.ConfirmAccount
@@ -27,3 +27,8 @@ title: Title for ForgotPasswordPage1
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
         - MobileSmartSourceType: script:this.navParams.data.appName
+  ↓imgUrl [ngx.components.UIUseVariable-1675959629119]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:this.navParams.data.imgUrl
