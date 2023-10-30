@@ -7,12 +7,12 @@
     - user login using OpenID
     
     '
-  version: 4.0.3
+  version: 4.0.4
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓Project_reference1 [references.ProjectSchemaReference]: 
     projectName: mobilebuilder_tpl_8_1_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_1_0_ngx.zip
   ↓Project_reference2 [references.ProjectSchemaReference]: 
-    projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=7.9.0:autoPull=true
+    projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=8.0.0:autoPull=true
   ↓Project_reference_1 [references.ProjectSchemaReference]: 
     projectName: lib_UserManager=https://github.com/convertigo/c8oprj-lib-user-manager.git:branch=8.0.X
   ↓MobileApplication [core.MobileApplication]: 
