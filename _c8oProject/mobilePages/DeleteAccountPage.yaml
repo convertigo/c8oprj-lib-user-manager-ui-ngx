@@ -21,14 +21,40 @@ title: Title for DeleteAccountPage
     varValue: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-        - MobileSmartSourceType: script:this.navParams.data.resetKey
+        - MobileSmartSourceType: script:this.navParams.data.resetKey ?? this.local.resetKey
   ↓appName [ngx.components.UIUseVariable-1699020207687]: 
     varValue: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-        - MobileSmartSourceType: script:this.navParams.data.appName
+        - MobileSmartSourceType: script:this.navParams.data.appName ?? this.local.appName
   ↓imgUrl [ngx.components.UIUseVariable-1699020207690]: 
     varValue: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-        - MobileSmartSourceType: script:this.navParams.data.imgUrl
+        - MobileSmartSourceType: script:this.navParams.data.imgUrl ?? this.local.imgUrl
+  ↓moretext [ngx.components.UIUseVariable-1699027405939]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:this.navParams.data.htmlText ?? this.local.htmlText
+↓PageEvent [ngx.components.UIPageEvent-1699025572104]: 
+  ↓CallSequence [ngx.components.UIDynamicAction-1699025594498]: 
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager_ui_ngx.GetSymbols"}'
+    tagName: CallSequence
+    ↓computeMeta [ngx.components.UICustomAsyncAction-1699025892660]: 
+      actionValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+          - com.twinsoft.convertigo.beans.common.FormatedContent: 
+            →: |
+              		try {
+              			this.local.resetKey = props.parent.out?.res?.resetKey;
+              			this.local.appName = props.parent.out?.res?.appName;
+              			this.local.imgUrl = props.parent.out?.res?.imgUrl;
+              			this.local.htmlText = props.parent.out?.res?.htmlText;
+              		} catch (e) {
+              		
+              		} finally {
+              			return;
+              		}
+              

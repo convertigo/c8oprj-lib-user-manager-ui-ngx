@@ -486,6 +486,21 @@ scriptContent:
                         →: |
                           '	padding-bottom: 50px;
                           '
+                ↓Paragraph2 [ngx.components.UIDynamicElement-1699027711380]: 
+                  beanData: '{"ionBean":"Paragraph"}'
+                  tagName: p
+                  ↓Text [ngx.components.UIText-1699027711383]: 
+                    i18n: true
+                    textValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:Veuillez saisir votre email et votre mot de passe, puis cliquer sur le bouton Supprimer définitivement mon compte
+                  ↓_innerHTML_ [ngx.components.UIAttribute-1699027729616]: 
+                    attrName: '[innerHTML]'
+                    attrValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: script:this?.moretext
               ↓divErrors1 [ngx.components.UIDynamicElement-1699020263094]: 
                 beanData: '{"ionBean":"DivTag"}'
                 tagName: div
@@ -788,3 +803,4 @@ scriptContent:
             '
 ↓appName [ngx.components.UICompVariable-1699020263229]: 
 ↓imgUrl [ngx.components.UICompVariable-1699020263232]: 
+↓moretext [ngx.components.UICompVariable-1699027562447]: 

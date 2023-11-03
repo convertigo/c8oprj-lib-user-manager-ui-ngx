@@ -1,0 +1,24 @@
+↓GetMeta [steps.SimpleStep-1699025755128]: 
+  expression: |
+    'let meta  = null;
+    try{
+    	meta = JSON.parse(metadata);
+    }
+    catch(e){
+    	log.warn("error" +e);
+    }'
+↓object2 [steps.JsonToXmlStep-1699025842103]: 
+  jsonObject: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: JS
+        - →→: meta
+  key: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: PLAIN
+        - →→: res
+↓metadata [variables.RequestableVariable-1699025651493]: 
+  value: ${lib_UserManager_ui_ngx.metadata}
