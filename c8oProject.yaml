@@ -7,7 +7,7 @@
     - user login using OpenID
     
     '
-  version: 4.0.4
+  version: 4.0.5
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓Project_reference1 [references.ProjectSchemaReference]: 
     projectName: mobilebuilder_tpl_8_1_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_1_0_ngx.zip

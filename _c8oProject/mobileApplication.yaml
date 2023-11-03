@@ -22,10 +22,12 @@ tplProjectName: mobilebuilder_tpl_8_1_0_ngx
 ↓LoginComponent [ngx.components.UISharedRegularComponent-1572604124714]: 🗏 mobileSharedComponents/LoginComponent.yaml
 ↓ForgotPassword [ngx.components.UISharedRegularComponent-1582131761883]: 🗏 mobileSharedComponents/ForgotPassword.yaml
 ↓ConfirmAccount [ngx.components.UISharedRegularComponent-1674728184917]: 🗏 mobileSharedComponents/ConfirmAccount.yaml
+↓DeleteAccount [ngx.components.UISharedRegularComponent-1699020262914]: 🗏 mobileSharedComponents/DeleteAccount.yaml
 ↓Page [ngx.components.PageComponent-1572604056200]: 🗏 mobilePages/Page.yaml
 ↓ModalPopup [ngx.components.PageComponent-1572623654326]: 🗏 mobilePages/ModalPopup.yaml
 ↓ForgotPasswordPage [ngx.components.PageComponent-1582131661217]: 🗏 mobilePages/ForgotPasswordPage.yaml
 ↓ConfirmAccountPage [ngx.components.PageComponent-1674728251673]: 🗏 mobilePages/ConfirmAccountPage.yaml
+↓DeleteAccountPage [ngx.components.PageComponent-1699020207678]: 🗏 mobilePages/DeleteAccountPage.yaml
 ↓Style [ngx.components.UIStyle-1648831743449]: 
   comment: You can add some global application styles here
   styleContent: 
@@ -156,7 +158,29 @@ tplProjectName: mobilebuilder_tpl_8_1_0_ngx
           .button {
           	text-transform: unset !important;
           }
-          '
+          
+          .toastSuccess {
+          	text-align: center !important;
+          	--border-radius: 5px !important;
+          	--background: var(--ion-color-primary);
+          	--color: var(--ion-color-primary-contrast);
+          	
+          	&::part(button) {
+          		color: var(--ion-color-primary-contrast);
+          	}
+          }
+          
+          
+          .toastWarn {
+          	text-align: center !important;
+          	--border-radius: 5px !important;
+          	--background: var(--ion-color-danger);
+          	--color: var(--ion-color-danger-contrast);
+          		
+          	&::part(button) {
+          		color: var(--ion-color-danger-contrast);
+          	}
+          }'
 ↓Theme [ngx.components.UITheme-1648831743452]: 
   styleContent: 
     - xmlizable: 

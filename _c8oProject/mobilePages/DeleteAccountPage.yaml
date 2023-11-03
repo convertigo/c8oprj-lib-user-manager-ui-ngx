@@ -1,0 +1,34 @@
+scriptContent: 
+  - xmlizable: 
+    - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+    - com.twinsoft.convertigo.beans.common.FormatedContent: 
+      →: |
+        '/*Begin_c8o_PageImport*/
+        /*End_c8o_PageImport*/
+        /*Begin_c8o_PageDeclaration*/
+        	public newPassword : string = "";
+        	/*End_c8o_PageDeclaration*/
+        /*Begin_c8o_PageConstructor*/
+        		/*End_c8o_PageConstructor*/
+        /*Begin_c8o_PageFunction*/
+        	/*End_c8o_PageFunction*/
+        '
+segment: DeleteAccountPage
+title: Title for DeleteAccountPage
+↓UseSharedComponent [ngx.components.UIUseShared-1699020207681]: 
+  sharedcomponent: lib_UserManager_ui_ngx.MobileApplication.Application.DeleteAccount
+  ↓resetKey [ngx.components.UIUseVariable-1699020207684]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:this.navParams.data.resetKey
+  ↓appName [ngx.components.UIUseVariable-1699020207687]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:this.navParams.data.appName
+  ↓imgUrl [ngx.components.UIUseVariable-1699020207690]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:this.navParams.data.imgUrl
