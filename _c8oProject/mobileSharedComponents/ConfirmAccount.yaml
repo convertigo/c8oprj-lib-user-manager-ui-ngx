@@ -1,5 +1,5 @@
 ↓Grid [ngx.components.UIDynamicElement-1674728184930]: 
-  beanData: '{"ionBean":"Grid"}'
+  beanData: '{"ionBean":"Grid","Height":"plain:100%"}'
   tagName: ion-grid
   ↓GridRow [ngx.components.UIDynamicElement-1674728184933]: 
     beanData: '{"ionBean":"GridRow","FlexAlignement":"plain:ion-align-items-center"}'

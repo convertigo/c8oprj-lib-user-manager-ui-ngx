@@ -90,7 +90,7 @@ scriptContent:
         	/*End_c8o_CompFunction*/
         '
 ↓Grid [ngx.components.UIDynamicElement-1699020262917]: 
-  beanData: '{"ionBean":"Grid"}'
+  beanData: '{"ionBean":"Grid","Height":"plain:100%"}'
   tagName: ion-grid
   ↓GridRow [ngx.components.UIDynamicElement-1699020262920]: 
     beanData: '{"ionBean":"GridRow","FlexAlignement":"plain:ion-align-items-center"}'
@@ -571,7 +571,6 @@ scriptContent:
                     '{
                      "ionBean": "Input",
                      "ControlName": "plain:email",
-                     "DoubleBinding": "plain",
                      "Debounce": "plain:0",
                      "Required": "plain:true",
                      "Type": "plain:email"
@@ -691,7 +690,6 @@ scriptContent:
                     '{
                      "ionBean": "Input",
                      "ControlName": "plain:password",
-                     "DoubleBinding": "plain",
                      "Debounce": "plain:0",
                      "Required": "plain:true",
                      "Type": "script:local.showPass2 === true ? ''text'' : ''password''"

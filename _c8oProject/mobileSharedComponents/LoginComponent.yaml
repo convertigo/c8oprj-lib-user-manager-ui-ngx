@@ -7,7 +7,7 @@ comment: |
   
   
 ↓Grid [ngx.components.UIDynamicElement-1572625170697]: 
-  beanData: '{"ionBean":"Grid"}'
+  beanData: '{"ionBean":"Grid","Height":"plain:100%"}'
   tagName: ion-grid
   ↓GridRow [ngx.components.UIDynamicElement-1572625170700]: 
     beanData: '{"ionBean":"GridRow"}'
@@ -61,7 +61,8 @@ comment: |
                     '{
                      "ionBean": "ToastAction",
                      "message": "script:stack[''Login''].out.error.message",
-                     "position": "plain:top"
+                     "position": "plain:top",
+                     "cssClass": "plain:"
                     }'
                 ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897871]: 
                   beanData: |
@@ -92,7 +93,7 @@ comment: |
                     - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
                     - MobileSmartSourceType: plain:Login with 
             ↓Grid [ngx.components.UIDynamicElement-1572621929813]: 
-              beanData: '{"ionBean":"Grid"}'
+              beanData: '{"ionBean":"Grid","Height":"plain:100%"}'
               tagName: ion-grid
               ↓GridRow [ngx.components.UIDynamicElement-1572621939808]: 
                 beanData: '{"ionBean":"GridRow"}'
@@ -303,6 +304,7 @@ comment: |
                 '{
                  "ionBean": "Input",
                  "ControlName": "plain:password",
+                 "DoubleBinding": "script",
                  "Debounce": "plain:0",
                  "Required": "plain:true",
                  "Type": "plain:password",

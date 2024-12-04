@@ -13,7 +13,12 @@ title: Title for Page
           - MobileSmartSourceType: plain:Show Login popup
     ↓Event [ngx.components.UIControlEvent-1572623622961]: 
       ↓ModalPage [ngx.components.UIDynamicAction-1572623631585]: 
-        beanData: '{"ionBean":"ModalAction","page":"plain:lib_UserManager_ui_ngx.MobileApplication.Application.ModalPopup"}'
+        beanData: |
+          '{
+           "ionBean": "ModalAction",
+           "page": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.ModalPopup",
+           "cssClass": "plain:"
+          }'
   ↓Button1 [ngx.components.UIDynamicElement-1572935670185]: 
     beanData: '{"ionBean":"Button"}'
     tagName: ion-button
@@ -35,7 +40,8 @@ title: Title for Page
       '{
        "ionBean": "ToastAction",
        "message": "script:''Login: '' + JSON.stringify(out)",
-       "position": "plain:middle"
+       "position": "plain:middle",
+       "cssClass": "plain:"
       }'
     isEnabled: false
   ↓CloseModal [ngx.components.UIDynamicAction-1572625352885]: 

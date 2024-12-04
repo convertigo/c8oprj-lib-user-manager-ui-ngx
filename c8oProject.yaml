@@ -10,8 +10,8 @@
   version: 4.0.6
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓GetSymbols [sequences.GenericSequence]: 🗏 sequences/GetSymbols.yaml
-  ↓Project_reference1 [references.ProjectSchemaReference]: 
-    projectName: mobilebuilder_tpl_8_1_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_1_0_ngx.zip
+  ↓project [references.ProjectSchemaReference]: 
+    projectName: mobilebuilder_tpl_8_4_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_4_0_ngx.zip
   ↓Project_reference2 [references.ProjectSchemaReference]: 
     projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=8.0.0:autoPull=true
   ↓Project_reference_1 [references.ProjectSchemaReference]: 
