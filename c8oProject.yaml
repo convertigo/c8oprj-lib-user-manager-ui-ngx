@@ -7,7 +7,7 @@
     - user login using OpenID
     
     '
-  version: 4.0.6
+  version: 8.4.0.0
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓GetSymbols [sequences.GenericSequence]: 🗏 sequences/GetSymbols.yaml
   ↓project [references.ProjectSchemaReference]: 
@@ -15,6 +15,6 @@
   ↓Project_reference2 [references.ProjectSchemaReference]: 
     projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=8.0.0:autoPull=true
   ↓Project_reference_1 [references.ProjectSchemaReference]: 
-    projectName: lib_UserManager=https://github.com/convertigo/c8oprj-lib-user-manager.git:branch=8.0.X
+    projectName: lib_UserManager=https://github.com/convertigo/c8oprj-lib-user-manager.git:branch=8.0.X:autoPull=true
   ↓MobileApplication [core.MobileApplication]: 
     ↓Application [ngx.components.ApplicationComponent]: 🗏 mobileApplication.yaml

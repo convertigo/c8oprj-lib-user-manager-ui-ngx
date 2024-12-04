@@ -1,0 +1,94 @@
+# Template configuration for Convertigo project CI build on GitHub Actions
+# Please consult the GitHub documentation for details about settings
+# https://docs.github.com/en/actions
+#
+# This sample assumes you have declared the following Encrypted Secrets
+# https://docs.github.com/en/actions/reference/encrypted-secrets
+#
+# C8O_SERVER: Convertigo server endpoint, where the built mobile application will connect
+#             and the backend project will be deployed, like https://<myhost>/convertigo
+# C8O_USER: Convertigo server admin or a user with role PROJECTS_CONFIG, used for the deploiment
+# C8O_PASSWORD: Convertigo server password for the C8O_USER
+#
+# C8O_SERVER_PROD: override C8O_SERVER for tags
+# C8O_USER_PROD: override C8O_USER for tags
+# C8O_PASSWORD_PROD: override C8O_PASSWORD for tags
+#
+# Discover all tasks and -Pconvertigo options in your project build.gradle file.
+
+name: Convertigo CI
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SSH_KEY }}
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v4
+        with:
+            path: |
+               ~/.gradle/caches
+               ~/.gradle/wrapper
+            key: ${{ runner.os }}-gradle-caches-v1-${{ hashFiles('**/*.gradle', '**/gradle/wrapper/gradle-wrapper.properties') }}
+            restore-keys: ${{ runner.os }}-gradle-caches-v1-
+
+      - name: Cache Node Modules
+        uses: actions/cache@v4
+        with:
+            path: |
+              ${{ github.workspace }}/_private/ionic/node_modules
+              ${{ github.workspace }}/_private/ionic/.angular
+              /home/runner/convertigo/nodes
+            key: ${{ runner.os }}-build-node-${{ hashFiles('**/package.json', '**/_private/ionic/version.json') }}
+            restore-keys: ${{ runner.os }}-build-node-
+
+      - name: Convertigo generate application code
+        run: |
+          echo "Generate Mobile Builder App" && \
+          sh gradlew --stacktrace --info generateMobileBuilder export -x compileMobileBuilder
+
+      - name: Build and deploy based on branch or tag
+        run: |
+          echo "Creating .car";
+          sh gradlew --stacktrace --info car
+
+      - name: Save application project
+        uses: actions/upload-artifact@v4
+        with:
+          name: project
+          path: build/*.car
+
+  release:
+    if: github.ref_type == 'tag'
+    needs: build_and_deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download CAR File
+        uses: actions/download-artifact@v4
+        with:
+          name: project
+
+      - name: Deploy to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: '*.car'
+          tag_name: ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
