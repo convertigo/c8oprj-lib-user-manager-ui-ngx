@@ -1,0 +1,36 @@
+comment: Returns true if current session is authenticated
+↓returnAuthenticatedSession [ngx.components.UICustomAsyncAction-1738933472187]: 
+  actionValue: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          '		try {
+          			// wait for sdk to finish init
+          			await page.c8o.promiseFinInit;
+          			// if we already have status in memory
+          	        if(page.c8o.session.status == C8oSessionStatus.Connected || page.c8o.session.status == C8oSessionStatus.HasBeenConnected){
+                          return true;
+                      }
+                      // ensure by a network call that session if authenticated
+                      else{
+          				let res: any = await page.c8o.httpInterface.getUserServiceStatus();
+          				return res?.user?.authenticated == true;
+          			}
+          		} catch (e) {
+          			debugger;
+          			page.c8o.log.error("An error occured while trying to get current session status: "+  JSON.stringify(e));
+          			return false;
+          		}
+          '
+  page_ts_imports: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: C8oSessionStatus
+            - java.lang.String: 
+              - ↑value: c8osdkangular

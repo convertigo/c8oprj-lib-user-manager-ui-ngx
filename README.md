@@ -15,7 +15,12 @@ For more technical informations : [documentation](./project.md)
 
 - [Installation](#installation)
 - [Mobile Library](#mobile-library)
+    - [Shared Actions](#shared-actions)
+        - [guardPages](#guardpages)
+        - [isAuthenticatedSession](#isauthenticatedsession)
     - [Shared Components](#shared-components)
+        - [ConfirmAccount](#confirmaccount)
+        - [DeleteAccount](#deleteaccount)
         - [ForgotPassword](#forgotpassword)
         - [LoginComponent](#logincomponent)
 
@@ -44,9 +49,134 @@ For more technical informations : [documentation](./project.md)
 
 ## Mobile Library
 
+### Shared Actions
+
+#### guardPages
+
+Handles access control and redirection based on the user's authentication status and the page they are attempting to access.
+
+This shared action should be invoked from an AppGuard component.
+
+<ins>Behavior:</ins>
+
+
+ - If the user is **not authenticated** and tries to access a page listed in `authorizedPagesOnlyWithAuthentication`, they will be redirected to `unauthenticatedAccessRedirectPage`.
+ - If the user is **authenticated** and tries to access a page listed in `authorizedPagesOnlyWithoutAuthentication`, they will be redirected to `authenticatedAccessRedirectPage`.
+ - If the current page is not restricted based on the user's authentication status, no redirection occurs.
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>authenticatedAccessRedirectPage</td><td>Type: String | Specifies the page to redirect users to when they attempt to access a page that should not be accessible after they have already logged in (e.g., login or registration pages).</td>
+</tr>
+<tr>
+<td>authorizedPagesOnlyWithAuthentication</td><td>Type: Array of String | Specifies the list of pages that are only accessible to authenticated users. These pages should not be available to users who are not logged in (e.g., dashboard or profile pages).</td>
+</tr>
+<tr>
+<td>authorizedPagesOnlyWithoutAuthentication</td><td>Type: Array of String | Specifies the list of pages that are only accessible to users who are **not** authenticated. These pages should be hidden or restricted once the user is logged in (e.g., login or registration pages).</td>
+</tr>
+<tr>
+<td>unauthenticatedAccessRedirectPage</td><td>Type: String | Specifies the page to redirect users to when they attempt to access a restricted page without being authenticated. (e.g., dashboard or profile pages).</td>
+</tr>
+</table>
+
+#### isAuthenticatedSession
+
+Returns true if current session is authenticated
+
 ### Shared Components
 
+#### ConfirmAccount
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>appName</td><td></td>
+</tr>
+<tr>
+<td>imgUrl</td><td></td>
+</tr>
+<tr>
+<td>resetKey</td><td></td>
+</tr>
+</table>
+
+**events**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>PasswordChangedError</td><td></td>
+</tr>
+<tr>
+<td>PasswordChangedOk</td><td></td>
+</tr>
+</table>
+
+#### DeleteAccount
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>appName</td><td></td>
+</tr>
+<tr>
+<td>imgUrl</td><td></td>
+</tr>
+<tr>
+<td>moretext</td><td></td>
+</tr>
+<tr>
+<td>resetKey</td><td></td>
+</tr>
+</table>
+
+**events**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>PasswordChangedError</td><td></td>
+</tr>
+<tr>
+<td>PasswordChangedOk</td><td></td>
+</tr>
+</table>
+
 #### ForgotPassword
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>appName</td><td></td>
+</tr>
+<tr>
+<td>imgUrl</td><td></td>
+</tr>
+<tr>
+<td>resetKey</td><td></td>
+</tr>
+</table>
 
 **events**
 
