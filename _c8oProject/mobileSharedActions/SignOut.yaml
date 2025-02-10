@@ -1,0 +1,24 @@
+comment: The `SignOut` function handles user signout and remember me feature
+↓removeJWToken [ngx.components.UICustomAsyncAction-1739196902345]: 
+  actionValue: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          		let c8o_jwtoken = window.localStorage.getItem("c8o_jwtoken");
+          		window.localStorage.removeItem("c8o_jwtoken");
+          		return c8o_jwtoken;
+          
+  ↓CallSequence [ngx.components.UIDynamicAction-1739196825441]: 
+    beanData: |
+      '{
+       "ionBean": "CallSequenceAction",
+       "requestable": "plain:lib_UserManager.SignOut",
+       "noAutoLogin": "plain:true"
+      }'
+    ↓token [ngx.components.UIControlVariable-1739197013676]: 
+      comment: new variable
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:parent.out

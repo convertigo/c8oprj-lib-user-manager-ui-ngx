@@ -18,6 +18,8 @@ For more technical informations : [documentation](./project.md)
     - [Shared Actions](#shared-actions)
         - [guardPages](#guardpages)
         - [isAuthenticatedSession](#isauthenticatedsession)
+        - [SignIn](#signin)
+        - [SignOut](#signout)
     - [Shared Components](#shared-components)
         - [ConfirmAccount](#confirmaccount)
         - [DeleteAccount](#deleteaccount)
@@ -87,6 +89,31 @@ This shared action should be invoked from an AppGuard component.
 #### isAuthenticatedSession
 
 Returns true if current session is authenticated
+
+#### SignIn
+
+The `SignIn` function handles user authentication and remember me feature
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>password</td><td>The user's password</td>
+</tr>
+<tr>
+<td>rememberMe</td><td>Stay logged in for an extended period, even after closing the browser</td>
+</tr>
+<tr>
+<td>user</td><td>The userID (user's email)</td>
+</tr>
+</table>
+
+#### SignOut
+
+The `SignOut` function handles user signout and remember me feature
 
 ### Shared Components
 

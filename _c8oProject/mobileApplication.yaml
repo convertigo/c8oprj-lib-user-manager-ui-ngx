@@ -21,6 +21,8 @@ componentScriptContent:
 tplProjectName: mobilebuilder_tpl_8_1_0_ngx
 ↓isAuthenticatedSession [ngx.components.UIActionStack-1738933360670]: 🗏 mobileSharedActions/isAuthenticatedSession.yaml
 ↓guardPages [ngx.components.UIActionStack-1738934318655]: 🗏 mobileSharedActions/guardPages.yaml
+↓SignIn [ngx.components.UIActionStack-1739186512260]: 🗏 mobileSharedActions/SignIn.yaml
+↓SignOut [ngx.components.UIActionStack-1739196825429]: 🗏 mobileSharedActions/SignOut.yaml
 ↓LoginComponent [ngx.components.UISharedRegularComponent-1572604124714]: 🗏 mobileSharedComponents/LoginComponent.yaml
 ↓ForgotPassword [ngx.components.UISharedRegularComponent-1582131761883]: 🗏 mobileSharedComponents/ForgotPassword.yaml
 ↓ConfirmAccount [ngx.components.UISharedRegularComponent-1674728184917]: 🗏 mobileSharedComponents/ConfirmAccount.yaml

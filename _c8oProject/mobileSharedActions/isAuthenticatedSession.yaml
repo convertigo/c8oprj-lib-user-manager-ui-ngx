@@ -15,10 +15,21 @@ comment: Returns true if current session is authenticated
                       // ensure by a network call that session if authenticated
                       else{
           				let res: any = await page.c8o.httpInterface.getUserServiceStatus();
+          				let token = window.localStorage.getItem("c8o_jwtoken");
+          				if(res?.user?.authenticated != true && token != null){
+          					let result = await page.c8o.callJsonObject("lib_UserManager.CheckSecureToken", {token}).async();
+          					if(result?.error?.code == ''14''){
+          						//token expired, remove it
+          						window.localStorage.removeItem("c8o_jwtoken");
+          					}
+          					else if (result?.JWToken != null && result?.JWToken != ""){
+          						window.localStorage.setItem("c8o_jwtoken", result?.JWToken);
+          					}
+          					return result?.authenticated == "true";
+          				}
           				return res?.user?.authenticated == true;
           			}
           		} catch (e) {
-          			debugger;
           			page.c8o.log.error("An error occured while trying to get current session status: "+  JSON.stringify(e));
           			return false;
           		}

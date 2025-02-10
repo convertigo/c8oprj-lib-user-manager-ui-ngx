@@ -26,7 +26,7 @@ see [readme](https://github.com/convertigo/c8oprj-lib-oauth/tree/192ab775967a11b
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/references/images/ProjectSchemaReference_16x16.png?raw=true "ProjectSchemaReference") lib_UserManager
 
 
-see [readme](https://github.com/convertigo/c8oprj-lib-user-manager/tree/b0041f620d338a497d817fc89479eee0e64ad45b#readme)
+see [readme](https://github.com/convertigo/c8oprj-lib-user-manager/tree/8.0.X#readme)
 </p></blockquote></details>
 </p></blockquote></details>
 
@@ -199,6 +199,60 @@ Type: String | Specifies the page to redirect users to when they attempt to acce
 ### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uiactionstack_color_16x16.png?raw=true "UIActionStack") isAuthenticatedSession
 
 Returns true if current session is authenticated
+</p></blockquote></details>
+
+<details><summary><b>SignIn</b> : The `SignIn` function handles user authentication and remember me feature</summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uiactionstack_color_16x16.png?raw=true "UIActionStack") SignIn
+
+The `SignIn` function handles user authentication and remember me feature
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;password
+</td>
+<td>
+The user's password
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;rememberMe
+</td>
+<td>
+Stay logged in for an extended period, even after closing the browser
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;user
+</td>
+<td>
+The userID (user's email)
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+
+<details><summary><b>SignOut</b> : The `SignOut` function handles user signout and remember me feature</summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uiactionstack_color_16x16.png?raw=true "UIActionStack") SignOut
+
+The `SignOut` function handles user signout and remember me feature
 </p></blockquote></details>
 </p></blockquote></details>
 

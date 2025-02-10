@@ -1,0 +1,39 @@
+comment: The `SignIn` function handles user authentication and remember me feature
+↓user [ngx.components.UIStackVariable-1739186587083]: 
+  comment: The userID (user's email)
+↓password [ngx.components.UIStackVariable-1739186591393]: 
+  comment: The user's password
+↓rememberMe [ngx.components.UIStackVariable-1739186560067]: 
+  comment: Stay logged in for an extended period, even after closing the browser
+  value: false
+↓CallSequence [ngx.components.UIDynamicAction-1739186785593]: 
+  beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.SignIn"}'
+  ↓user [ngx.components.UIControlVariable-1739186816461]: 
+    comment: The userID (user's email)
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.user
+  ↓password [ngx.components.UIControlVariable-1739186816463]: 
+    comment: The user's password
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.password
+  ↓rememberMe [ngx.components.UIControlVariable-1739186816465]: 
+    comment: Stay logged in for an extended period, even after closing the browser
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: 'script:params.rememberMe == true ? ''true'' : ''false'''
+  ↓storeToken [ngx.components.UICustomAsyncAction-1739187075547]: 
+    actionValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+        - com.twinsoft.convertigo.beans.common.FormatedContent: 
+          →: |
+            		if(props.parent.out?.JWToken != null && props.parent.out?.JWToken != ""){
+            			window.localStorage.setItem("c8o_jwtoken", props.parent.out?.JWToken);
+            		}
+            		return props.parent.out;
+            
