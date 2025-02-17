@@ -170,7 +170,7 @@ Type: String | Specifies the page to redirect users to when they attempt to acce
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;authorizedPagesOnlyWithAuthentication
 </td>
 <td>
-Type: Array of String | Specifies the list of pages that are only accessible to authenticated users. These pages should not be available to users who are not logged in (e.g., dashboard or profile pages).
+Type: Array of String | Specifies the list of pages that are only accessible to authenticated users. These pages should not be available to users who are not logged in (e.g., dashboard or profile pages). You can pass page names such as dashBoardPage, or segment values such as /path-to-dashborad-page?myParams=1
 </td>
 </tr>
 <tr>
@@ -178,7 +178,7 @@ Type: Array of String | Specifies the list of pages that are only accessible to 
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;authorizedPagesOnlyWithoutAuthentication
 </td>
 <td>
-Type: Array of String | Specifies the list of pages that are only accessible to users who are **not** authenticated. These pages should be hidden or restricted once the user is logged in (e.g., login or registration pages).
+Type: Array of String | Specifies the list of pages that are only accessible to users who are **not** authenticated. These pages should be hidden or restricted once the user is logged in (e.g., login or registration pages). You can pass page names such as LoginPage, or segment values such as /path-to-first-page?myParams=1
 </td>
 </tr>
 <tr>

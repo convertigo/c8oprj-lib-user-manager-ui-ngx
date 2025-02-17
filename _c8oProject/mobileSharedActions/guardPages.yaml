@@ -10,10 +10,10 @@ comment: |
    - If the user is **authenticated** and tries to access a page listed in `authorizedPagesOnlyWithoutAuthentication`, they will be redirected to `authenticatedAccessRedirectPage`.
    - If the current page is not restricted based on the user's authentication status, no redirection occurs.
 ↓authorizedPagesOnlyWithoutAuthentication [ngx.components.UIStackVariable-1738934331004]: 
-  comment: 'Type: Array of String | Specifies the list of pages that are only accessible to users who are **not** authenticated. These pages should be hidden or restricted once the user is logged in (e.g., login or registration pages).'
+  comment: 'Type: Array of String | Specifies the list of pages that are only accessible to users who are **not** authenticated. These pages should be hidden or restricted once the user is logged in (e.g., login or registration pages). You can pass page names such as LoginPage, or segment values such as /path-to-first-page?myParams=1'
   value: '[]'
 ↓authorizedPagesOnlyWithAuthentication [ngx.components.UIStackVariable-1738934446548]: 
-  comment: 'Type: Array of String | Specifies the list of pages that are only accessible to authenticated users. These pages should not be available to users who are not logged in (e.g., dashboard or profile pages).'
+  comment: 'Type: Array of String | Specifies the list of pages that are only accessible to authenticated users. These pages should not be available to users who are not logged in (e.g., dashboard or profile pages). You can pass page names such as dashBoardPage, or segment values such as /path-to-dashborad-page?myParams=1'
   value: '[]'
 ↓unauthenticatedAccessRedirectPage [ngx.components.UIStackVariable-1738934569301]: 
   comment: 'Type: String | Specifies the page to redirect users to when they attempt to access a restricted page without being authenticated. (e.g., dashboard or profile pages).'
@@ -31,7 +31,7 @@ comment: |
             		try {
             			let pageName = event.pageName;
             			let isLoggedOn = props.parent.out;
-            			if(vars.authorizedPagesOnlyWithoutAuthentication instanceof Array && vars.authorizedPagesOnlyWithoutAuthentication.indexOf(pageName) != -1){
+            			if(vars.authorizedPagesOnlyWithoutAuthentication instanceof Array && (vars.authorizedPagesOnlyWithoutAuthentication.indexOf(pageName) != -1 || vars.authorizedPagesOnlyWithoutAuthentication.indexOf(event.route._routerState.url) != -1)){
             				if(isLoggedOn){
             					page.routerProvider.setRoot(vars.authenticatedAccessRedirectPage, null, null);
             					return false;
@@ -40,19 +40,19 @@ comment: |
             					return true;
             				}
             			}
-            			else if(vars.authorizedPagesOnlyWithAuthentication instanceof Array && vars.authorizedPagesOnlyWithAuthentication.indexOf(pageName) != -1){
+            			else if(vars.authorizedPagesOnlyWithAuthentication instanceof Array && (vars.authorizedPagesOnlyWithAuthentication.indexOf(pageName) != -1 || vars.authorizedPagesOnlyWithAuthentication.indexOf(event.route._routerState.url) != -1)){
             				if(isLoggedOn){
             					return true;
             				}
             				else{
-            					page.routerProvider.setRoot(vars.unauthenticatedAccessRedirectPage, null, null);
+            					page.routerProvider.setRoot(vars.unauthenticatedAccessRedirectPage, {}, null);
             					return false;
             				}
             			}
             			
             		} catch (e) {
-            			console.error("error", e);
-            			return true;
+            			page.c8o.log.error("An error occured within guardPages shared action :\n" + JSON.stringify(e));
+            			return false;
             		}
             
     ↓authorizedPagesOnlyWithoutAuthentication [ngx.components.UIControlVariable-1738935501795]: 
