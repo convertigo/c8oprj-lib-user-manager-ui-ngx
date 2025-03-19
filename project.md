@@ -17,7 +17,7 @@ The lib_UserManager enables your projects to include user management and authent
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/references/images/ProjectSchemaReference_16x16.png?raw=true "ProjectSchemaReference") lib_OAuth
 
 
-see [readme](https://github.com/convertigo/c8oprj-lib-oauth/tree/192ab775967a11b5f0ab858417550532465e04b2#readme)
+see [readme](https://github.com/convertigo/c8oprj-lib-oauth/tree/8.0.0#readme)
 </p></blockquote></details>
 
 <details><summary><b>lib_UserManager</b></summary><blockquote><p>
