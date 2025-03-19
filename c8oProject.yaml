@@ -1,4 +1,4 @@
-↑convertigo: 8.1.0.m006
+↑convertigo: 8.4.0.m006
 ↓lib_UserManager_ui_ngx [core.Project]: 
   comment: |
     'The lib_UserManager enables your projects to include user management and authentication in your apps. This library will handle :
@@ -7,7 +7,7 @@
     - user login using OpenID
     
     '
-  version: 8.4.0.1
+  version: 8.4.0.3
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓GetSymbols [sequences.GenericSequence]: 🗏 sequences/GetSymbols.yaml
   ↓project [references.ProjectSchemaReference]: 
