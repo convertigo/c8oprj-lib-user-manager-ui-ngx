@@ -7,7 +7,7 @@
     - user login using OpenID
     
     '
-  version: 4.0.10
+  version: 4.0.11
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓GetSymbols [sequences.GenericSequence]: 🗏 sequences/GetSymbols.yaml
   ↓Project_reference1 [references.ProjectSchemaReference]: 
