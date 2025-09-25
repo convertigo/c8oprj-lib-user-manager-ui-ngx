@@ -16,6 +16,8 @@ For more technical informations : [documentation](./project.md)
 - [Installation](#installation)
 - [Mobile Library](#mobile-library)
     - [Shared Components](#shared-components)
+        - [ConfirmAccount](#confirmaccount)
+        - [DeleteAccount](#deleteaccount)
         - [ForgotPassword](#forgotpassword)
         - [LoginComponent](#logincomponent)
 
@@ -29,13 +31,13 @@ For more technical informations : [documentation](./project.md)
      <tr><td>To contribute</td><td>
 
      ```
-     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx.git:branch=8.0.0
+     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx.git:branch=8.4.0
      ```
      </td></tr>
      <tr><td>To simply use</td><td>
 
      ```
-     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx/archive/8.0.0.zip
+     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx/archive/8.4.0.zip
      ```
      </td></tr>
     </table>
@@ -46,7 +48,93 @@ For more technical informations : [documentation](./project.md)
 
 ### Shared Components
 
+#### ConfirmAccount
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>appName</td><td></td>
+</tr>
+<tr>
+<td>imgUrl</td><td></td>
+</tr>
+<tr>
+<td>resetKey</td><td></td>
+</tr>
+</table>
+
+**events**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>PasswordChangedError</td><td></td>
+</tr>
+<tr>
+<td>PasswordChangedOk</td><td></td>
+</tr>
+</table>
+
+#### DeleteAccount
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>appName</td><td></td>
+</tr>
+<tr>
+<td>imgUrl</td><td></td>
+</tr>
+<tr>
+<td>moretext</td><td></td>
+</tr>
+<tr>
+<td>resetKey</td><td></td>
+</tr>
+</table>
+
+**events**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>PasswordChangedError</td><td></td>
+</tr>
+<tr>
+<td>PasswordChangedOk</td><td></td>
+</tr>
+</table>
+
 #### ForgotPassword
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>appName</td><td></td>
+</tr>
+<tr>
+<td>imgUrl</td><td></td>
+</tr>
+<tr>
+<td>resetKey</td><td></td>
+</tr>
+</table>
 
 **events**
 
