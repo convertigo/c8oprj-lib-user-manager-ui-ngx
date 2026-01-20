@@ -31,13 +31,13 @@ For more technical informations : [documentation](./project.md)
      <tr><td>To contribute</td><td>
 
      ```
-     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx.git:branch=8.4.0
+     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx.git:branch=8.4.0_legacy
      ```
      </td></tr>
      <tr><td>To simply use</td><td>
 
      ```
-     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx/archive/8.4.0.zip
+     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx/archive/8.4.0_legacy.zip
      ```
      </td></tr>
     </table>

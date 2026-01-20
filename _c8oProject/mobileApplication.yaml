@@ -18,7 +18,7 @@ componentScriptContent:
         /*Begin_c8o_AppFunction*/
             /*End_c8o_AppFunction*/
         
-tplProjectName: mobilebuilder_tpl_8_4_0_ngx
+tplProjectName: mobilebuilder_tpl_8_4_0_ngx_legacy
 ↓LoginComponent [ngx.components.UISharedRegularComponent-1572604124714]: 🗏 mobileSharedComponents/LoginComponent.yaml
 ↓ForgotPassword [ngx.components.UISharedRegularComponent-1582131761883]: 🗏 mobileSharedComponents/ForgotPassword.yaml
 ↓ConfirmAccount [ngx.components.UISharedRegularComponent-1674728184917]: 🗏 mobileSharedComponents/ConfirmAccount.yaml
