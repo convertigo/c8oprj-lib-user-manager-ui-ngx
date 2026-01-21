@@ -301,7 +301,7 @@
                     varValue: 
                       - xmlizable: 
                         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                        - MobileSmartSourceType: script:local.newPassword
+                        - MobileSmartSourceType: script:this.local.newPassword
                   ↓IfElse [ngx.components.UIDynamicIf-1674728239396]: 
                     beanData: '{"ionBean":"IfElseAction","condition":"script:out.error"}'
                     ↓EmitEvent [ngx.components.UIDynamicEmit-1674728239402]: 
