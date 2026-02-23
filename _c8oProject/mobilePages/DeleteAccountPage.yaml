@@ -15,31 +15,197 @@ scriptContent:
         '
 segment: DeleteAccountPage
 title: Title for DeleteAccountPage
-↓UseSharedComponent [ngx.components.UIUseShared-1699020207681]: 
-  sharedcomponent: lib_UserManager_ui_ngx.MobileApplication.Application.DeleteAccount
-  ↓resetKey [ngx.components.UIUseVariable-1699020207684]: 
-    varValue: 
-      - xmlizable: 
-        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-        - MobileSmartSourceType: script:this.navParams.data.resetKey ?? this.local.resetKey
-  ↓appName [ngx.components.UIUseVariable-1699020207687]: 
-    varValue: 
-      - xmlizable: 
-        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-        - MobileSmartSourceType: script:this.navParams.data.appName ?? this.local.appName
-  ↓imgUrl [ngx.components.UIUseVariable-1699020207690]: 
-    varValue: 
-      - xmlizable: 
-        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-        - MobileSmartSourceType: script:this.navParams.data.imgUrl ?? this.local.imgUrl
-  ↓moretext [ngx.components.UIUseVariable-1699027405939]: 
-    varValue: 
-      - xmlizable: 
-        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-        - MobileSmartSourceType: script:this.navParams.data.htmlText ?? this.local.htmlText
+↓Header [ngx.components.UIDynamicElement-1772000204001]: 
+  beanData: '{"ionBean":"Header"}'
+  comment: Displays the standard page header
+  tagName: ion-header
+  ↓ToolBar [ngx.components.UIDynamicElement-1772000204002]: 
+    beanData: '{"ionBean":"ToolBar"}'
+    comment: Groups header actions at the top of the screen
+    tagName: ion-toolbar
+    ↓ButtonSet1 [ngx.components.UIDynamicElement-1772000204003]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:start"}'
+      comment: Places quick actions on the left side of the header
+      tagName: ion-buttons
+      ↓BackButton [ngx.components.UIDynamicElement-1772000204004]: 
+        beanData: '{"ionBean":"BackButton"}'
+        comment: Lets the user go back to the previous page
+        tagName: ion-back-button
+    ↓ButtonSet2 [ngx.components.UIDynamicElement-1772000204007]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:end"}'
+      comment: Places quick actions on the right side of the header
+      tagName: ion-buttons
+      ↓ThemeSwitchButton [ngx.components.UIDynamicElement-1772000204008]: 
+        beanData: '{"ionBean":"Button","IonFill":"plain:clear"}'
+        comment: Triggers this action when tapped
+        tagName: ion-button
+        ↓Class [ngx.components.UIAttribute-1772000204009]: 
+          attrName: class
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:toolbar-theme-button
+          comment: Applies CSS styling for this element
+        ↓Aria [ngx.components.UIAttribute-1772000204010]: 
+          attrName: aria-label
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: 'script:this.global?.themeDark ? this.translate.instant(''Theme_Switch_To_Light'') : this.translate.instant(''Theme_Switch_To_Dark'')'
+          comment: Adds an accessibility label for screen readers
+        ↓Event [ngx.components.UIControlEvent-1772000204011]: 
+          comment: Runs the related logic when this event occurs
+          ↓SetTheme [ngx.components.UIDynamicAction-1772000204012]: 
+            beanData: '{"ionBean":"SetThemeAction","dark":"script:!this.global?.themeDark"}'
+            comment: Switches between light and dark theme
+        ↓ThemeIcon [ngx.components.UIDynamicElement-1772000204013]: 
+          beanData: '{"ionBean":"Icon","IconName":"script:this?.global?.themeDark ? ''sunny-outline'' : ''moon-outline''"}'
+          comment: Displays an icon that clarifies this action
+          tagName: ion-icon
+          ↓IconName [ngx.components.UIAttribute-1772000204014]: 
+            attrName: '[name]'
+            attrValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: 'script:this.global?.themeDark ? ''sunny-outline'' : ''moon-outline'''
+            comment: Binds the icon name dynamically
+      ↓LanguageSelector [ngx.components.UIDynamicElement-1772000204015]: 
+        beanData: |
+          '{
+           "ionBean": "Select",
+           "ControlName": "plain:name1772000204015",
+           "Justify": "plain:start"
+          }'
+        comment: Lets the user choose a language
+        tagName: ion-select
+        ↓Class [ngx.components.UIAttribute-1772000204016]: 
+          attrName: class
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:toolbar-lang-select
+          comment: Applies CSS styling for this element
+        ↓Aria [ngx.components.UIAttribute-1772000204017]: 
+          attrName: aria-label
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: script:'Language' | translate
+          comment: Adds an accessibility label for screen readers
+        ↓Interface [ngx.components.UIAttribute-1772000204018]: 
+          attrName: '[interface]'
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: script:'popover'
+          comment: Configures how selection options are displayed
+        ↓Value [ngx.components.UIAttribute-1772000204019]: 
+          attrName: '[value]'
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: 'script:typeof this.global?.currentLanguage === ''function'' ? this.global.currentLanguage() : (this.translate?.currentLang ?? ''en'')'
+          comment: Binds the current value of this control
+        ↓SelectedText [ngx.components.UIAttribute-1772000204020]: 
+          attrName: '[selectedText]'
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: 'script:this.translate.currentLang == ''fr'' ? this.translate.instant(''Lang_French'') : this.translate.currentLang == ''it'' ? this.translate.instant(''Lang_Italian'') : this.translate.currentLang == ''es'' ? this.translate.instant(''Lang_Spanish'') : this.translate.instant(''Lang_English'')'
+          comment: Displays the selected value with a translated label
+        ↓ChangeEvent [ngx.components.UIControlEvent-1772000204021]: 
+          attrName: (ionChange)
+          comment: Handles changes when the user selects a different value
+          eventName: ionChange
+          ↓SetLanguage [ngx.components.UIDynamicAction-1772000204022]: 
+            beanData: |
+              '{
+               "ionBean": "SetLanguageAction",
+               "language": "script:event.detail.value",
+               "storageKey": "plain:c8o-lang",
+               "globalProperty": "plain:currentLanguage"
+              }'
+            comment: Updates the application language selected by the user
+        ↓LangEN [ngx.components.UIDynamicElement-1772000204023]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:en"}'
+          comment: Represents one selectable option
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1772000204024]: 
+            comment: Displays translated text to guide the user
+            i18n: true
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:Lang_English
+        ↓LangFR [ngx.components.UIDynamicElement-1772000204025]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:fr"}'
+          comment: Represents one selectable option
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1772000204026]: 
+            comment: Displays translated text to guide the user
+            i18n: true
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:Lang_French
+        ↓LangIT [ngx.components.UIDynamicElement-1772000204027]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:it"}'
+          comment: Represents one selectable option
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1772000204028]: 
+            comment: Displays translated text to guide the user
+            i18n: true
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:Lang_Italian
+        ↓LangES [ngx.components.UIDynamicElement-1772000204029]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:es"}'
+          comment: Represents one selectable option
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1772000204030]: 
+            comment: Displays translated text to guide the user
+            i18n: true
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:Lang_Spanish
+↓Content [ngx.components.UIDynamicElement-1771586402747]: 
+  beanData: '{"ionBean":"Content"}'
+  comment: Contains the main content of this page
+  tagName: ion-content
+  ↓UseSharedComponent [ngx.components.UIUseShared-1699020207681]: 
+    comment: Displays the account deletion module on this page
+    sharedcomponent: lib_UserManager_ui_ngx.MobileApplication.Application.DeleteAccount
+    ↓resetKey [ngx.components.UIUseVariable-1699020207684]: 
+      comment: Configures this shared component input
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:this.navParams.data.resetKey ?? this.local.resetKey
+    ↓appName [ngx.components.UIUseVariable-1699020207687]: 
+      comment: Configures this shared component input
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:this.navParams.data.appName ?? this.local.appName
+    ↓imgUrl [ngx.components.UIUseVariable-1699020207690]: 
+      comment: Configures this shared component input
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:this.navParams.data.imgUrl ?? this.local.imgUrl
+    ↓moretext [ngx.components.UIUseVariable-1699027405939]: 
+      comment: Configures this shared component input
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:this.navParams.data.htmlText ?? this.local.htmlText
 ↓PageEvent [ngx.components.UIPageEvent-1699025572104]: 
+  comment: Runs this logic when the page lifecycle event is triggered
   ↓CallSequence [ngx.components.UIDynamicAction-1699025594498]: 
     beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager_ui_ngx.GetSymbols"}'
+    comment: Loads symbol metadata to detect missing authentication configuration
     tagName: CallSequence
     ↓computeMeta [ngx.components.UICustomAsyncAction-1699025892660]: 
       actionValue: 
@@ -58,3 +224,4 @@ title: Title for DeleteAccountPage
               			return;
               		}
               
+      comment: Builds metadata before calling the backend sequence

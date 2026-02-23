@@ -1,0 +1,294 @@
+↑isRoot: true
+segment: signin
+title: Signin
+↓Header [ngx.components.UIDynamicElement-1772000200001]: 
+  beanData: '{"ionBean":"Header"}'
+  comment: Displays the standard page header
+  tagName: ion-header
+  ↓ToolBar [ngx.components.UIDynamicElement-1772000200002]: 
+    beanData: '{"ionBean":"ToolBar"}'
+    comment: Groups header actions at the top of the screen
+    tagName: ion-toolbar
+    ↓ButtonSet1 [ngx.components.UIDynamicElement-1772000200003]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:start"}'
+      comment: Places quick actions on the left side of the header
+      tagName: ion-buttons
+      ↓BackButton [ngx.components.UIDynamicElement-1772000200004]: 
+        beanData: '{"ionBean":"BackButton"}'
+        comment: Lets the user go back to the previous page
+        tagName: ion-back-button
+    ↓ButtonSet2 [ngx.components.UIDynamicElement-1772000200007]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:end"}'
+      comment: Places quick actions on the right side of the header
+      tagName: ion-buttons
+      ↓ThemeSwitchButton [ngx.components.UIDynamicElement-1772000200008]: 
+        beanData: '{"ionBean":"Button","IonFill":"plain:clear"}'
+        comment: Triggers this action when tapped
+        tagName: ion-button
+        ↓Class [ngx.components.UIAttribute-1772000200009]: 
+          attrName: class
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:toolbar-theme-button
+          comment: Applies CSS styling for this element
+        ↓Aria [ngx.components.UIAttribute-1772000200010]: 
+          attrName: aria-label
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: 'script:this.global?.themeDark ? this.translate.instant(''Theme_Switch_To_Light'') : this.translate.instant(''Theme_Switch_To_Dark'')'
+          comment: Adds an accessibility label for screen readers
+        ↓Event [ngx.components.UIControlEvent-1772000200011]: 
+          comment: Runs the related logic when this event occurs
+          ↓SetTheme [ngx.components.UIDynamicAction-1772000200012]: 
+            beanData: '{"ionBean":"SetThemeAction","dark":"script:!this.global?.themeDark"}'
+            comment: Switches between light and dark theme
+        ↓ThemeIcon [ngx.components.UIDynamicElement-1772000200013]: 
+          beanData: '{"ionBean":"Icon","IconName":"script:this?.global?.themeDark ? ''sunny-outline'' : ''moon-outline''"}'
+          comment: Displays an icon that clarifies this action
+          tagName: ion-icon
+          ↓IconName [ngx.components.UIAttribute-1772000200014]: 
+            attrName: '[name]'
+            attrValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: 'script:this.global?.themeDark ? ''sunny-outline'' : ''moon-outline'''
+            comment: Binds the icon name dynamically
+      ↓LanguageSelector [ngx.components.UIDynamicElement-1772000200015]: 
+        beanData: |
+          '{
+           "ionBean": "Select",
+           "ControlName": "plain:name1772000200015",
+           "Justify": "plain:start"
+          }'
+        comment: Lets the user choose a language
+        tagName: ion-select
+        ↓Class [ngx.components.UIAttribute-1772000200016]: 
+          attrName: class
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:toolbar-lang-select
+          comment: Applies CSS styling for this element
+        ↓Aria [ngx.components.UIAttribute-1772000200017]: 
+          attrName: aria-label
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: script:'Language' | translate
+          comment: Adds an accessibility label for screen readers
+        ↓Interface [ngx.components.UIAttribute-1772000200018]: 
+          attrName: '[interface]'
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: script:'popover'
+          comment: Configures how selection options are displayed
+        ↓Value [ngx.components.UIAttribute-1772000200019]: 
+          attrName: '[value]'
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: 'script:typeof this.global?.currentLanguage === ''function'' ? this.global.currentLanguage() : (this.translate?.currentLang ?? ''en'')'
+          comment: Binds the current value of this control
+        ↓SelectedText [ngx.components.UIAttribute-1772000200020]: 
+          attrName: '[selectedText]'
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: 'script:this.translate.currentLang == ''fr'' ? this.translate.instant(''Lang_French'') : this.translate.currentLang == ''it'' ? this.translate.instant(''Lang_Italian'') : this.translate.currentLang == ''es'' ? this.translate.instant(''Lang_Spanish'') : this.translate.instant(''Lang_English'')'
+          comment: Displays the selected value with a translated label
+        ↓ChangeEvent [ngx.components.UIControlEvent-1772000200021]: 
+          attrName: (ionChange)
+          comment: Handles changes when the user selects a different value
+          eventName: ionChange
+          ↓SetLanguage [ngx.components.UIDynamicAction-1772000200022]: 
+            beanData: |
+              '{
+               "ionBean": "SetLanguageAction",
+               "language": "script:event.detail.value",
+               "storageKey": "plain:c8o-lang",
+               "globalProperty": "plain:currentLanguage"
+              }'
+            comment: Updates the application language selected by the user
+        ↓LangEN [ngx.components.UIDynamicElement-1772000200023]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:en"}'
+          comment: Represents one selectable option
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1772000200024]: 
+            comment: Displays translated text to guide the user
+            i18n: true
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:Lang_English
+        ↓LangFR [ngx.components.UIDynamicElement-1772000200025]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:fr"}'
+          comment: Represents one selectable option
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1772000200026]: 
+            comment: Displays translated text to guide the user
+            i18n: true
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:Lang_French
+        ↓LangIT [ngx.components.UIDynamicElement-1772000200027]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:it"}'
+          comment: Represents one selectable option
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1772000200028]: 
+            comment: Displays translated text to guide the user
+            i18n: true
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:Lang_Italian
+        ↓LangES [ngx.components.UIDynamicElement-1772000200029]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:es"}'
+          comment: Represents one selectable option
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1772000200030]: 
+            comment: Displays translated text to guide the user
+            i18n: true
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:Lang_Spanish
+↓Content [ngx.components.UIDynamicElement-1572604185704]: 
+  beanData: '{"ionBean":"Content"}'
+  comment: Contains the main content of this page
+  tagName: ion-content
+  ↓UseSharedComponent [ngx.components.UIUseShared-1771588469045]: 
+    comment: Displays the reusable login module on this page
+    sharedcomponent: lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent
+    ↓enableGoogleLogin [ngx.components.UIUseVariable-1771593576049]: 
+      comment: Enable this to hide the Google sign in option when needed
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:true
+    ↓enableLinkedInLogin [ngx.components.UIUseVariable-1771593576051]: 
+      comment: Enable this to hide the LinkedIn sign in option when needed
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:true
+    ↓enableAzureADLogin [ngx.components.UIUseVariable-1771593576053]: 
+      comment: Enable this to hide the Microsoft sign in option when needed
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:true
+    ↓enableLDAPLogin [ngx.components.UIUseVariable-1771593576055]: 
+      comment: Enable this to show LDAP sign in on the login card
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:true
+    ↓enableOpenIDLogin [ngx.components.UIUseVariable-1771593576057]: 
+      comment: Enable this to show OpenID sign in on the login card
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:true
+    ↓enableCreateAccount [ngx.components.UIUseVariable-1783001000301]: 
+      comment: Enable this to show the create account flow to users without an account
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:true
+    ↓enableForgotPassword [ngx.components.UIUseVariable-1783001000302]: 
+      comment: Enable this to show the forgot password flow on the login screen
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:true
+    ↓logoImage [ngx.components.UIUseVariable-1771593576059]: 
+      comment: Sets the logo shown above the authentication forms
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:
+    ↓enableCancelDismiss [ngx.components.UIUseVariable-1771593576061]: 
+      comment: Enable this to show a cancel button that closes the login modal
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:true
+    ↓logoWidth [ngx.components.UIUseVariable-1771593576063]: 
+      comment: Sets the displayed width of the authentication logo
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:'300'
+    ↓scope [ngx.components.UIUseVariable-1771593576065]: 
+      comment: |
+        Additional Scope to be added to the standard Scope. This will be concatenated to the scope string.
+        For Azure AD, start with a + sign.
+        
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:
+    ↓tenantid [ngx.components.UIUseVariable-1771593576067]: 
+      comment: |
+        The tenant ID you want to restrict to, leave blank for no tenant.
+        
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:
+    ↓openidClientID [ngx.components.UIUseVariable-1771593576069]: 
+      comment: Sets the OpenID client identifier used for authentication
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:
+    ↓openidAuthorizationEndpoint [ngx.components.UIUseVariable-1771593576071]: 
+      comment: Sets the OpenID authorization endpoint used during sign in
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:
+    ↓openidScope [ngx.components.UIUseVariable-1771593576073]: 
+      comment: Defines the OpenID scopes requested for the user session
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:'openid profile email'
+    ↓openidResponseType [ngx.components.UIUseVariable-1771593576075]: 
+      comment: Defines the OpenID response type expected from the provider
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:'id_token+token'
+    ↓openidCallbackUrl [ngx.components.UIUseVariable-1771593576077]: 
+      comment: Defines the callback URL where the OpenID provider returns the user
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:'https://c8ocloud.convertigo.net/convertigo/projects/lib_OAuth/getToken.html'
+    ↓Event [ngx.components.UIControlEvent-1771594139515]: 
+      attrName: (login)
+      comment: |
+        This event will be fired when a login occurs:
+        	Check out.error and out.message for login errors
+        	The out.user will be the logged-in user
+        
+      eventName: login
+      ↓IfLoginSucceeded [ngx.components.UIDynamicIf-1783001000039]: 
+        beanData: '{"ionBean":"IfElseAction","condition":"script:!!(out?.user || out?.authenticatedUserID || out?.authUser || out?.emailAddress) || ((out?.login ?? '''').toLowerCase() == ''ok'') || (out?.authenticated === true) || ((String(out?.authenticated ?? '''')).toLowerCase() == ''true'')"}'
+        comment: Continues this flow only when authentication succeeds
+        ↓SetAuthUser [ngx.components.UIDynamicAction-1783001000040]: 
+          beanData: |
+            '{
+             "ionBean": "SetGlobalAction",
+             "Property": "plain:authUser",
+             "Value": "script:out?.user || out?.authenticatedUserID || out?.authUser || out?.emailAddress || ''''"
+            }'
+          comment: Stores the authenticated user in global state
+        ↓GoToHomePage [ngx.components.UIDynamicAction-1783001000041]: 
+          beanData: '{"ionBean":"RootPageAction","page":"plain:lib_UserManager_ui_ngx.MobileApplication.Application.HomePage"}'
+          comment: Navigates to the home page after authentication

@@ -1,80 +1,462 @@
 comment: |
-  This component handle a login / password form.
-  And uses the lib_UserManager
+  This component handles a login / password form.
+  And uses the lib_UserManager.
   
-  The component will check user / password and if successful will autenticate the user. When the user is authenticated, the component will fire a 'login' event that you can handle with a SubscribeHandler. use this event to close a modal page or to push/root a new page when the user is authenticated
-  
-  
-  
-↓Grid [ngx.components.UIDynamicElement-1572625170697]: 
+  When a user is authenticated, the component fires the ''login'' event.
+  Use this event to close a modal page or route to an authenticated page.
+scriptContent: 
+  - xmlizable: 
+    - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+    - com.twinsoft.convertigo.beans.common.FormatedContent: 
+      →: |
+        /*Begin_c8o_CompImport*/
+        /*End_c8o_CompImport*/
+        /*Begin_c8o_CompDeclaration*/
+        	/*End_c8o_CompDeclaration*/
+        /*Begin_c8o_CompConstructor*/
+        		this.local = this.local || {};
+        		this.local.showPassword = false;
+        		this.local.showCreatePassword = false;
+        		this.local.showCreateAccount = false;
+        		this.local.showForgotPassword = false;
+        		/*End_c8o_CompConstructor*/
+        /*Begin_c8o_CompInitialization*/
+        		/*End_c8o_CompInitialization*/
+        /*Begin_c8o_CompFinalization*/
+        		/*End_c8o_CompFinalization*/
+        /*Begin_c8o_CompChanges*/
+        		/*End_c8o_CompChanges*/
+        /*Begin_c8o_CompDoCheck*/
+        		/*End_c8o_CompDoCheck*/
+        /*Begin_c8o_CompAfterContentInit*/
+        		/*End_c8o_CompAfterContentInit*/
+        /*Begin_c8o_CompAfterContentChecked*/
+        		/*End_c8o_CompAfterContentChecked*/
+        /*Begin_c8o_CompAfterViewInit*/
+        		/*End_c8o_CompAfterViewInit*/
+        /*Begin_c8o_CompAfterViewChecked*/
+        		/*End_c8o_CompAfterViewChecked*/
+        /*Begin_c8o_CompFunction*/
+        	public toggleShowPassword() {
+        		this.local = this.local || {};
+        		this.local.showPassword = !Boolean(this.local?.showPassword);
+        	}
+        
+        	public toggleShowCreatePassword() {
+        		this.local = this.local || {};
+        		this.local.showCreatePassword = !Boolean(this.local?.showCreatePassword);
+        	}
+        
+        	public getSignInErrorMessage(out) {
+        		try {
+        			var error = out?.error;
+        			if (error != null) {
+        				var code = String(error?.code ?? "");
+        				if (code == "2") {
+        					return this.translate.instant("bad_id");
+        				}
+        				if (code == "3") {
+        					return this.translate.instant("Please_reset_your_password");
+        				}
+        				if (code == "4") {
+        					return this.translate.instant("Please_confirm_your_account");
+        				}
+        				if ((error?.message ?? "") != "") {
+        					return error.message;
+        				}
+        			}
+        		} catch (e) {
+        			this.c8o.log.debug("[LoginComponent] getSignInErrorMessage failed");
+        		}
+        		return this.translate.instant("error_occured");
+        	}
+        
+        	public getForgotPasswordErrorMessage(out) {
+        		try {
+        			var error = out?.error;
+        			if (error != null) {
+        				var code = String(error?.code ?? "");
+        				if (code == "2") {
+        					return this.translate.instant("Auth_ForgotPassword_Error_Code_2");
+        				}
+        				if ((error?.message ?? "") != "") {
+        					return error.message;
+        				}
+        				if (code != "") {
+        					return this.translate.instant("Auth_ForgotPassword_Error_Unknown") + " (" + code + ")";
+        				}
+        			}
+        		} catch (e) {
+        			this.c8o.log.debug("[LoginComponent] getForgotPasswordErrorMessage failed");
+        		}
+        		return this.translate.instant("Auth_ForgotPassword_Failed");
+        	}
+        	/*End_c8o_CompFunction*/
+        
+↓Grid [ngx.components.UIDynamicElement-1783000000001]: 
   beanData: '{"ionBean":"Grid","Height":"plain:100%"}'
+  comment: Arranges the content responsively on the screen
   tagName: ion-grid
-  ↓GridRow [ngx.components.UIDynamicElement-1572625170700]: 
-    beanData: '{"ionBean":"GridRow"}'
+  ↓Class [ngx.components.UIAttribute-1783000000002]: 
+    attrName: class
+    attrValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: plain:login-shell
+    comment: Applies CSS styling for this element
+  ↓GridRow [ngx.components.UIDynamicElement-1783000000003]: 
+    beanData: '{"ionBean":"GridRow","FlexAlignement":"plain:ion-align-items-center"}'
+    comment: Defines a horizontal row in the page layout
     tagName: ion-row
-    ↓GridCol [ngx.components.UIDynamicElement-1572625170706]: 
+    ↓GridColLeft [ngx.components.UIDynamicElement-1783000000004]: 
+      beanData: '{"ionBean":"GridCol"}'
+      comment: Defines a column used to align content
+      tagName: ion-col
+    ↓GridCol [ngx.components.UIDynamicElement-1783000000005]: 
       beanData: |
         '{
          "ionBean": "GridCol",
-         "FlexAlignement": "plain:ion-align-self-center",
-         "Size": "plain:12"
+         "SizeLg": "plain:10",
+         "SizeMd": "plain:11",
+         "SizeSm": "plain:12",
+         "SizeXl": "plain:6",
+         "SizeXs": "plain:12"
         }'
+      comment: Defines a column used to align content
       tagName: ion-col
-      ↓FormatLayout [ngx.components.UIDynamicAttr-1614349065612]: 
-        beanData: '{"ionBean":"FormatLayout","TextAlignment":"plain:ion-text-center"}'
-        comment: FormatLayout
-        tagName: div
-      ↓Directive [ngx.components.UIControlDirective-1572627076257]: 
-        directiveName: If
-        directiveSource: 
-          - xmlizable: 
-            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:this.logoImage
-        ↓Image [ngx.components.UIDynamicElement-1572625924015]: 
-          beanData: |
-            '{
-             "ionBean": "Image",
-             "url": "script:this.logoImage",
-             "width": "source:{\"filter\":\"Shared\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"\",\"model\":{\"data\":[{\"priority\":1572604124714,\"regular\":true}],\"path\":\"?.logoWidth\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}"
-            }'
-          selfClose: true
-          tagName: img
-      ↓Form [ngx.components.UIForm-1572604498892]: 
-        identifier: form1572604498892
-        ↓Event [ngx.components.UIControlEvent-1572604498895]: 
-          attrName: (ngSubmit)
-          eventName: onSubmit
-          ↓Login [ngx.components.UIDynamicAction-1572604498898]: 
-            beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.SignIn"}'
-            ↓IfElse [ngx.components.UIDynamicIf-1572604498901]: 
-              beanData: '{"ionBean":"IfElseAction","condition":"script:out.user"}'
-              ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897867]: 
+      ↓CardContainer [ngx.components.UIDynamicElement-1783000000006]: 
+        beanData: '{"ionBean":"Card"}'
+        comment: Shows a dedicated card for this authentication step
+        tagName: ion-card
+        ↓Class [ngx.components.UIAttribute-1783000000007]: 
+          attrName: class
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:login-container
+          comment: Applies CSS styling for this element
+        ↓VisibleWhenLoginCard [ngx.components.UIAttribute-1783000000200]: 
+          attrName: '*ngIf'
+          attrValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:!this.local?.showCreateAccount && !this.local?.showForgotPassword
+          comment: Shows this element only when its condition is true
+        ↓CardHeader [ngx.components.UIDynamicElement-1783000000008]: 
+          beanData: '{"ionBean":"CardHeader"}'
+          comment: Shows the title area of this card
+          tagName: ion-card-header
+          ↓Class [ngx.components.UIAttribute-1783000000009]: 
+            attrName: class
+            attrValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:login-card-header
+            comment: Applies CSS styling for this element
+          ↓DirectiveLogo [ngx.components.UIControlDirective-1783000000010]: 
+            comment: Shows this block only when its condition is true
+            directiveName: If
+            directiveSource: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:this.logoImage
+            ↓Image [ngx.components.UIDynamicElement-1783000000011]: 
+              beanData: |
+                '{
+                 "ionBean": "Image",
+                 "url": "script:this.logoImage",
+                 "width": "source:{\"filter\":\"Shared\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"\",\"model\":{\"data\":[{\"priority\":1572604124714,\"regular\":true}],\"path\":\"?.logoWidth\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}"
+                }'
+              comment: Displays the logo above the authentication form
+              selfClose: true
+              tagName: img
+              ↓Class [ngx.components.UIAttribute-1783000000012]: 
+                attrName: class
+                attrValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:login-logo
+                comment: Applies CSS styling for this element
+          ↓CardTitle [ngx.components.UIDynamicElement-1783000000013]: 
+            beanData: '{"ionBean":"CardTitle"}'
+            comment: Shows the main title for this section
+            tagName: ion-card-title
+            ↓Text [ngx.components.UIText-1783000000014]: 
+              comment: Displays translated text to guide the user
+              i18n: true
+              textValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: plain:Auth_Login_Title
+          ↓CardSubTitle [ngx.components.UIDynamicElement-1783000000015]: 
+            beanData: '{"ionBean":"CardSubTitle"}'
+            comment: Shows supporting text under the section title
+            tagName: ion-card-subtitle
+            ↓Text [ngx.components.UIText-1783000000016]: 
+              comment: Displays translated text to guide the user
+              i18n: true
+              textValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: plain:Auth_Login_Subtitle
+        ↓CardContent [ngx.components.UIDynamicElement-1783000000017]: 
+          beanData: '{"ionBean":"CardContent"}'
+          comment: Contains fields and actions for this card
+          tagName: ion-card-content
+          ↓Form [ngx.components.UIForm-1783000000018]: 
+            comment: Groups and validates form inputs before submission
+            identifier: formLogin
+            ↓Event [ngx.components.UIControlEvent-1783000000019]: 
+              attrName: (ngSubmit)
+              comment: Submits this form when the user validates it
+              eventName: onSubmit
+              ↓Login [ngx.components.UIDynamicAction-1783000000020]: 
+                beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.SignIn"}'
+                comment: Calls the backend sign in sequence
+                ↓IfElse [ngx.components.UIDynamicIf-1783000000021]: 
+                  beanData: '{"ionBean":"IfElseAction","condition":"script:!!out?.user"}'
+                  comment: Chooses the next steps based on the condition result
+                  ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000022]: 
+                    beanData: |
+                      '{
+                       "ionBean": "EmitEventAction",
+                       "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                       "data": "script:{error: false, message: '''', user: out?.user || this.local?.user}"
+                      }'
+                    comment: Emits the login event so parent pages can react
+                  ↓PublishEvent [ngx.components.UIDynamicAction-1783000000135]: 
+                    beanData: |
+                      '{
+                       "ionBean": "PublishEventAction",
+                       "topic": "plain:login",
+                       "data": "script:{error: false, user: out?.user || this.local?.user}"
+                      }'
+                    comment: Publishes a global event for other components
+                  ↓Else_Handler [ngx.components.UIActionElseEvent-1783000000023]: 
+                    comment: Defines the fallback branch used when the previous step fails
+                    ↓Toast [ngx.components.UIDynamicAction-1783000000024]: 
+                      beanData: |
+                        '{
+                         "ionBean": "ToastAction",
+                         "message": "script:this.getSignInErrorMessage(stack?.[''Login'']?.out ?? out)",
+                         "position": "plain:top",
+                         "cssClass": "plain:"
+                        }'
+                      comment: Shows a toast message to inform the user
+                    ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000025]: 
+                      beanData: |
+                        '{
+                         "ionBean": "EmitEventAction",
+                         "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                         "data": "script:{error: true, message: this.getSignInErrorMessage(stack?.[''Login'']?.out ?? out)}"
+                        }'
+                      comment: Emits the login event so parent pages can react
+                ↓user [ngx.components.UIControlVariable-1783000000026]: 
+                  comment: Sends the username value to the backend sequence
+                  varValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: script:this.local.user
+                ↓password [ngx.components.UIControlVariable-1783000000027]: 
+                  comment: Sends the password value to the backend sequence
+                  varValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: script:this.local.password
+                ↓rememberMe [ngx.components.UIControlVariable-1783000000028]: 
+                  comment: Sends the remember me choice to the backend sequence
+                  varValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: script:false
+            ↓email [ngx.components.UIDynamicElement-1783000000029]: 
+              beanData: '{"ionBean":"GenericItem","Lines":"plain:none"}'
+              comment: Displays a form row for one user input
+              tagName: ion-item
+              ↓Icon [ngx.components.UIDynamicElement-1783000000030]: 
                 beanData: |
                   '{
-                   "ionBean": "EmitEventAction",
-                   "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
-                   "data": "script:{error: false, message: '''', user: this.user}"
+                   "ionBean": "Icon",
+                   "IconName": "plain:mail-outline",
+                   "IconSlot": "plain:start"
                   }'
-              ↓Else_Handler [ngx.components.UIActionElseEvent-1572604498916]: 
-                ↓Toast [ngx.components.UIDynamicAction-1572604498919]: 
-                  beanData: |
-                    '{
-                     "ionBean": "ToastAction",
-                     "message": "script:stack[''Login''].out.error.message",
-                     "position": "plain:top",
-                     "cssClass": "plain:"
-                    }'
-                ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897871]: 
-                  beanData: |
-                    '{
-                     "ionBean": "EmitEventAction",
-                     "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
-                     "data": "script:{error: true, message: stack[''Login''].out.error.message}"
-                    }'
-        ↓Div [ngx.components.UIDynamicElement-1572604498922]: 
-          beanData: '{"ionBean":"DivTag"}'
-          tagName: div
-          ↓Directive [ngx.components.UIControlDirective-1572626753097]: 
+                comment: Displays an icon that clarifies this action
+                tagName: ion-icon
+              ↓TextInput [ngx.components.UIDynamicElement-1783000000031]: 
+                beanData: |
+                  '{
+                   "ionBean": "Input",
+                   "ControlName": "plain:user",
+                   "DoubleBinding": "script:local.user",
+                   "Debounce": "plain:0",
+                   "EnterKeyHint": "plain:next",
+                   "InputMode": "plain:email",
+                   "Placeholder": "script:this.translate.instant(''Email'')",
+                   "Required": "plain:true",
+                   "Type": "plain:email"
+                  }'
+                comment: Captures user input for this field
+                tagName: ion-input
+            ↓password [ngx.components.UIDynamicElement-1783000000032]: 
+              beanData: '{"ionBean":"GenericItem","Lines":"plain:none"}'
+              comment: Displays a form row for one user input
+              tagName: ion-item
+              ↓Icon [ngx.components.UIDynamicElement-1783000000033]: 
+                beanData: |
+                  '{
+                   "ionBean": "Icon",
+                   "IconName": "plain:lock-closed-outline",
+                   "IconSlot": "plain:start"
+                  }'
+                comment: Displays an icon that clarifies this action
+                tagName: ion-icon
+              ↓TextInput [ngx.components.UIDynamicElement-1783000000034]: 
+                beanData: |
+                  '{
+                   "ionBean": "Input",
+                   "ControlName": "plain:password",
+                   "DoubleBinding": "script:local.password",
+                   "Debounce": "plain:0",
+                   "Placeholder": "script:this.translate.instant(''Password'')",
+                   "Required": "plain:true",
+                   "Type": "script:this.local?.showPassword ? ''text'' : ''password''"
+                  }'
+                comment: Captures user input for this field
+                tagName: ion-input
+              ↓TogglePasswordVisibility [ngx.components.UIDynamicElement-1783000000035]: 
+                beanData: |
+                  '{
+                   "ionBean": "Icon",
+                   "IconName": "script:this.local?.showPassword ? ''eye-off-outline'' : ''eye-outline''",
+                   "IconSlot": "plain:end"
+                  }'
+                comment: Displays an icon that clarifies this action
+                tagName: ion-icon
+                ↓Click [ngx.components.UIAttribute-1783000000036]: 
+                  attrName: (click)
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: script:toggleShowPassword()
+                  comment: Binds tap handling for this element
+                ↓Style [ngx.components.UIAttribute-1783000000037]: 
+                  attrName: style
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:cursor:pointer
+                  comment: Applies inline style on this element
+            ↓ActionRow [ngx.components.UIDynamicElement-1783000000038]: 
+              beanData: '{"ionBean":"DivTag"}'
+              comment: Groups related actions in this section
+              tagName: div
+              ↓Class [ngx.components.UIAttribute-1783000000039]: 
+                attrName: class
+                attrValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:login-actions
+                comment: Applies CSS styling for this element
+              ↓LoginButton [ngx.components.UIDynamicElement-1783000000040]: 
+                beanData: '{"ionBean":"SubmitButton"}'
+                comment: Submits the sign in form
+                tagName: ion-button
+                ↓Class [ngx.components.UIAttribute-1783000000041]: 
+                  attrName: class
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:oauth-button
+                  comment: Applies CSS styling for this element
+                ↓Text [ngx.components.UIText-1783000000042]: 
+                  comment: Displays translated text to guide the user
+                  i18n: true
+                  textValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:Auth_SignIn
+              ↓DirectiveLDAP [ngx.components.UIControlDirective-1783000000100]: 
+                comment: Shows this block only when its condition is true
+                directiveName: If
+                directiveSource: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: script:this.enableLDAPLogin
+                ↓LDAPButton [ngx.components.UIDynamicElement-1783000000101]: 
+                  beanData: '{"ionBean":"Button","IonFill":"plain:outline"}'
+                  comment: Starts LDAP sign in
+                  tagName: ion-button
+                  ↓Class [ngx.components.UIAttribute-1783000000102]: 
+                    attrName: class
+                    attrValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:oauth-button
+                    comment: Applies CSS styling for this element
+                  ↓Event [ngx.components.UIControlEvent-1783000000103]: 
+                    comment: Runs the related logic when this event occurs
+                    ↓LoginLDAP [ngx.components.UIDynamicAction-1783000000104]: 
+                      beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.SignInLDAPBulk"}'
+                      comment: Calls the backend LDAP authentication sequence
+                      ↓IfElse [ngx.components.UIDynamicIf-1783000000105]: 
+                        beanData: '{"ionBean":"IfElseAction","condition":"script:!!out?.authenticatedUserID"}'
+                        comment: Chooses the next steps based on the condition result
+                        ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000106]: 
+                          beanData: |
+                            '{
+                             "ionBean": "EmitEventAction",
+                             "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                             "data": "script:{error: false, message: '''', user: stack?.[''LoginLDAP'']?.out?.authenticatedUserID || this.local?.user}"
+                            }'
+                          comment: Emits the login event so parent pages can react
+                        ↓PublishEvent [ngx.components.UIDynamicAction-1783000000107]: 
+                          beanData: |
+                            '{
+                             "ionBean": "PublishEventAction",
+                             "topic": "plain:login",
+                             "data": "script:stack?.[''LoginLDAP'']?.out ?? out"
+                            }'
+                          comment: Publishes a global event for other components
+                        ↓Else_Handler [ngx.components.UIActionElseEvent-1783000000108]: 
+                          comment: Defines the fallback branch used when the previous step fails
+                          ↓Toast [ngx.components.UIDynamicAction-1783000000109]: 
+                            beanData: |
+                              '{
+                               "ionBean": "ToastAction",
+                               "message": "script:this.getSignInErrorMessage(stack?.[''LoginLDAP'']?.out ?? out)",
+                               "position": "plain:top",
+                               "cssClass": "plain:"
+                              }'
+                            comment: Shows a toast message to inform the user
+                          ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000110]: 
+                            beanData: |
+                              '{
+                               "ionBean": "EmitEventAction",
+                               "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                               "data": "script:{error: true, message: this.getSignInErrorMessage(stack?.[''LoginLDAP'']?.out ?? out)}"
+                              }'
+                            comment: Emits the login event so parent pages can react
+                      ↓user [ngx.components.UIControlVariable-1783000000111]: 
+                        comment: Sends the username value to the backend sequence
+                        varValue: 
+                          - xmlizable: 
+                            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                            - MobileSmartSourceType: script:this.local.user
+                      ↓password [ngx.components.UIControlVariable-1783000000112]: 
+                        comment: Sends the password value to the backend sequence
+                        varValue: 
+                          - xmlizable: 
+                            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                            - MobileSmartSourceType: script:this.local.password
+                  ↓Text [ngx.components.UIText-1783000000113]: 
+                    comment: Displays translated text to guide the user
+                    i18n: true
+                    textValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:Auth_SignIn_LDAP
+          ↓DirectiveOAuth [ngx.components.UIControlDirective-1783000000049]: 
+            comment: Shows this block only when its condition is true
             directiveName: If
             directiveSource: 
               - xmlizable: 
@@ -82,312 +464,909 @@ comment: |
                 - MobileSmartSourceType: |
                     script:this.enableGoogleLogin ||
                     this.enableLinkedInLogin ||
-                    this.enableAzureADLogin
-                    
-            ↓Heading [ngx.components.UIDynamicTag-1572622742742]: 
-              beanData: '{"ionBean":"Heading"}'
-              tagName: h4
-              ↓Text [ngx.components.UIText-1572622755335]: 
-                textValue: 
+                    this.enableAzureADLogin ||
+                    this.enableOpenIDLogin
+            ↓LoginSeparator [ngx.components.UIDynamicElement-1783000000050]: 
+              beanData: '{"ionBean":"DivTag"}'
+              comment: Separates authentication options visually
+              tagName: div
+              ↓Class [ngx.components.UIAttribute-1783000000051]: 
+                attrName: class
+                attrValue: 
                   - xmlizable: 
                     - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:Login with 
-            ↓Grid [ngx.components.UIDynamicElement-1572621929813]: 
-              beanData: '{"ionBean":"Grid","Height":"plain:100%"}'
-              tagName: ion-grid
-              ↓GridRow [ngx.components.UIDynamicElement-1572621939808]: 
-                beanData: '{"ionBean":"GridRow"}'
-                tagName: ion-row
-                ↓Directive [ngx.components.UIControlDirective-1572626558185]: 
-                  directiveName: If
-                  directiveSource: 
+                    - MobileSmartSourceType: plain:login-separator
+                comment: Applies CSS styling for this element
+              ↓SeparatorText [ngx.components.UIDynamicElement-1783000000052]: 
+                beanData: '{"ionBean":"DivTag"}'
+                comment: Separates authentication options visually
+                tagName: div
+                ↓Class [ngx.components.UIAttribute-1783000000053]: 
+                  attrName: class
+                  attrValue: 
                     - xmlizable: 
                       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                      - MobileSmartSourceType: script:this.enableGoogleLogin
-                  ↓GridCol [ngx.components.UIDynamicElement-1572621943687]: 
-                    beanData: '{"ionBean":"GridCol"}'
-                    tagName: ion-col
-                    ↓Attr [ngx.components.UIAttribute-1572621987861]: 
-                      attrName: 
-                      attrValue: 
-                        - xmlizable: 
-                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                          - MobileSmartSourceType: plain:text-center
-                    ↓Image [ngx.components.UIDynamicElement-1572622517103]: 
-                      beanData: |
-                        '{
-                         "ionBean": "Image",
-                         "url": "script:''data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABXFBMVEX\/\/\/\/qQzU0qFNChfT7vAXZ5f0vffNDhvTi7P77ugA1f\/PqQTLqPi8wp1AopUvqPzDpOSnpNiW0zvs7gvT\/vQD3tbEgo0btWEzpMyH5yMT96eftX1TyiYH4wLz+8O\/61dL\/\/PPv9P6wy\/vn9OqRzaDz+vVVtW5nvHzzlY7vcGbtYlf1rKf\/+fjrSDrwf3fyjIT0n5j\/9t37vyH+6bX2ni7M3fx4pff8zlpjmfb3+v\/b7t9UkPXO6dWi1a+Gr\/hWqKm638N+xpD83tzvbWPsUET0nJX608H8yz33pR\/sVTjtYjvygS71lTH6tibwcjnpNTX93pn+8Mz91Gv91n7vbzj+57Hyi3T\/++qkwPn92I38z13+8tbN26ThvilptFxQtXPQwECeu1OHtlC5vUOUt\/gfql7avi56tFKwvEjg2ZFvsMVOqJdPrIhMkOVQmdBVmNxTnsdOn7tNrXxEn6umuS4RAAAKYUlEQVR4nO2b+XfbxhGASQg6cRCUeIuHZN6iSMl0a7sSaZMSVblJm0ZJHDtxa6Vp4qZN4qTt\/\/9eFyB1EMSxO9hdgO5+vyTxi0l8mtmZ2V0oFhMIBAKBQCAQCAQCgUAgEAgEAgE\/Dsvlwlm+0yr22u3zg2x297zdK7aO05VCoXwY9sMF56zUKZ5n47lc0lARCQv0L4aRzCUnB72LTr4Q9jNCOSxULtqTrorMFCXuiJJApkp3t1gqlMN+XGIqnV48Z7i62Txzyd2j0hLFslxpZbvIzl\/ujoShTtrp5ViXSC9nJIj0ZrFUk\/FeOuqRLHSycSNBbncraXSLlQgHsnIRT8L1ZpJGrp2OpuNhvh03AMm5iKrudiLoWOrlVBp6Folc5BwrbZWen+Vo7EYpVytHFON365hr58MWm1E+jtP3M1GVo0j0jnw2SaW+OGF0S2Hrxco9JWh\/8EJR2yGHsZQ1GPqZGN10iH7llsoygFMU4yi0jcfZbpK5n4mRrYQjmJ6wKaGLqKFk6mErx6yELqDkLri3\/\/I5rwBOMdqcF2Nll3UNXVA8OOMq2OUbQRN1wrHe5Lvsm8QCSpLffJOPhyEY51dPS0znNDdBjhEs4ZwQUhdM8Itgh+yUkJJgkmOKhiKY6HATzMdDiSC\/NXgWSpvguAYLWf6NnmsED9thCHKMYKwYaDuoKNN7Q8NQ1QR2x+EZwVgaHEEFiSXi3Wy7d9RCFHsHE+vP\/Osy1whWgEdqCSOX7R2nK7bdTyHfabXjSW9JxeAYwfIBJISqoWYvKgWX7Wu5UOp1DffLDkXlubcvAjaEarJ97LerOywVuy7ZoRg8D71LxFVGMYxeHmdjfnjWmTjdOfKNYGFC2uqN7jHBWW76YCFX+UaQOEfVZIvs0KGcVuYd+UYwVsoR+SWSRfKz+MPO\/Qs6zhEs75LkqGJMYDU+v3tbcjhHMHZBkqOK0oJ\/0Wyy5xzB2BnJrl4N9HAVQw0hgjGSgTvZC3ZyW2gnuUcwVsHf9Sq5YtDT93I7Z3COIMGeic4Yecz7+v732NOMwvuHT4nLF3\/AFFRCuuYLyJUsv\/jozziCavhvFUDYe7Ipy\/LHGIa5qLz9QsgbU1CW\/+gveBz2owJ5MjWU\/\/TRByr4sD8zlDc\/8VqMRjvsJ4Xy6Y2gd6aq58v3JvqUvct7hvKLrlsYc8vZJxBX9wXRYnTJVGNZF2Es9tm8odz\/2ElxeXM09qpvM5Tl3zgMOEYk3pEE8cjuZ7UNexiTF2E\/J5zPF0Jo8sm8YOJgeUO4t5ik00ydi2KS3\/0sda6cBedH8cQk7McMgHOSWovxi1tFnrdf1Ll0NUQDTnfWKdoR+p0BUh66LMPZYpwqGku8CmMvPfwQfXO3oahLHMK5qduJTTTgGMWwnzIAe098DM0BR+X60idlXsm+hvKLL5c5SR\/6C8ryp8Qfu79KH6DhSwzDzSvij91eo84K0NC9398J9sk\/dntrhTbrGzBD\/0Ijb34WCcOV38IMPfs9OElZGO5sgwQddr8LgvLDSBhuvQYZXvlGUN588ioShjvPQIZO+3u74eeAz2Vh+Ph3EEOMZrFJ3g3ZGD7dhxj6TaWm4cuIGJ4yMwSUUibdYh1k+BWGIaDQMDHcArV8nJEG8rksDNcgk+me\/bjbQVCOjCFkqMHYHUKmUkZZ+uEbQsY2HMPL5Tb8epkMHzAyjE6WQkbv5TIExXCZugUrQ3m5DbFmmr2oGII2+TiT95sP3vDRUhuy2gE\/iMpcinWK8VVUDEG7J5yTqK\/3omG4AzJ80\/c37AO2wCwMYXt8txcx5hQBxZSFIeycxvMW\/8YQUGoYGALP2hbeaXMyBOwuWBjCzktxGiJkqmFh+B1I8OYNb29D8hNTBobAe4vYK3\/BlPwXgOE6GRgxhN092d4PdhT869vrOunH7m+Q8WDHXxF4f+hbalLfSJI+AH44Nq\/9DaF3wD6TaUr+2\/fIsElVx4FnvoY7p9DP9pzbUpffIkGkSJymZOw\/9Td8DP50j6km9U6aotco6jiw6p+k0FKKcD2MSqX+LmlTQ61RpeizyGv\/5gLbO1k8cjFM9acZapFhG0SMZrECm9lMXDoiahLSHZrEciViJCl0KjVxPtm\/y1AOK\/E7DEPgzGbhMJqiJiHNo0kn1ITsbJxiGAInGovFt4RRhn5vM5T0BjUjOxh1Bt7vLeyDW+rdW80uiIrNiJLQAjhDKbjfW8xX01T\/h4UAMs1TnBAGWoa2t2hT8rdOfqYim9ltH2MVBumGFvfO9lPvGg4ZOsvTIR2neR7jhDBAr7C4OzVFTcIdTWKwx1jF2SsHTNLY7Vumc2OMk2KG+vCGMXObBEzSm1qTuvyHp6C5FGmPNv7bJhPYUel9rJ1+6hsfP4n+TnF7DUdwK3CSmnNNKvWDr59EewRfPcURhL0NZWOv33fq8k6K4+DfdsPGFlaOQk9K5\/nnW3852lHErDIrO6DrbTtVCS+EpiKlcoPV6k3BUxohjMVqOq4hKjc0FDcwI0ilzphU3WeZBTQteOtf3cEUpNAqZgwz2IYoo4MOcNuYKUovhAiCIKLpZhxkp7H\/DKsPWpwG2hnOMSIwRItRGoG\/afCvNdwIrmzBfs3CmTF+sTHDqDdgYaw29cyP2ElKbRVaX43fMaaOUg1QVGso\/FLmp5\/x7t924AfBTpDlqRlGrUa226gOJd36El17jyX4lE4vvKVJlKfWk0oEjtVaI3PzQ9Sk5xiLcS3IEZsTdcI8ncaxMcKRrI6amn7v4zWMTKUzkc4xIg6iJdmojbxXZHU0ljL2n55+\/YtP01insKmwQzC8zTmiSNYGVQfNevUE2Zn\/g8Nfk\/677pWpsDdKfaiTL8Vby0yjOa4NB4OTk2odiQ0Go+Fw3GzoGc0t97XMc4+2Qb3MTDkhGW3sD4xCpWvaVMj8p\/Wfnn9Fv\/7ZVZFFjpqMCOZTCuiNX11q6hqLHLUYwoMIQdOfOy5G4G\/FYlHjG0VJ\/+npYtsA\/kIlJmQDKgXF6\/cLiqwW4RR4QQWiSf9emc9UOmczHooBCipMUZ\/fbQR48wKTaoNzFKXMf365y1Sqm0JXRc5RRJn6602mbj1j0uoXFHlHUdN+nCpuBb1Lw6R+zTuKqG2YA87WYz6CZkXl3BfNAef9Gj9BxJh7FNFug6egeYbK2zEz5lFk7jEi3\/QHQdOYvCrgyYBnSQ1+lA6hOnbanTMSZP62tTNDn00sLTJjti+xehBk249NOBl6Q519TdUbIWXoDYMm09UIux+gzFBiVlS1TDPkAE6pjhn1Rr0xDD+AU5ikKvHlDlsGDcqdQ5eaUfIzoRlHTdfGkViA89QHTYmKpKZL4bV4H07uXQNC9VD9HEbVz6Q+ChJI8xpxPIhK\/XTlZNj0uFTyjJ40xrpSDZ96ddg040HwLpWuS42xz2VqxKiOkGVG13w1NU3P6I3xMIK105d6FSVswwrQounsDlGSGs3ayOmKeHmoD0bD2hiZ6pl7mGbj2nA0WI5150+9Xq8izPtt664bgf4o7KcSCAQCgUAgEAgEAoFAIBAIBIL\/H\/4HRJt3MnxhcVgAAAAASUVORK5CYII=''",
-                         "width": "plain:64px"
-                        }'
-                      selfClose: true
-                      tagName: img
-                      ↓Event [ngx.components.UIControlEvent-1572627984820]: 
-                        ↓OAuthLoginGoogle [ngx.components.UIDynamicAction-1572628023388]: 
-                          beanData: |
-                            '{
-                             "ionBean": "OAuthLoginAction",
-                             "provider": "plain:openid",
-                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.GoogleClientID\"}",
-                             "scope": "plain:openid email",
-                             "response_type": "plain:code",
-                             "loginRequestable": "plain:lib_OAuth.loginGoogleWithCode",
-                             "checkAccessTokenRequestable": "plain:lib_OAuth.checkAccessTokenGoogle",
-                             "authorization_endpoint": "plain:https:\/\/accounts.google.com\/o\/oauth2\/v2\/auth",
-                             "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenGoogle.html"
-                            }'
-                          ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897875]: 
-                            beanData: |
-                              '{
-                               "ionBean": "EmitEventAction",
-                               "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
-                               "data": "script:out"
-                              }'
-                          ↓PublishEvent [ngx.components.UIDynamicAction-1572734593593]: 
-                            beanData: |
-                              '{
-                               "ionBean": "PublishEventAction",
-                               "topic": "plain:login",
-                               "data": "script:out"
-                              }'
-                ↓Style [ngx.components.UIStyle-1572623218646]: 
-                  styleContent: 
-                    - xmlizable: 
-                      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
-                      - com.twinsoft.convertigo.beans.common.FormatedContent: 
-                        →: |
-                          '	border: solid 1px gray
-                          '
-                ↓Directive1 [ngx.components.UIControlDirective-1572626633176]: 
-                  directiveName: If
-                  directiveSource: 
+                      - MobileSmartSourceType: plain:login-separator-text
+                  comment: Applies CSS styling for this element
+                ↓Text [ngx.components.UIText-1783000000054]: 
+                  comment: Displays translated text to guide the user
+                  i18n: true
+                  textValue: 
                     - xmlizable: 
                       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                      - MobileSmartSourceType: script:this.enableLinkedInLogin
-                  ↓GridCol1 [ngx.components.UIDynamicElement-1572621945501]: 
-                    beanData: '{"ionBean":"GridCol"}'
-                    tagName: ion-col
-                    ↓Attr [ngx.components.UIAttribute-1572622031455]: 
-                      attrName: 
-                      attrValue: 
-                        - xmlizable: 
-                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                          - MobileSmartSourceType: plain:text-center
-                    ↓Image [ngx.components.UIDynamicElement-1572622373294]: 
+                      - MobileSmartSourceType: plain:Auth_Login_With_Providers
+            ↓OAuthActions [ngx.components.UIDynamicElement-1783000000055]: 
+              beanData: '{"ionBean":"DivTag"}'
+              comment: Groups related actions in this section
+              tagName: div
+              ↓Class [ngx.components.UIAttribute-1783000000056]: 
+                attrName: class
+                attrValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:oauth-actions
+                comment: Applies CSS styling for this element
+              ↓DirectiveGoogle [ngx.components.UIControlDirective-1783000000057]: 
+                comment: Shows this block only when its condition is true
+                directiveName: If
+                directiveSource: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: script:this.enableGoogleLogin
+                ↓GoogleButton [ngx.components.UIDynamicElement-1783000000058]: 
+                  beanData: '{"ionBean":"Button","IonFill":"plain:outline"}'
+                  comment: Starts Google sign in
+                  tagName: ion-button
+                  ↓Class [ngx.components.UIAttribute-1783000000059]: 
+                    attrName: class
+                    attrValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:oauth-button
+                    comment: Applies CSS styling for this element
+                  ↓Event [ngx.components.UIControlEvent-1783000000060]: 
+                    comment: Runs the related logic when this event occurs
+                    ↓OAuthLoginGoogle [ngx.components.UIDynamicAction-1783000000061]: 
                       beanData: |
                         '{
-                         "ionBean": "Image",
-                         "url": "script:''data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAaVBMVEUCdLP\/\/\/8Aa6\/D2em20eUAcbI\/i7\/l8fcAbbBIkcIAb7GUvdp4q8\/W5\/EAcLEAaq7t9vr2+\/3L3+2rzOKixd5po8wGebba6fMogrrz+fyDs9Rensni7va91eeLt9YTe7dRl8VvqM4whrzt0Z\/dAAAGCklEQVR4nO3dWZuiOhAG4CQYjVFZBXex\/f8\/8mD3mVZHpQqXSRVPfVdzMSivNNkJSl8m2+YR9+Tb7Mqkzv9Mi0PtnWEfXx2K1R1htlYmVv1IbNQ6+1tYWBf6vN4ap4pr4Ve\/fKe4r0vhxoQ+nw\/EbM7Cso\/Ahlj+Ec77CWyI8x\/hqK\/Ahph+C0sf+kQ+Fl+ehNv+FaPnuG0jnPRaOGmEQxv6ND4YO9QqDX0SH06qZn3+I23+TGcq6m9dcYqJ1K7n13CnBj0XDkTIPSLkHxHyjwj5R4T8I0L+6Sy0sXPG+ZjNuEA3YezUsJzMi\/m+PHrHA9lF6JPDIP2dsxoV44TDKCReGLvpmfeTRZnQv45ooRsv9G3yJfliCitMpnd8p2nVTfLxc3wtSGEyvw9ssiY+kIUTtgC13tO+iiihWbcAtS5J34sYoT+0ArVeUi5RMUI7AoQzyvUiQugmAFDrL8JEhNBnoHBEeB0OLPQPasKrlHSJsNDNEMKIbo0BCu0SAdSa7o0ICuMSJRyTrTBAoWtrzpyzJ3sRQaGJUMKCbLsGFCY5ShgxFt7rFt4mZyzEVBaNkGwfChbi7kO6Q5JwSVPAvCZzvsIY02ijvPgPbtOMUcKab40P9w5P2TJul+IaNXSbNJhreISBGd0\/UkwPGFFfFGRrQ5QQvohZ9W9O9qlgRqLAgRrKwzS48VLX3vre0S1IFVJofVuNQXosETuqb5ePiTNFtxw9BTkzE1ePuhiRpQ1Ez67ZB5Mza9L34Cn4OWAzvi1vdvQnSLvM49tkvLvkZcWQwSR3t7UYNvGbebRN09EimoydYeDrvp4mds6pynrHZK2JrInqQ0TIPyLkHxHyjwjD5V29MnJCGzvTNOjr+risK2WNMe61Fde0hLGzy81kN0tXWdZ0XrJVusgH+81RGf+0EiVs2tmtub+YBjjq5pSt8Zvi\/mhJmu+PyZNtfYxwOQGyvvfd0FGH64O8ORSti6\/S+fjBT\/my0A7bvvj7y+8IwTmryeUQXexLxFzz7Mt2N75FOHpRaJMDbi5dj7qvnacgdPUO+L8XmQ07zpEQECZf8OLHy+y7EYMLrcMtFLjIrlNjILTw8VBzS7Z1hwInsDCuMXPot1\/YYUY2rPBJYHMV8ZMlQYW2ehLYZcIrqBC1\/PhBCuyESUChM7ilqw+yQV7FgMJk8wpQr5CLB8IJ9\/bvxxk7BrkAJJxwDT+oAgS3R1k44YtXUGMfgQgnfEOOmIvIWohaPs9amNV9F+opok7kLcwRZQ1vIebpVebCKdxRZC5EVInMhRnccmMuRLTcaAmzrNuwG6a+oCJc7faHpTJJ4qrherCCD\/g\/iOW\/JISzsjK\/2xZZb9QUO7yxYCHcHm628vEe2beC+8EEhPPkXqWWjHG3JFjUhBdOHxT4Hvza72ygOj+48PEiY4d6ihx8Him0cNDSKEkGiA8A+4iBha27pdsacSuC7bbAwvanbTCPzc2gdltYIVCb2Rr+iBHt+xBqcyE2A1gBwMBC6Pf37RtUnQKO1QQVthWkyK+Gu\/lBhfBTfR4eN4YaNUGF8CgL4kY8EBZuER10uL6Amm0hhYgnMxH7HVAWIt7gE8NzjNAmXCGFiA3CEIUpZSFibynEPlyUhZjtFiuw8U1YiJuIBytEqOUXUIh7zxQ4JEVYeO+o24\/hLES90I61cIFZ8sNaiHobmghFKEIRilCEIhShCEUoQhGKUIQiFKEIRShCEYpQhCIUoQhFKEIRilCEIhShCEUoQhGKUIQiFKEIRShCEYpQhG8T0lmrr6ohlKeOOiKASoHf\/YYnnZsfEsobj3r7p9B6+8MnIkL+ESH\/iJB\/RMg\/IuQfEfKPCPmnEUYdXxHFLCZSec+vYa5Q4yV84xcK+zoTpqlWCrPXD9\/YsVZ63ucb0c0bIW4rHK5JG6Fe9\/ciurU+CTP8W8yYxarsW4jY2Zxp3Gkr4pOwZUdm1km+9z9VP\/MbfSQmP7su\/gj12vTtXrRmry+Felf162Z0VaSvhVrvK\/PMS5MpJjbV\/td1FurV4FB7wz9xvRlc7Ld4IWySbfOIe\/Lt9XaS\/wHXpZiRRkLEgQAAAABJRU5ErkJggg==''",
-                         "width": "plain:64px"
+                         "ionBean": "OAuthLoginAction",
+                         "provider": "plain:openid",
+                         "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.GoogleClientID\"}",
+                         "scope": "plain:openid email",
+                         "response_type": "plain:code",
+                         "loginRequestable": "plain:lib_OAuth.loginGoogleWithCode",
+                         "checkAccessTokenRequestable": "plain:lib_OAuth.checkAccessTokenGoogle",
+                         "authorization_endpoint": "plain:https:\/\/accounts.google.com\/o\/oauth2\/v2\/auth",
+                         "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenGoogle.html"
                         }'
-                      selfClose: true
-                      tagName: img
-                      ↓Event [ngx.components.UIControlEvent-1572628250558]: 
-                        ↓OAuthLoginLinkedIN [ngx.components.UIDynamicAction-1572628250561]: 
-                          beanData: |
-                            '{
-                             "ionBean": "OAuthLoginAction",
-                             "provider": "plain:linkedin",
-                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.LinkedInClientID\"}",
-                             "scope": "script:this.scope ? this.scope: ''r_liteprofile,r_emailaddress''",
-                             "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenLinkedIn.html"
-                            }'
-                          ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897879]: 
-                            beanData: |
-                              '{
-                               "ionBean": "EmitEventAction",
-                               "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
-                               "data": "script:out"
-                              }'
-                          ↓PublishEvent [ngx.components.UIDynamicAction-1572687075042]: 
-                            beanData: |
-                              '{
-                               "ionBean": "PublishEventAction",
-                               "topic": "plain:login",
-                               "data": "script:out"
-                              }'
-                ↓Directive2 [ngx.components.UIControlDirective-1572626636361]: 
-                  directiveName: If
-                  directiveSource: 
-                    - xmlizable: 
-                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                      - MobileSmartSourceType: script:this.enableAzureADLogin
-                  ↓GridCol2 [ngx.components.UIDynamicElement-1572621947476]: 
-                    beanData: '{"ionBean":"GridCol"}'
-                    tagName: ion-col
-                    ↓Attr [ngx.components.UIAttribute-1572622036487]: 
-                      attrName: 
-                      attrValue: 
-                        - xmlizable: 
-                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                          - MobileSmartSourceType: plain:text-center
-                    ↓Image [ngx.components.UIDynamicElement-1572622598232]: 
+                      comment: Runs this action in the authentication workflow
+                      ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000062]: 
+                        beanData: |
+                          '{
+                           "ionBean": "EmitEventAction",
+                           "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                           "data": "script:out"
+                          }'
+                        comment: Emits the login event so parent pages can react
+                      ↓PublishEvent [ngx.components.UIDynamicAction-1783000000063]: 
+                        beanData: |
+                          '{
+                           "ionBean": "PublishEventAction",
+                           "topic": "plain:login",
+                           "data": "script:out"
+                          }'
+                        comment: Publishes a global event for other components
+                  ↓Text [ngx.components.UIText-1783000000064]: 
+                    comment: Displays translated text to guide the user
+                    i18n: true
+                    textValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:Auth_SignIn_Google
+              ↓DirectiveLinkedIn [ngx.components.UIControlDirective-1783000000065]: 
+                comment: Shows this block only when its condition is true
+                directiveName: If
+                directiveSource: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: script:this.enableLinkedInLogin
+                ↓LinkedInButton [ngx.components.UIDynamicElement-1783000000066]: 
+                  beanData: '{"ionBean":"Button","IonFill":"plain:outline"}'
+                  comment: Starts LinkedIn sign in
+                  tagName: ion-button
+                  ↓Class [ngx.components.UIAttribute-1783000000067]: 
+                    attrName: class
+                    attrValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:oauth-button
+                    comment: Applies CSS styling for this element
+                  ↓Event [ngx.components.UIControlEvent-1783000000068]: 
+                    comment: Runs the related logic when this event occurs
+                    ↓OAuthLoginLinkedIN [ngx.components.UIDynamicAction-1783000000069]: 
                       beanData: |
                         '{
-                         "ionBean": "Image",
-                         "url": "script:''data:image\/jpeg;base64,\/9j\/4AAQSkZJRgABAQAAAQABAAD\/2wCEAAkGBw0HDQ0NBw0NBw0NDQ0NDQcNDQ8NDQ0NFREWFhURFRUYHjQsGBoxGxYVITQtJywrLi4uFx8\/STctNygtLisBCgoKDg0OFg0NFTceFSUwNyw1KzcwNy43Ky8tNzA3Ly0tLy0vLi0rKy0rKy0tKysrLSsrLSsrKy0rLS0rLSsrK\/\/AABEIAOEA4QMBEQACEQEDEQH\/xAAbAAEAAwEBAQEAAAAAAAAAAAAABQYHAQMEAv\/EAD8QAAECAgINCgUDBQEAAAAAAAACAwEEBnMFBxEWMjNTVHKxstHSEhMUNZGSk5SiwhUXITR0IjFhQVFicaFC\/8QAGwEBAQADAQEBAAAAAAAAAAAAAAYDBAUCAQf\/xAA0EQEAAAMDCAgHAQEBAAAAAAAAAQIDBVJxBBUxM1OBocERExQyNJHR4QYSUWFysfAWQSH\/2gAMAwEAAhEDEQA\/ANxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmdI7PTstOzLcvMuNIQ5cS3Dk3IQ5MP4OLlGUVZas0ss3RBWZDkOTz5PJPPThGMYI2+ayOdu9iNxg7VWvtrN2S7OBfNZHO3exG4dqrXzN2S7OBfNZHO3exG4dqrXzN2S7ODt81kc7d7Ebh2qtfM3ZLs4OXzWRzt3sRuHaq18zdkuzg7fLZHO3exG4dqrXzN2S7OBfLZHO3exG4dqrXzN2S7OBfNZHO3exG4dqrXzN2S7OBfNZHO3exG4dqrXzN2S7OBfNZHO3exG4dqrXzN2S7OBfLZHO3exG4dqrXzN2S7OC10AspM2RXNQnnlTMEJYiiCrn6bsV3f2h\/EDfyCtPUjNCePTo5uNbOTUqMKcaUvR09PJKUxnHZJhtUouLCovQTFSbn1TyFRuf8AIHm1q9SjSlmpx6I9PKKeqRjCH\/io\/H53OXPTuOBnLKtow\/PN9T4\/O5y56dwzjlW0Pnm+p8fnc5c9O4ZxyraHzzfU+PzucuencM45VtD55vqfH53OXPTuGccq2h8831Pj87nLnp3DOOVbQ+eb6nx+dzlz07hnHKtofPN9T4\/O5y56dwzllW0Pnm+p8fnc5c9O4ZyyraHzzfU+PzucuencM5ZVtD55vqfH53OXPTuGcsq2h8831espZ2dW60lUwuMIuIhGH6frCKofwZKNoZTNUlhGp\/50wfYTzdOlo5XtkAAZFSzrGbrfaknsq10+K2s7wtPBEmBugAAAAAAAAAAAu1rHDnNGX1uHSs3vT7ubgW93aW\/kl6efbNfkQ2Fni29RLjyilquiCjkuwAAAAAAAAAAAA9pLHM1re1Ay0NbJjD9vsNLWC8bYAAyGlnWM3W+1JPZVrp8VtZ3haeCKMDdcA6AAAAAAAAAAXa1jhzmjL63DpWb3p93NwLe7tLfyS9PPtmvyIbCzxbeolx5RS1XRBRyXYAAAAAAAAAAAAe0ljma1vagZaGtkxh+32GlrBeNsAAZFSzrGbrfaknsq10+K2s7wtPBEmBugAAAAAAAAAAAu1rHDnNGX1uHSs3vT7ubgW93aW\/kmKefbNV8NhZ4tvUS48oparogoxLsAAAAAAAAAAAAPeSxzNa3tQMtDWyYw\/b7DS1cvG2AAMipZ1jN1sNlJPZVrp8VtZ3haeCJMDdAAAAAAAAAAABdrWOHOaMvrcOlZven3c3At7u0t\/JMU8+2ar4bCzxbeolx5RS1XRBRiXYAAAAAAAAAAAAe8ljma1vagZaGtkxh+32Glq5eNsAAZFSzrGbrfaknsq10+K2s7wtPBEmBugAAAAAAAAAAAu1rHDnNGX1uHSs3vT7ubgW93aW\/kl6efbNV8NhZ4tvUS48oparogo5LsAAAAAAAAAAAAPeSxzNa3tQMtDWyYw\/b7DS1cvG2AAMipZ1jN1sNlJPZVrp8VtZ3haeCJMDdAAAAAAAAAAABdrWOHOaMvrcOlZven3c3At7u0t\/JL08+2ar4bCzxbeolx5RS1XRBRyXYAAAAAAAAAAAAe0ljma1vagZaGtkxh+32GlrBeNsAAZDSzrGbrYbKSfyrXT4razvC08ESa7dAAHQAADgHQAAABdrWOHOaMvrcOlZven3c3At7u0t\/JL08+2a\/IhsLPFt6iXHlFLVdEFHJdgAAAAAAAAAAAB7SWOZrW9qBloa2TGH7fYaWsF42wABkVLOsZuthspJ7KtdPitrO8LTwRJgboAAAAAAAAAAALtaxw5zRl9bh0rN70+7m4Fvd2lv5Jenn2zVfDYWeLb1EuPKKWq6IKOS7AAAAAAAAAAAAD2ksczWt7UDLQ1smMP2+w0tYLxtgADIqWdYzdb7Uk9lWunxW1neFp4IkwN0AAAAAAAAAAAF2tY4c5oy+tw6Vm96fdzcC3u7S38kvTz7ZqvhsLPFt6iXHlFLVdEFHJdgAAAAAAAAAAAB7SWOZrW9qBloa2TGH7fYaWsF42wABkVLOsZuthspJ7KtdPitrO8LTwRJgboAAAAAAAAAAALtaxw5zRl9bh0rN70+7m4Fvd2lv5Jenn2zX5ENhZ4tvUS48oparogo5LsAAAAAAAAAAAAPeSxzNa3tQMtDWyYw\/b7DS1cvG2AAMipZ1jN1vtST2Va6fFbWd4WngiTA3QAAAAAAAAAAAXa1jhzmjL63DpWb3p93NwLe7tLfyS9PPtmvyIbCzxbeolx5RS1XRBRyXYAAAAAAAAAAAAe8ljma1vagZaGtkxh+32Glq5eNsAAU2y9CV2RmXn0zSWYOq5XNRZiqKfpCFy7yvr+xza2QRqTxnhP0dP293dya2IUaUtLq+no+\/s+T5eLzxPl48ZjzbNf4e7Pn6XZcfY+Xi88T5ePGM2zX+HuZ+l2XH2Pl4vPEeXjxjNs1\/h7mfpdlx9j5eLzxPl48YzbNf4e5n6XZcfY+Xi88T5ePGM2zX+HuZ+l2XH2Pl4vPE+XjxjNs1\/h7mfpdlx9j5eLzxPl48YzbNf4e5n6XZcfY+Xi88T5ePGM2zX+HuZ+l2XH2Pl4vPE+XjxjNs1\/h7mfpdlx9j5eLzxPl48YzbNf4e5n6XZcfY+Xi88T5ePGM2zX+HuZ+l2XH2TlFaNqsCp+K34TXPQbhcg3Fvk8nlf5Ru4X\/DayXJY0YzRjN09LnWhaEMrhLCEny9HT\/3p09H2h9H20gsTGy7SG0uQl+S5BfKinl3f0xhc\/f8Ak+ZdknaZISfN0dEelyZ5fmggryVZ1DwY8RysxR2nD3eOq+5eSrOk+DHiGYo7Th7nVfcvJVnSfBjxDMUdpw9zqvuXkqzpPgx4hmKO04e51X3LyVZ0nwY8QzFHacPc6r7l5Ks6T4MeIZijtOHudV9y8lWdJ8GPEMxR2nD3Oq+5eSrOk+DHiGYo7Th7nVfcvJVnSfBjxDMUdpw9zqvuXkqzpPgx4hmKO04e51X3LyVZ0nwY8QzFHacPc6r7v2xQxTS0L6TBXIWlXJ5mMLtyN25hHunYkZJ4TdZoj06Pc6r7rcd9mAAFaslTOWse84w60+tTauTFSYN8mMbl36XVfydClZtSpJCeE0OiP99HKr2vSo1JqU0semGHq+a\/+UyMz3WuIyZpq3ocfRhz7Qux4epf\/KZGZ7rXEM01b0OPoZ9oXY8PUv8A5TIzPdb4hmmrehx9DPtC7Hh6l\/8AKZGZ7rfEM01b0OPoZ9oXY8PUv\/lMjM91viGaat6HH0M+0LseHqX\/AMpkZnutcQzTVvQ4+hn2hdjw9S\/+UyMz3WuIZpq3ocfQz7Qux4epf\/KZGZ7rfEM01b0OPoZ9oXY8PUv\/AJTIzPdb4hmmrehx9DPtC7Hh6l\/8pkZnut8QzTVvQ4+hn2hdjw9S\/wDlMjM91viGaat6HH0M+0LseHqlrAUhZs5F2Esh1rmoIirnIJhd5V25cuRj\/Y1spySfJ+j5owj0t3I8vp5V83yQjDo+v3fdZCdTIpgp2Clwirk3E3Lt25GP9f8ARx8ty2TJJIVKkIxhGPR\/46lChNVjGWWL4L4mcm72J3nM\/wBFk9ybh6trN1S9D+3F8TOTd7E7x\/osnuTcPUzdUvQ\/txfEzk3exO8f6LJ7k3D1M3VL0P7cXxM5N3sTvH+iye5Nw9TN1S9D+3F8TOTd7E7x\/osnuTcPUzdUvQ\/txfEzk3exO8f6LJ7k3D1M3VL0P7cXxM5N3sTvH+iye5Nw9TN1S9D+3F8TOTd7E7x\/osnuTcPUzdUvQ\/txfEzk3exO8f6LJ7k3D1M3VL0P7cXxM5N3sTvH+iye5Nw9TN1S9D+3F8TOTd7E7x\/osnuTcPUzdUvQ\/tz9Is+0tUEwQ7CKowhduJ\/rH\/Z7kt+hPNCSEkemP\/n\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\/+VET8QSTT0JISQ6Y\/NyisLPmhCpHpj\/xXeYcya+4okuzVtnHyi6vWSXoeZzDmTX3FDs1bZx8onWSXoeZzDmTX3FDs1bZx8onWSXoeZ0dzJr7ih2ats4+UTrJL0PM6O5k19xQ7NW2cfKJ1kl6HmdHcya+4odmrbOPlE6yS9DzOYcya+4odmrbOPlE6yS9DzOYcya+4odmrbOPlE6yS9DzOYcya+4odmrbOPlE6yS9DzOYcya+4odmrbOPlE6yS9DzOjuZNfcUOzVtnHyidZJeh5vSXYcg4i6hcP1p+vJj\/eBlyfJ6sKskYyR0w\/5H6vM9SX5Y\/wDv\/F1P0VOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf\/\/Z''",
-                         "width": "plain:64px"
+                         "ionBean": "OAuthLoginAction",
+                         "provider": "plain:linkedin",
+                         "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.LinkedInClientID\"}",
+                         "scope": "script:this.scope ? this.scope: ''r_liteprofile,r_emailaddress''",
+                         "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenLinkedIn.html"
                         }'
-                      selfClose: true
-                      tagName: img
-                      ↓Event [ngx.components.UIControlEvent-1572936360458]: 
-                        ↓OAuthLoginAzureAD [ngx.components.UIDynamicAction-1572936360461]: 
-                          beanData: |
-                            '{
-                             "ionBean": "OAuthLoginAction",
-                             "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.AzureAdClientID\"}",
-                             "tenantid": "source:{\"filter\":\"Shared\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"\",\"model\":{\"data\":[{\"priority\":1572604124714,\"regular\":true}],\"path\":\"?.tenantid\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}",
-                             "scope": "script:''openid+profile+email+https:\/\/graph.microsoft.com\/Files.ReadWrite+https:\/\/graph.microsoft.com\/User.Read'' + this.scope",
-                             "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
-                            }'
-                          ↓EmitEvent [ngx.components.UIDynamicEmit-1631708897883]: 
-                            beanData: |
-                              '{
-                               "ionBean": "EmitEventAction",
-                               "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
-                               "data": "script:out"
-                              }'
-                          ↓PublishEvent [ngx.components.UIDynamicAction-1572936360464]: 
-                            beanData: |
-                              '{
-                               "ionBean": "PublishEventAction",
-                               "topic": "plain:login",
-                               "data": "script:out"
-                              }'
-            ↓Heading1 [ngx.components.UIDynamicTag-1572622846780]: 
-              beanData: '{"ionBean":"Heading"}'
-              tagName: h4
-              ↓Text [ngx.components.UIText-1572622846783]: 
-                textValue: 
+                      comment: Runs this action in the authentication workflow
+                      ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000070]: 
+                        beanData: |
+                          '{
+                           "ionBean": "EmitEventAction",
+                           "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                           "data": "script:out"
+                          }'
+                        comment: Emits the login event so parent pages can react
+                      ↓PublishEvent [ngx.components.UIDynamicAction-1783000000071]: 
+                        beanData: |
+                          '{
+                           "ionBean": "PublishEventAction",
+                           "topic": "plain:login",
+                           "data": "script:out"
+                          }'
+                        comment: Publishes a global event for other components
+                  ↓Text [ngx.components.UIText-1783000000072]: 
+                    comment: Displays translated text to guide the user
+                    i18n: true
+                    textValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:Auth_SignIn_LinkedIn
+              ↓DirectiveAzure [ngx.components.UIControlDirective-1783000000073]: 
+                comment: Shows this block only when its condition is true
+                directiveName: If
+                directiveSource: 
                   - xmlizable: 
                     - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:Or use your login / password
-          ↓email [ngx.components.UIDynamicElement-1572604498925]: 
-            beanData: '{"ionBean":"GenericItem"}'
-            tagName: ion-item
-            ↓Label [ngx.components.UIDynamicElement-1572604498928]: 
-              beanData: '{"ionBean":"Label","Position":"plain:fixed"}'
-              tagName: ion-label
-              ↓Text [ngx.components.UIText-1572604498931]: 
-                textValue: 
+                    - MobileSmartSourceType: script:this.enableAzureADLogin
+                ↓MicrosoftButton [ngx.components.UIDynamicElement-1783000000074]: 
+                  beanData: '{"ionBean":"Button","IonFill":"plain:outline"}'
+                  comment: Starts Microsoft sign in
+                  tagName: ion-button
+                  ↓Class [ngx.components.UIAttribute-1783000000075]: 
+                    attrName: class
+                    attrValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:oauth-button
+                    comment: Applies CSS styling for this element
+                  ↓Event [ngx.components.UIControlEvent-1783000000076]: 
+                    comment: Runs the related logic when this event occurs
+                    ↓OAuthLoginAzureAD [ngx.components.UIDynamicAction-1783000000077]: 
+                      beanData: |
+                        '{
+                         "ionBean": "OAuthLoginAction",
+                         "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.AzureAdClientID\"}",
+                         "tenantid": "source:{\"filter\":\"Shared\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"\",\"model\":{\"data\":[{\"priority\":1572604124714,\"regular\":true}],\"path\":\"?.tenantid\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}",
+                         "scope": "script:''openid+profile+email+https:\/\/graph.microsoft.com\/Files.ReadWrite+https:\/\/graph.microsoft.com\/User.Read'' + (this.scope ? this.scope : '''')",
+                         "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
+                        }'
+                      comment: Runs this action in the authentication workflow
+                      ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000078]: 
+                        beanData: |
+                          '{
+                           "ionBean": "EmitEventAction",
+                           "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                           "data": "script:out"
+                          }'
+                        comment: Emits the login event so parent pages can react
+                      ↓PublishEvent [ngx.components.UIDynamicAction-1783000000079]: 
+                        beanData: |
+                          '{
+                           "ionBean": "PublishEventAction",
+                           "topic": "plain:login",
+                           "data": "script:out"
+                          }'
+                        comment: Publishes a global event for other components
+                  ↓Text [ngx.components.UIText-1783000000080]: 
+                    comment: Displays translated text to guide the user
+                    i18n: true
+                    textValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:Auth_SignIn_Microsoft
+              ↓DirectiveOpenID [ngx.components.UIControlDirective-1783000000114]: 
+                comment: Shows this block only when its condition is true
+                directiveName: If
+                directiveSource: 
                   - xmlizable: 
                     - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:Email
-            ↓TextInput [ngx.components.UIDynamicElement-1572604498934]: 
-              beanData: |
-                '{
-                 "ionBean": "Input",
-                 "ControlName": "plain:user",
-                 "DoubleBinding": "script:local.user",
-                 "Debounce": "plain:0",
-                 "EnterKeyHint": "plain:enter",
-                 "InputMode": "plain:email",
-                 "Placeholder": "plain:myemail@domain.com",
-                 "Required": "plain:true",
-                 "Type": "plain:email",
-                 "Value": "plain:test@mail.com"
-                }'
-              tagName: ion-input
-          ↓password [ngx.components.UIDynamicElement-1572604498949]: 
-            beanData: '{"ionBean":"GenericItem"}'
-            tagName: ion-item
-            ↓Label [ngx.components.UIDynamicElement-1572604498952]: 
-              beanData: '{"ionBean":"Label","Position":"plain:fixed"}'
-              tagName: ion-label
-              ↓Text [ngx.components.UIText-1572604498955]: 
-                textValue: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:Password
-            ↓TextInput [ngx.components.UIDynamicElement-1572604498958]: 
-              beanData: |
-                '{
-                 "ionBean": "Input",
-                 "ControlName": "plain:password",
-                 "DoubleBinding": "script",
-                 "Debounce": "plain:0",
-                 "Required": "plain:true",
-                 "Type": "plain:password",
-                 "Value": "plain:test"
-                }'
-              tagName: ion-input
-          ↓LoginButton [ngx.components.UIDynamicElement-1572604498976]: 
-            beanData: '{"ionBean":"SubmitButton"}'
-            tagName: ion-button
-            ↓Text [ngx.components.UIText-1572604498979]: 
-              textValue: 
-                - xmlizable: 
-                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                  - MobileSmartSourceType: plain:login
-            ↓Attr [ngx.components.UIAttribute-1572604649129]: 
-              attrName: 
-              attrValue: 
-                - xmlizable: 
-                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                  - MobileSmartSourceType: plain:float-right
-          ↓Directive1 [ngx.components.UIControlDirective-1572627335938]: 
+                    - MobileSmartSourceType: script:this.enableOpenIDLogin
+                ↓OpenIDButton [ngx.components.UIDynamicElement-1783000000115]: 
+                  beanData: '{"ionBean":"Button","IonFill":"plain:outline"}'
+                  comment: Starts OpenID sign in
+                  tagName: ion-button
+                  ↓Class [ngx.components.UIAttribute-1783000000116]: 
+                    attrName: class
+                    attrValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:oauth-button
+                    comment: Applies CSS styling for this element
+                  ↓Event [ngx.components.UIControlEvent-1783000000117]: 
+                    comment: Runs the related logic when this event occurs
+                    ↓OAuthLoginOpenID [ngx.components.UIDynamicAction-1783000000118]: 
+                      beanData: |
+                        '{
+                         "ionBean": "OAuthLoginAction",
+                         "provider": "plain:openid",
+                         "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.OpenIDClientID\"}",
+                         "scope": "script:this.openidScope ? this.openidScope : ''openid profile email''",
+                         "response_type": "script:this.openidResponseType ? this.openidResponseType : ''id_token+token''",
+                         "loginRequestable": "plain:lib_OAuth.loginOpenIDWithAccessToken",
+                         "checkAccessTokenRequestable": "plain:lib_OAuth.checkAccessOpenID",
+                         "authorization_endpoint": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.OpenIDEndpoint\"}",
+                         "callbackurl": "script:this.openidCallbackUrl ? this.openidCallbackUrl : ''https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html''"
+                        }'
+                      comment: Runs this action in the authentication workflow
+                      ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000119]: 
+                        beanData: |
+                          '{
+                           "ionBean": "EmitEventAction",
+                           "event": "plain:lib_UserManager_ui_ngx.MobileApplication.Application.LoginComponent.login",
+                           "data": "script:out"
+                          }'
+                        comment: Emits the login event so parent pages can react
+                      ↓PublishEvent [ngx.components.UIDynamicAction-1783000000120]: 
+                        beanData: |
+                          '{
+                           "ionBean": "PublishEventAction",
+                           "topic": "plain:login",
+                           "data": "script:out"
+                          }'
+                        comment: Publishes a global event for other components
+                  ↓Text [ngx.components.UIText-1783000000121]: 
+                    comment: Displays translated text to guide the user
+                    i18n: true
+                    textValue: 
+                      - xmlizable: 
+                        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                        - MobileSmartSourceType: plain:Auth_SignIn_OpenID
+          ↓DirectiveCreateAccount [ngx.components.UIControlDirective-1771596426479]: 
+            comment: Shows this block only when its condition is true
             directiveName: If
             directiveSource: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: script:this.enableCancelDismiss
-            ↓Button [ngx.components.UIDynamicElement-1572627421643]: 
-              beanData: '{"ionBean":"Button"}'
+                - MobileSmartSourceType: script:this.enableCreateAccount
+            ↓SwitchToCreateAccount [ngx.components.UIDynamicElement-1771596426482]: 
+              beanData: '{"ionBean":"Button","IonFill":"plain:clear"}'
+              comment: Opens the create account form
               tagName: ion-button
-              ↓Text [ngx.components.UIText-1572627225052]: 
-                textValue: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:Cancel
-              ↓Event [ngx.components.UIControlEvent-1572627295074]: 
-                ↓CloseModal [ngx.components.UIDynamicAction-1572627321971]: 
-                  beanData: '{"ionBean":"CloseModalAction"}'
-              ↓Attr [ngx.components.UIAttribute-1572627225055]: 
-                attrName: 
+              ↓Class [ngx.components.UIAttribute-1771596426485]: 
+                attrName: class
                 attrValue: 
                   - xmlizable: 
                     - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:float-right
+                    - MobileSmartSourceType: plain:oauth-button
+                comment: Applies CSS styling for this element
+              ↓Event [ngx.components.UIControlEvent-1771596426488]: 
+                comment: Runs the related logic when this event occurs
+                ↓HideForgotPassword [ngx.components.UIDynamicAction-1771596426491]: 
+                  beanData: |
+                    '{
+                     "ionBean": "SetLocalAction",
+                     "Property": "plain:showForgotPassword",
+                     "Value": "script:false"
+                    }'
+                  comment: Hides the forgot password card
+                ↓ShowCreateAccount [ngx.components.UIDynamicAction-1771596426494]: 
+                  beanData: |
+                    '{
+                     "ionBean": "SetLocalAction",
+                     "Property": "plain:showCreateAccount",
+                     "Value": "script:true"
+                    }'
+                  comment: Shows the create account card
+              ↓Text [ngx.components.UIText-1771596426497]: 
+                comment: Displays translated text to guide the user
+                i18n: true
+                textValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:Auth_NoAccount_CreateOne
+          ↓DirectiveForgotPassword [ngx.components.UIControlDirective-1771596426500]: 
+            comment: Shows this block only when its condition is true
+            directiveName: If
+            directiveSource: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:this.enableForgotPassword
+            ↓SwitchToForgotPassword [ngx.components.UIDynamicElement-1771596426503]: 
+              beanData: '{"ionBean":"Button","IonFill":"plain:clear"}'
+              comment: Opens the forgot password form
+              tagName: ion-button
+              ↓Class [ngx.components.UIAttribute-1771596426506]: 
+                attrName: class
+                attrValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:oauth-button
+                comment: Applies CSS styling for this element
+              ↓Event [ngx.components.UIControlEvent-1771596426509]: 
+                comment: Runs the related logic when this event occurs
+                ↓SetForgotUser [ngx.components.UIDynamicAction-1771596426512]: 
+                  beanData: |
+                    '{
+                     "ionBean": "SetLocalAction",
+                     "Property": "plain:forgotUser",
+                     "Value": "script:this.local?.user || ''''"
+                    }'
+                  comment: Prefills the forgot password user field
+                ↓HideCreateAccount [ngx.components.UIDynamicAction-1771596426515]: 
+                  beanData: |
+                    '{
+                     "ionBean": "SetLocalAction",
+                     "Property": "plain:showCreateAccount",
+                     "Value": "script:false"
+                    }'
+                  comment: Hides the create account card
+                ↓ShowForgotPassword [ngx.components.UIDynamicAction-1771596426518]: 
+                  beanData: |
+                    '{
+                     "ionBean": "SetLocalAction",
+                     "Property": "plain:showForgotPassword",
+                     "Value": "script:true"
+                    }'
+                  comment: Shows the forgot password card
+              ↓Text [ngx.components.UIText-1771596426521]: 
+                comment: Displays translated text to guide the user
+                i18n: true
+                textValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:Auth_ForgotPassword_Button
+      ↓ShowCreateAccountCard [ngx.components.UIControlDirective-1783000000300]: 
+        comment: Shows this block only when its condition is true
+        directiveName: If
+        directiveSource: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:this.enableCreateAccount && !!this.local?.showCreateAccount
+        ↓CreateAccountCard [ngx.components.UIDynamicElement-1783000000301]: 
+          beanData: '{"ionBean":"Card"}'
+          comment: Shows a dedicated card for this authentication step
+          tagName: ion-card
+          ↓Class [ngx.components.UIAttribute-1783000000302]: 
+            attrName: class
+            attrValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:login-container
+            comment: Applies CSS styling for this element
+          ↓CardHeader [ngx.components.UIDynamicElement-1783000000303]: 
+            beanData: '{"ionBean":"CardHeader"}'
+            comment: Shows the title area of this card
+            tagName: ion-card-header
+            ↓CardTitle [ngx.components.UIDynamicElement-1783000000304]: 
+              beanData: '{"ionBean":"CardTitle"}'
+              comment: Shows the main title for this section
+              tagName: ion-card-title
+              ↓Text [ngx.components.UIText-1783000000305]: 
+                comment: Displays translated text to guide the user
+                i18n: true
+                textValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:Auth_CreateAccount_Card_Title
+            ↓CardSubTitle [ngx.components.UIDynamicElement-1783000000306]: 
+              beanData: '{"ionBean":"CardSubTitle"}'
+              comment: Shows supporting text under the section title
+              tagName: ion-card-subtitle
+              ↓Text [ngx.components.UIText-1783000000307]: 
+                comment: Displays translated text to guide the user
+                i18n: true
+                textValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:Auth_CreateAccount_Card_Subtitle
+          ↓CardContent [ngx.components.UIDynamicElement-1783000000308]: 
+            beanData: '{"ionBean":"CardContent"}'
+            comment: Contains fields and actions for this card
+            tagName: ion-card-content
+            ↓CreateUserItem [ngx.components.UIDynamicElement-1783000000309]: 
+              beanData: '{"ionBean":"GenericItem","Lines":"plain:none"}'
+              comment: Displays a form row for one user input
+              tagName: ion-item
+              ↓Icon [ngx.components.UIDynamicElement-1783000000310]: 
+                beanData: |
+                  '{
+                   "ionBean": "Icon",
+                   "IconName": "plain:mail-outline",
+                   "IconSlot": "plain:start"
+                  }'
+                comment: Displays an icon that clarifies this action
+                tagName: ion-icon
+              ↓Input [ngx.components.UIDynamicElement-1783000000311]: 
+                beanData: |
+                  '{
+                   "ionBean": "Input",
+                   "ControlName": "plain:createUser",
+                   "DoubleBinding": "script:local.createUser",
+                   "Placeholder": "script:this.translate.instant(''Email'')",
+                   "Type": "plain:email"
+                  }'
+                comment: Captures user input for this field
+                tagName: ion-input
+            ↓CreatePasswordItem [ngx.components.UIDynamicElement-1783000000312]: 
+              beanData: '{"ionBean":"GenericItem","Lines":"plain:none"}'
+              comment: Displays a form row for one user input
+              tagName: ion-item
+              ↓Icon [ngx.components.UIDynamicElement-1783000000313]: 
+                beanData: |
+                  '{
+                   "ionBean": "Icon",
+                   "IconName": "plain:lock-closed-outline",
+                   "IconSlot": "plain:start"
+                  }'
+                comment: Displays an icon that clarifies this action
+                tagName: ion-icon
+              ↓Input [ngx.components.UIDynamicElement-1783000000314]: 
+                beanData: |
+                  '{
+                   "ionBean": "Input",
+                   "ControlName": "plain:createPassword",
+                   "DoubleBinding": "script:local.createPassword",
+                   "Placeholder": "script:this.translate.instant(''Password'')",
+                   "Type": "script:this.local?.showCreatePassword ? ''text'' : ''password''"
+                  }'
+                comment: Captures user input for this field
+                tagName: ion-input
+              ↓ToggleCreatePasswordVisibility [ngx.components.UIDynamicElement-1783000000315]: 
+                beanData: |
+                  '{
+                   "ionBean": "Icon",
+                   "IconName": "script:this.local?.showCreatePassword ? ''eye-off-outline'' : ''eye-outline''",
+                   "IconSlot": "plain:end"
+                  }'
+                comment: Displays an icon that clarifies this action
+                tagName: ion-icon
+                ↓Click [ngx.components.UIAttribute-1783000000316]: 
+                  attrName: (click)
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: script:toggleShowCreatePassword()
+                  comment: Binds tap handling for this element
+                ↓Style [ngx.components.UIAttribute-1783000000317]: 
+                  attrName: style
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:cursor:pointer
+                  comment: Applies inline style on this element
+            ↓CreateActionRow [ngx.components.UIDynamicElement-1783000000318]: 
+              beanData: '{"ionBean":"DivTag"}'
+              comment: Groups related actions in this section
+              tagName: div
+              ↓Class [ngx.components.UIAttribute-1783000000319]: 
+                attrName: class
+                attrValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:login-actions
+                comment: Applies CSS styling for this element
+              ↓CreateAccountButton [ngx.components.UIDynamicElement-1783000000320]: 
+                beanData: '{"ionBean":"Button","IonFill":"plain:clear"}'
+                comment: Opens the create account form
+                tagName: ion-button
+                ↓Class [ngx.components.UIAttribute-1783000000321]: 
+                  attrName: class
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:oauth-button
+                  comment: Applies CSS styling for this element
+                ↓Event [ngx.components.UIControlEvent-1783000000322]: 
+                  comment: Runs the related logic when this event occurs
+                  ↓Finally_Handler [ngx.components.UIActionFinallyEvent-1783000000323]: 
+                    comment: Runs cleanup logic after the previous action completes
+                    ↓SetDoingLoginFalse [ngx.components.UIDynamicAction-1783000000324]: 
+                      beanData: |
+                        '{
+                         "ionBean": "SetGlobalAction",
+                         "Property": "plain:doingLogin",
+                         "Value": "script:false"
+                        }'
+                      comment: Stores this value in global state for later screens
+                  ↓SetDoingLoginTrue [ngx.components.UIDynamicAction-1783000000325]: 
+                    beanData: |
+                      '{
+                       "ionBean": "SetGlobalAction",
+                       "Property": "plain:doingLogin",
+                       "Value": "script:true"
+                      }'
+                    comment: Stores this value in global state for later screens
+                  ↓CreateAccount [ngx.components.UIDynamicAction-1783000000326]: 
+                    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.CreateAccount"}'
+                    comment: Calls the backend account creation sequence
+                    ↓IfSuccess [ngx.components.UIDynamicIf-1783000000327]: 
+                      beanData: '{"ionBean":"IfElseAction","condition":"script:!!out?.user"}'
+                      comment: Continues this flow only when authentication succeeds
+                      ↓ToastSuccess [ngx.components.UIDynamicAction-1783000000328]: 
+                        beanData: '{"ionBean":"ToastAction","message":"script:this.translate.instant(''Auth_CreateAccount_Success'')"}'
+                        comment: Shows a toast message to inform the user
+                      ↓HideCreateCard [ngx.components.UIDynamicAction-1783000000329]: 
+                        beanData: |
+                          '{
+                           "ionBean": "SetLocalAction",
+                           "Property": "plain:showCreateAccount",
+                           "Value": "script:false"
+                          }'
+                        comment: Hides the create account card
+                      ↓Else_Handler [ngx.components.UIActionElseEvent-1783000000330]: 
+                        comment: Defines the fallback branch used when the previous step fails
+                        ↓ToastError [ngx.components.UIDynamicAction-1783000000331]: 
+                          beanData: '{"ionBean":"ToastAction","message":"script:stack?.[''CreateAccount'']?.out?.error?.message || this.translate.instant(''Auth_CreateAccount_Failed'')"}'
+                          comment: Shows a toast message to inform the user
+                    ↓user [ngx.components.UIControlVariable-1783000000332]: 
+                      comment: Sends the username value to the backend sequence
+                      varValue: 
+                        - xmlizable: 
+                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                          - MobileSmartSourceType: script:this.local?.createUser
+                    ↓password [ngx.components.UIControlVariable-1783000000333]: 
+                      comment: Sends the password value to the backend sequence
+                      varValue: 
+                        - xmlizable: 
+                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                          - MobileSmartSourceType: script:this.local?.createPassword
+                    ↓targetApplicationName [ngx.components.UIControlVariable-1783000000334]: 
+                      comment: Sends the target application name used in email templates
+                      varValue: 
+                        - xmlizable: 
+                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                          - MobileSmartSourceType: script:this.translate.instant('Title_for_Page')
+                ↓Text [ngx.components.UIText-1783000000335]: 
+                  comment: Displays translated text to guide the user
+                  i18n: true
+                  textValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:Auth_CreateAccount
+              ↓BackToSignInButton [ngx.components.UIDynamicElement-1783000000336]: 
+                beanData: '{"ionBean":"Button","IonFill":"plain:clear"}'
+                comment: Submits the sign in form
+                tagName: ion-button
+                ↓Class [ngx.components.UIAttribute-1783000000337]: 
+                  attrName: class
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:oauth-button
+                  comment: Applies CSS styling for this element
+                ↓Event [ngx.components.UIControlEvent-1783000000338]: 
+                  comment: Runs the related logic when this event occurs
+                  ↓ShowLoginCard [ngx.components.UIDynamicAction-1783000000339]: 
+                    beanData: |
+                      '{
+                       "ionBean": "SetLocalAction",
+                       "Property": "plain:showCreateAccount",
+                       "Value": "script:false"
+                      }'
+                    comment: Updates local component state for this step
+                ↓Text [ngx.components.UIText-1783000000340]: 
+                  comment: Displays translated text to guide the user
+                  i18n: true
+                  textValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:Auth_HaveAccount_SignIn
+      ↓ShowForgotPasswordCard [ngx.components.UIControlDirective-1783000000341]: 
+        comment: Shows this block only when its condition is true
+        directiveName: If
+        directiveSource: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:this.enableForgotPassword && !!this.local?.showForgotPassword
+        ↓ForgotPasswordCard [ngx.components.UIDynamicElement-1783000000342]: 
+          beanData: '{"ionBean":"Card"}'
+          comment: Shows a dedicated card for this authentication step
+          tagName: ion-card
+          ↓Class [ngx.components.UIAttribute-1783000000343]: 
+            attrName: class
+            attrValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:login-container
+            comment: Applies CSS styling for this element
+          ↓CardHeader [ngx.components.UIDynamicElement-1783000000344]: 
+            beanData: '{"ionBean":"CardHeader"}'
+            comment: Shows the title area of this card
+            tagName: ion-card-header
+            ↓CardTitle [ngx.components.UIDynamicElement-1783000000345]: 
+              beanData: '{"ionBean":"CardTitle"}'
+              comment: Shows the main title for this section
+              tagName: ion-card-title
+              ↓Text [ngx.components.UIText-1783000000346]: 
+                comment: Displays translated text to guide the user
+                i18n: true
+                textValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:Auth_ForgotPassword_Card_Title
+            ↓CardSubTitle [ngx.components.UIDynamicElement-1783000000347]: 
+              beanData: '{"ionBean":"CardSubTitle"}'
+              comment: Shows supporting text under the section title
+              tagName: ion-card-subtitle
+              ↓Text [ngx.components.UIText-1783000000348]: 
+                comment: Displays translated text to guide the user
+                i18n: true
+                textValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:Auth_ForgotPassword_Card_Subtitle
+          ↓CardContent [ngx.components.UIDynamicElement-1783000000349]: 
+            beanData: '{"ionBean":"CardContent"}'
+            comment: Contains fields and actions for this card
+            tagName: ion-card-content
+            ↓ForgotUserItem [ngx.components.UIDynamicElement-1783000000350]: 
+              beanData: '{"ionBean":"GenericItem","Lines":"plain:none"}'
+              comment: Displays a form row for one user input
+              tagName: ion-item
+              ↓Icon [ngx.components.UIDynamicElement-1783000000351]: 
+                beanData: |
+                  '{
+                   "ionBean": "Icon",
+                   "IconName": "plain:mail-outline",
+                   "IconSlot": "plain:start"
+                  }'
+                comment: Displays an icon that clarifies this action
+                tagName: ion-icon
+              ↓Input [ngx.components.UIDynamicElement-1783000000352]: 
+                beanData: |
+                  '{
+                   "ionBean": "Input",
+                   "ControlName": "plain:forgotUser",
+                   "DoubleBinding": "script:local.forgotUser",
+                   "Placeholder": "script:this.translate.instant(''Email'')",
+                   "Type": "plain:email"
+                  }'
+                comment: Captures user input for this field
+                tagName: ion-input
+            ↓ForgotActionRow [ngx.components.UIDynamicElement-1783000000353]: 
+              beanData: '{"ionBean":"DivTag"}'
+              comment: Groups related actions in this section
+              tagName: div
+              ↓Class [ngx.components.UIAttribute-1783000000354]: 
+                attrName: class
+                attrValue: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                    - MobileSmartSourceType: plain:login-actions
+                comment: Applies CSS styling for this element
+              ↓ForgotPasswordButton [ngx.components.UIDynamicElement-1783000000355]: 
+                beanData: '{"ionBean":"Button","IonFill":"plain:clear"}'
+                comment: Opens the forgot password form
+                tagName: ion-button
+                ↓Class [ngx.components.UIAttribute-1783000000356]: 
+                  attrName: class
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:oauth-button
+                  comment: Applies CSS styling for this element
+                ↓Event [ngx.components.UIControlEvent-1783000000357]: 
+                  comment: Runs the related logic when this event occurs
+                  ↓Finally_Handler [ngx.components.UIActionFinallyEvent-1783000000358]: 
+                    comment: Runs cleanup logic after the previous action completes
+                    ↓SetDoingLoginFalse [ngx.components.UIDynamicAction-1783000000359]: 
+                      beanData: |
+                        '{
+                         "ionBean": "SetGlobalAction",
+                         "Property": "plain:doingLogin",
+                         "Value": "script:false"
+                        }'
+                      comment: Stores this value in global state for later screens
+                  ↓SetDoingLoginTrue [ngx.components.UIDynamicAction-1783000000360]: 
+                    beanData: |
+                      '{
+                       "ionBean": "SetGlobalAction",
+                       "Property": "plain:doingLogin",
+                       "Value": "script:true"
+                      }'
+                    comment: Stores this value in global state for later screens
+                  ↓ForgotPassword [ngx.components.UIDynamicAction-1783000000361]: 
+                    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager.ForgotPasswordWithBrand"}'
+                    comment: Calls the backend forgot password sequence
+                    ↓IfSuccess [ngx.components.UIDynamicIf-1783000000362]: 
+                      beanData: '{"ionBean":"IfElseAction","condition":"script:out?.error == null"}'
+                      comment: Continues this flow only when authentication succeeds
+                      ↓ToastSuccess [ngx.components.UIDynamicAction-1783000000363]: 
+                        beanData: '{"ionBean":"ToastAction","message":"script:this.translate.instant(''Auth_ForgotPassword_Sent'')"}'
+                        comment: Shows a toast message to inform the user
+                      ↓HideForgotCard [ngx.components.UIDynamicAction-1783000000364]: 
+                        beanData: |
+                          '{
+                           "ionBean": "SetLocalAction",
+                           "Property": "plain:showForgotPassword",
+                           "Value": "script:false"
+                          }'
+                        comment: Hides the forgot password card
+                      ↓Else_Handler [ngx.components.UIActionElseEvent-1783000000365]: 
+                        comment: Defines the fallback branch used when the previous step fails
+                        ↓ToastError [ngx.components.UIDynamicAction-1783000000366]: 
+                          beanData: '{"ionBean":"ToastAction","message":"script:this.getForgotPasswordErrorMessage(out)"}'
+                          comment: Shows a toast message to inform the user
+                    ↓email [ngx.components.UIControlVariable-1783000000367]: 
+                      comment: Sends this form value to the backend sequence
+                      varValue: 
+                        - xmlizable: 
+                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                          - MobileSmartSourceType: script:this.local?.forgotUser || this.local?.user
+                    ↓emailSubject [ngx.components.UIControlVariable-1783000000368]: 
+                      comment: Sends this form value to the backend sequence
+                      varValue: 
+                        - xmlizable: 
+                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                          - MobileSmartSourceType: script:this.translate.instant('Auth_ForgotPassword_Email_Subject')
+                    ↓emailLogo [ngx.components.UIControlVariable-1783000000369]: 
+                      comment: Sends this form value to the backend sequence
+                      varValue: 
+                        - xmlizable: 
+                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                          - MobileSmartSourceType: script:'https://www.convertigo.com/wp-content/themes/EightDegree/images/logo_convertigo.png'
+                    ↓targetApplicationName [ngx.components.UIControlVariable-1783000000370]: 
+                      comment: Sends the target application name used in email templates
+                      varValue: 
+                        - xmlizable: 
+                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                          - MobileSmartSourceType: script:this.translate.instant('Title_for_Page')
+                    ↓lang [ngx.components.UIControlVariable-1783000000371]: 
+                      comment: Sends this form value to the backend sequence
+                      varValue: 
+                        - xmlizable: 
+                          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                          - MobileSmartSourceType: 'script:typeof this.global?.currentLanguage === ''function'' ? this.global.currentLanguage() : (this.translate?.currentLang || ''en'')'
+                ↓Text [ngx.components.UIText-1783000000372]: 
+                  comment: Displays translated text to guide the user
+                  i18n: true
+                  textValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:Auth_ForgotPassword_Send
+              ↓BackToSignInButton [ngx.components.UIDynamicElement-1783000000373]: 
+                beanData: '{"ionBean":"Button","IonFill":"plain:clear"}'
+                comment: Submits the sign in form
+                tagName: ion-button
+                ↓Class [ngx.components.UIAttribute-1783000000374]: 
+                  attrName: class
+                  attrValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:oauth-button
+                  comment: Applies CSS styling for this element
+                ↓Event [ngx.components.UIControlEvent-1783000000375]: 
+                  comment: Runs the related logic when this event occurs
+                  ↓ShowLoginCard [ngx.components.UIDynamicAction-1783000000376]: 
+                    beanData: |
+                      '{
+                       "ionBean": "SetLocalAction",
+                       "Property": "plain:showForgotPassword",
+                       "Value": "script:false"
+                      }'
+                    comment: Updates local component state for this step
+                ↓Text [ngx.components.UIText-1783000000377]: 
+                  comment: Displays translated text to guide the user
+                  i18n: true
+                  textValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: plain:Auth_ForgotPassword_BackToSignIn
+    ↓GridColRight [ngx.components.UIDynamicElement-1783000000081]: 
+      beanData: '{"ionBean":"GridCol"}'
+      comment: Defines a column used to align content
+      tagName: ion-col
+↓LoginStyle [ngx.components.UIStyle-1783000000082]: 
+  comment: Applies local CSS rules for this block
+  styleContent: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          '.login-shell {
+           min-height: 100%;
+          }
+          .login-container {
+           width: 100%;
+           max-width: 460px;
+           margin: 0 auto;
+          }
+          .login-card-header {
+           text-align: center;
+          }
+          .login-logo {
+           display: block;
+           margin: 0 auto 10px auto;
+          }
+          .login-actions,
+          .oauth-actions {
+           display: flex;
+           flex-direction: column;
+           gap: 10px;
+           margin-top: 12px;
+          }
+          .oauth-button {
+           width: 100%;
+          }
+          .login-separator {
+           width: 100%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           gap: 10px;
+           margin-top: 18px;
+          }
+          .login-separator::before,
+          .login-separator::after {
+           content: "";
+           flex: 1 1 auto;
+           height: 1px;
+           background: var(--ion-color-step-250, #d7d8da);
+          }
+          .login-separator-text {
+           font-size: 0.82rem;
+           color: var(--ion-color-medium, #666);
+          }
+          '
 ↓PageEvent [ngx.components.UIPageEvent-1572625507438]: 
+  comment: Runs this logic when the page lifecycle event is triggered
   ↓GetPlatform [ngx.components.UICustomAction-1572625520749]: 
     actionValue: 
       - xmlizable: 
         - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
         - com.twinsoft.convertigo.beans.common.FormatedContent: 
           →: |
-            		page["LoginComponent.pageWidth"] = page.getInstance(Platform).width();
-            		page["LoginComponent.pageHeight"] = page.getInstance(Platform).height();
-            		resolve();
+            page["LoginComponent.pageWidth"] = page.getInstance(Platform).width();
+            page["LoginComponent.pageHeight"] = page.getInstance(Platform).height();
+            resolve();
             
+    comment: Runs custom script required by this user flow
   ↓CallSequence [ngx.components.UIDynamicAction-1572952599704]: 
     beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_OAuth.GetOAuthCredentials"}'
+    comment: Calls the backend sequence required by this action
 ↓enableGoogleLogin [ngx.components.UICompVariable-1572626360536]: 
-  comment: Set to false to disable loggin with google
+  comment: Enable this to hide the Google sign in option when needed
   value: true
 ↓enableLinkedInLogin [ngx.components.UICompVariable-1572626396143]: 
-  comment: Set to false to disable login with LinkedIn
+  comment: Enable this to hide the LinkedIn sign in option when needed
   value: true
 ↓enableAzureADLogin [ngx.components.UICompVariable-1572626420110]: 
-  comment: Set to false to disable login with AzureAD
+  comment: Enable this to hide the Microsoft sign in option when needed
+  value: true
+↓enableLDAPLogin [ngx.components.UICompVariable-1783000000122]: 
+  comment: Enable this to show LDAP sign in on the login card
+  value: true
+↓enableOpenIDLogin [ngx.components.UICompVariable-1783000000123]: 
+  comment: Enable this to show OpenID sign in on the login card
   value: true
 ↓logoImage [ngx.components.UICompVariable-1572626929817]: 
-  comment: A logo image to be displayed over the login form (64x64)
-  value: '''data:image/png;base64,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'''
-↓enableCancelDismiss [ngx.components.UICompVariable-1572627157072]: 
-  comment: Set to true if you want a cancel button to be displayed causing a Modal Page dismiss
+  comment: Sets the logo shown above the authentication forms
+  value: 
+↓enableCreateAccount [ngx.components.UICompVariable-1783000000378]: 
+  comment: Enable this to show the create account flow to users without an account
+  value: true
+↓enableForgotPassword [ngx.components.UICompVariable-1783000000379]: 
+  comment: Enable this to show the forgot password flow on the login screen
   value: true
 ↓login [ngx.components.UICompEvent-1631708897857]: 
   attrName: login
   comment: |
-    This event will be fired when a login occurs :
-    	Check out.error and out.message  for login errors
-    	The out.user will be user logged in
+    This event will be fired when a login occurs:
+    	Check out.error and out.message for login errors
+    	The out.user will be the logged-in user
     
 ↓logoWidth [ngx.components.UICompVariable-1632754516203]: 
+  comment: Provides a configurable input for this shared component
   value: '''300'''
 ↓scope [ngx.components.UICompVariable-1648974977950]: 
   comment: |
-    Additional Scope to be added to the standard Scope. This will be concatenated to to the scopr string. For Azure AD start with a + sign
+    Additional Scope to be added to the standard Scope. This will be concatenated to the scope string.
+    For Azure AD, start with a + sign.
     
   value: 
 ↓tenantid [ngx.components.UICompVariable-1649003622841]: 
@@ -395,3 +1374,18 @@ comment: |
     The tenant ID you want to restrict to, leave blank for no tenant.
     
   value: 
+↓openidClientID [ngx.components.UICompVariable-1783000000124]: 
+  comment: Sets the OpenID client identifier used for authentication
+  value: 
+↓openidAuthorizationEndpoint [ngx.components.UICompVariable-1783000000125]: 
+  comment: Sets the OpenID authorization endpoint used during sign in
+  value: 
+↓openidScope [ngx.components.UICompVariable-1783000000126]: 
+  comment: Defines the OpenID scopes requested for the user session
+  value: '''openid profile email'''
+↓openidResponseType [ngx.components.UICompVariable-1783000000127]: 
+  comment: Defines the OpenID response type expected from the provider
+  value: '''id_token+token'''
+↓openidCallbackUrl [ngx.components.UICompVariable-1783000000128]: 
+  comment: Defines the callback URL where the OpenID provider returns the user
+  value: '''https://c8ocloud.convertigo.net/convertigo/projects/lib_OAuth/getToken.html'''

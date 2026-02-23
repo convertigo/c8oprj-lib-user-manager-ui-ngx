@@ -1,4 +1,5 @@
 ↓GetMeta [steps.SimpleStep-1699025755128]: 
+  comment: Reads authentication metadata used to determine available login modes
   expression: |
     'let meta  = null;
     try{
@@ -8,6 +9,7 @@
     	log.warn("error" +e);
     }'
 ↓object2 [steps.JsonToXmlStep-1699025842103]: 
+  comment: Converts backend JSON metadata to XML output for the caller
   jsonObject: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
@@ -21,4 +23,5 @@
         - ↑mode: PLAIN
         - →→: res
 ↓metadata [variables.RequestableVariable-1699025651493]: 
-  value: ${lib_UserManager_ui_ngx.metadata}
+  comment: Receives metadata input for this sequence
+  value: ${lib_UserManager_ui_ngx.metadata=}

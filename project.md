@@ -69,7 +69,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;metadata
 </td>
 <td>
-
+Receives metadata input for this sequence
 </td>
 </tr>
 </table>
@@ -110,18 +110,18 @@ comment
 
 </p></blockquote></details>
 
-<details><summary><b>ModalPopup</b></summary><blockquote><p>
+<details><summary><b>HomePage</b></summary><blockquote><p>
 
 
-### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/pagecomponent_color_16x16.png?raw=true "PageComponent") ModalPopup
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/pagecomponent_color_16x16.png?raw=true "PageComponent") HomePage
 
 
 </p></blockquote></details>
 
-<details><summary><b>Page</b></summary><blockquote><p>
+<details><summary><b>Signin</b></summary><blockquote><p>
 
 
-### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/pagecomponent_color_16x16.png?raw=true "PageComponent") Page
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/pagecomponent_color_16x16.png?raw=true "PageComponent") Signin
 
 
 </p></blockquote></details>
@@ -153,7 +153,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;appName
 </td>
 <td>
-
+Provides the application name shown in account emails
 </td>
 </tr>
 <tr>
@@ -161,7 +161,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;imgUrl
 </td>
 <td>
-
+Provides the logo URL shown in account emails
 </td>
 </tr>
 <tr>
@@ -169,7 +169,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;resetKey
 </td>
 <td>
-
+Provides the reset token used by this flow
 </td>
 </tr>
 </table>
@@ -191,7 +191,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompevent_16x16.png?raw=true "  alt="UICompEvent" >&nbsp;PasswordChangedError
 </td>
 <td>
-
+Emits an error event when the operation fails
 </td>
 </tr>
 <tr>
@@ -199,7 +199,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompevent_16x16.png?raw=true "  alt="UICompEvent" >&nbsp;PasswordChangedOk
 </td>
 <td>
-
+Emits a success event when the operation completes
 </td>
 </tr>
 </table>
@@ -229,7 +229,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;appName
 </td>
 <td>
-
+Provides the application name shown in account emails
 </td>
 </tr>
 <tr>
@@ -237,7 +237,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;imgUrl
 </td>
 <td>
-
+Provides the logo URL shown in account emails
 </td>
 </tr>
 <tr>
@@ -245,7 +245,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;moretext
 </td>
 <td>
-
+Provides additional text shown in account emails
 </td>
 </tr>
 <tr>
@@ -253,7 +253,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;resetKey
 </td>
 <td>
-
+Provides the reset token used by this flow
 </td>
 </tr>
 </table>
@@ -275,7 +275,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompevent_16x16.png?raw=true "  alt="UICompEvent" >&nbsp;PasswordChangedError
 </td>
 <td>
-
+Emits an error event when the operation fails
 </td>
 </tr>
 <tr>
@@ -283,7 +283,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompevent_16x16.png?raw=true "  alt="UICompEvent" >&nbsp;PasswordChangedOk
 </td>
 <td>
-
+Emits a success event when the operation completes
 </td>
 </tr>
 </table>
@@ -313,7 +313,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;appName
 </td>
 <td>
-
+Provides the application name shown in account emails
 </td>
 </tr>
 <tr>
@@ -321,7 +321,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;imgUrl
 </td>
 <td>
-
+Provides the logo URL shown in account emails
 </td>
 </tr>
 <tr>
@@ -329,7 +329,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;resetKey
 </td>
 <td>
-
+Provides the reset token used by this flow
 </td>
 </tr>
 </table>
@@ -351,7 +351,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompevent_16x16.png?raw=true "  alt="UICompEvent" >&nbsp;PasswordChangedError
 </td>
 <td>
-
+Emits an error event when the operation fails
 </td>
 </tr>
 <tr>
@@ -359,25 +359,23 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompevent_16x16.png?raw=true "  alt="UICompEvent" >&nbsp;PasswordChangedOk
 </td>
 <td>
-
+Emits a success event when the operation completes
 </td>
 </tr>
 </table>
 
 </p></blockquote></details>
 
-<details><summary><b>LoginComponent</b> : This component handle a login / password form</summary><blockquote><p>
+<details><summary><b>LoginComponent</b> : This component handles a login / password form</summary><blockquote><p>
 
 
 ### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uisharedcomponent_16x16.png?raw=true "UISharedRegularComponent") LoginComponent
 
-This component handle a login / password form.
-And uses the lib_UserManager
+This component handles a login / password form.
+And uses the lib_UserManager.
 
-The component will check user / password and if successful will autenticate the user. When the user is authenticated, the component will fire a 'login' event that you can handle with a SubscribeHandler. use this event to close a modal page or to push/root a new page when the user is authenticated
-
-
-
+When a user is authenticated, the component fires the ''login'' event.
+Use this event to close a modal page or route to an authenticated page.
 
 <span style="color:DarkGoldenRod">Variables</span>
 
@@ -395,15 +393,23 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;enableAzureADLogin
 </td>
 <td>
-Set to false to disable login with AzureAD
+Enable this to hide the Microsoft sign in option when needed
 </td>
 </tr>
 <tr>
 <td>
-<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;enableCancelDismiss
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;enableCreateAccount
 </td>
 <td>
-Set to true if you want a cancel button to be displayed causing a Modal Page dismiss
+Enable this to show the create account flow to users without an account
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;enableForgotPassword
+</td>
+<td>
+Enable this to show the forgot password flow on the login screen
 </td>
 </tr>
 <tr>
@@ -411,7 +417,15 @@ Set to true if you want a cancel button to be displayed causing a Modal Page dis
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;enableGoogleLogin
 </td>
 <td>
-Set to false to disable loggin with google
+Enable this to hide the Google sign in option when needed
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;enableLDAPLogin
+</td>
+<td>
+Enable this to show LDAP sign in on the login card
 </td>
 </tr>
 <tr>
@@ -419,7 +433,15 @@ Set to false to disable loggin with google
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;enableLinkedInLogin
 </td>
 <td>
-Set to false to disable login with LinkedIn
+Enable this to hide the LinkedIn sign in option when needed
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;enableOpenIDLogin
+</td>
+<td>
+Enable this to show OpenID sign in on the login card
 </td>
 </tr>
 <tr>
@@ -427,7 +449,7 @@ Set to false to disable login with LinkedIn
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;logoImage
 </td>
 <td>
-A logo image to be displayed over the login form (64x64)
+Sets the logo shown above the authentication forms
 </td>
 </tr>
 <tr>
@@ -435,7 +457,47 @@ A logo image to be displayed over the login form (64x64)
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;logoWidth
 </td>
 <td>
-
+Provides a configurable input for this shared component
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;openidAuthorizationEndpoint
+</td>
+<td>
+Sets the OpenID authorization endpoint used during sign in
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;openidCallbackUrl
+</td>
+<td>
+Defines the callback URL where the OpenID provider returns the user
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;openidClientID
+</td>
+<td>
+Sets the OpenID client identifier used for authentication
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;openidResponseType
+</td>
+<td>
+Defines the OpenID response type expected from the provider
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;openidScope
+</td>
+<td>
+Defines the OpenID scopes requested for the user session
 </td>
 </tr>
 <tr>
@@ -443,7 +505,8 @@ A logo image to be displayed over the login form (64x64)
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompvariable_16x16.png?raw=true "  alt="UICompVariable" >&nbsp;scope
 </td>
 <td>
-Additional Scope to be added to the standard Scope. This will be concatenated to to the scopr string. For Azure AD start with a + sign
+Additional Scope to be added to the standard Scope. This will be concatenated to the scope string.
+For Azure AD, start with a + sign.
 
 </td>
 </tr>
@@ -475,9 +538,9 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uicompevent_16x16.png?raw=true "  alt="UICompEvent" >&nbsp;login
 </td>
 <td>
-This event will be fired when a login occurs :
-	Check out.error and out.message  for login errors
-	The out.user will be user logged in
+This event will be fired when a login occurs:
+	Check out.error and out.message for login errors
+	The out.user will be the logged-in user
 
 </td>
 </tr>

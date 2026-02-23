@@ -57,13 +57,13 @@ For more technical informations : [documentation](./project.md)
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>appName</td><td></td>
+<td>appName</td><td>Provides the application name shown in account emails</td>
 </tr>
 <tr>
-<td>imgUrl</td><td></td>
+<td>imgUrl</td><td>Provides the logo URL shown in account emails</td>
 </tr>
 <tr>
-<td>resetKey</td><td></td>
+<td>resetKey</td><td>Provides the reset token used by this flow</td>
 </tr>
 </table>
 
@@ -74,10 +74,10 @@ For more technical informations : [documentation](./project.md)
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>PasswordChangedError</td><td></td>
+<td>PasswordChangedError</td><td>Emits an error event when the operation fails</td>
 </tr>
 <tr>
-<td>PasswordChangedOk</td><td></td>
+<td>PasswordChangedOk</td><td>Emits a success event when the operation completes</td>
 </tr>
 </table>
 
@@ -90,16 +90,16 @@ For more technical informations : [documentation](./project.md)
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>appName</td><td></td>
+<td>appName</td><td>Provides the application name shown in account emails</td>
 </tr>
 <tr>
-<td>imgUrl</td><td></td>
+<td>imgUrl</td><td>Provides the logo URL shown in account emails</td>
 </tr>
 <tr>
-<td>moretext</td><td></td>
+<td>moretext</td><td>Provides additional text shown in account emails</td>
 </tr>
 <tr>
-<td>resetKey</td><td></td>
+<td>resetKey</td><td>Provides the reset token used by this flow</td>
 </tr>
 </table>
 
@@ -110,10 +110,10 @@ For more technical informations : [documentation](./project.md)
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>PasswordChangedError</td><td></td>
+<td>PasswordChangedError</td><td>Emits an error event when the operation fails</td>
 </tr>
 <tr>
-<td>PasswordChangedOk</td><td></td>
+<td>PasswordChangedOk</td><td>Emits a success event when the operation completes</td>
 </tr>
 </table>
 
@@ -126,13 +126,13 @@ For more technical informations : [documentation](./project.md)
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>appName</td><td></td>
+<td>appName</td><td>Provides the application name shown in account emails</td>
 </tr>
 <tr>
-<td>imgUrl</td><td></td>
+<td>imgUrl</td><td>Provides the logo URL shown in account emails</td>
 </tr>
 <tr>
-<td>resetKey</td><td></td>
+<td>resetKey</td><td>Provides the reset token used by this flow</td>
 </tr>
 </table>
 
@@ -143,22 +143,20 @@ For more technical informations : [documentation](./project.md)
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>PasswordChangedError</td><td></td>
+<td>PasswordChangedError</td><td>Emits an error event when the operation fails</td>
 </tr>
 <tr>
-<td>PasswordChangedOk</td><td></td>
+<td>PasswordChangedOk</td><td>Emits a success event when the operation completes</td>
 </tr>
 </table>
 
 #### LoginComponent
 
-This component handle a login / password form.
-And uses the lib_UserManager
+This component handles a login / password form.
+And uses the lib_UserManager.
 
-The component will check user / password and if successful will autenticate the user. When the user is authenticated, the component will fire a 'login' event that you can handle with a SubscribeHandler. use this event to close a modal page or to push/root a new page when the user is authenticated
-
-
-
+When a user is authenticated, the component fires the ''login'' event.
+Use this event to close a modal page or route to an authenticated page.
 
 **variables**
 
@@ -167,25 +165,50 @@ The component will check user / password and if successful will autenticate the 
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>enableAzureADLogin</td><td>Set to false to disable login with AzureAD</td>
+<td>enableAzureADLogin</td><td>Enable this to hide the Microsoft sign in option when needed</td>
 </tr>
 <tr>
-<td>enableCancelDismiss</td><td>Set to true if you want a cancel button to be displayed causing a Modal Page dismiss</td>
+<td>enableCreateAccount</td><td>Enable this to show the create account flow to users without an account</td>
 </tr>
 <tr>
-<td>enableGoogleLogin</td><td>Set to false to disable loggin with google</td>
+<td>enableForgotPassword</td><td>Enable this to show the forgot password flow on the login screen</td>
 </tr>
 <tr>
-<td>enableLinkedInLogin</td><td>Set to false to disable login with LinkedIn</td>
+<td>enableGoogleLogin</td><td>Enable this to hide the Google sign in option when needed</td>
 </tr>
 <tr>
-<td>logoImage</td><td>A logo image to be displayed over the login form (64x64)</td>
+<td>enableLDAPLogin</td><td>Enable this to show LDAP sign in on the login card</td>
 </tr>
 <tr>
-<td>logoWidth</td><td></td>
+<td>enableLinkedInLogin</td><td>Enable this to hide the LinkedIn sign in option when needed</td>
 </tr>
 <tr>
-<td>scope</td><td>Additional Scope to be added to the standard Scope. This will be concatenated to to the scopr string. For Azure AD start with a + sign
+<td>enableOpenIDLogin</td><td>Enable this to show OpenID sign in on the login card</td>
+</tr>
+<tr>
+<td>logoImage</td><td>Sets the logo shown above the authentication forms</td>
+</tr>
+<tr>
+<td>logoWidth</td><td>Provides a configurable input for this shared component</td>
+</tr>
+<tr>
+<td>openidAuthorizationEndpoint</td><td>Sets the OpenID authorization endpoint used during sign in</td>
+</tr>
+<tr>
+<td>openidCallbackUrl</td><td>Defines the callback URL where the OpenID provider returns the user</td>
+</tr>
+<tr>
+<td>openidClientID</td><td>Sets the OpenID client identifier used for authentication</td>
+</tr>
+<tr>
+<td>openidResponseType</td><td>Defines the OpenID response type expected from the provider</td>
+</tr>
+<tr>
+<td>openidScope</td><td>Defines the OpenID scopes requested for the user session</td>
+</tr>
+<tr>
+<td>scope</td><td>Additional Scope to be added to the standard Scope. This will be concatenated to the scope string.
+For Azure AD, start with a + sign.
 </td>
 </tr>
 <tr>
@@ -201,9 +224,9 @@ The component will check user / password and if successful will autenticate the 
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>login</td><td>This event will be fired when a login occurs :
-	Check out.error and out.message  for login errors
-	The out.user will be user logged in
+<td>login</td><td>This event will be fired when a login occurs:
+	Check out.error and out.message for login errors
+	The out.user will be the logged-in user
 </td>
 </tr>
 </table>
