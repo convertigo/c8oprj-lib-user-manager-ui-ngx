@@ -26,7 +26,7 @@ see [readme](https://github.com/convertigo/c8oprj-lib-oauth/tree/cd8291aeb883ec2
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/references/images/ProjectSchemaReference_16x16.png?raw=true "ProjectSchemaReference") lib_UserManager
 
 
-see [readme](https://github.com/convertigo/c8oprj-lib-user-manager/tree/5c69ff41174b37102a3a45709dc584747b7f77cf#readme)
+see [readme](https://github.com/convertigo/c8oprj-lib-user-manager/tree/8.0.X#readme)
 </p></blockquote></details>
 </p></blockquote></details>
 
