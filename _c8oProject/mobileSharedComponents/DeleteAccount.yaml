@@ -160,7 +160,7 @@ scriptContent:
                 textValue: 
                   - xmlizable: 
                     - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                    - MobileSmartSourceType: plain:Suppression du compte et des données associées
+                    - MobileSmartSourceType: plain:DeleteAccount_Title
               ↓FontStyle [ngx.components.UIFontStyle-1699020262953]: 
                 comment: Applies font styling to improve text readability
                 fontFamily: IBM Plex Sans
@@ -283,11 +283,11 @@ scriptContent:
                           '{
                            "ionBean": "ToastAction",
                            "IonColor": "plain:danger",
-                           "message": "script:c8oPage.translate.instant(''toastSuccess'')",
+                           "message": "script:c8oPage.translate.instant(''DeleteAccount_Success'')",
                            "duration": "plain",
                            "cssClass": "plain:toastWarn",
                            "showCloseButton": "plain:true",
-                           "closeButtonText": "plain:ok"
+                           "closeButtonText": "script:c8oPage.translate.instant(''Common_OK'')"
                           }'
                         comment: Shows a toast message to inform the user
                         tagName: Toast
@@ -302,7 +302,7 @@ scriptContent:
                              "duration": "plain",
                              "cssClass": "plain:toastWarn",
                              "showCloseButton": "plain:true",
-                             "closeButtonText": "plain:ok"
+                             "closeButtonText": "script:c8oPage.translate.instant(''Common_OK'')"
                             }'
                           comment: Shows a toast message to inform the user
                           tagName: Toast
@@ -317,7 +317,7 @@ scriptContent:
                          "duration": "plain",
                          "cssClass": "plain:toastWarn",
                          "showCloseButton": "plain:true",
-                         "closeButtonText": "plain:ok"
+                         "closeButtonText": "script:c8oPage.translate.instant(''Common_OK'')"
                         }'
                       comment: Shows a toast message to inform the user
                       tagName: Toast
@@ -342,7 +342,7 @@ scriptContent:
                     textValue: 
                       - xmlizable: 
                         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                        - MobileSmartSourceType: plain:An error occurred while changing your password. Your link may have expired.
+                        - MobileSmartSourceType: plain:DeleteAccount_Link_Error
                   ↓Span [ngx.components.UIDynamicElement-1699020263007]: 
                     beanData: '{"ionBean":"SpanTag"}'
                     comment: Highlights key information inside the message
@@ -418,7 +418,7 @@ scriptContent:
                       textValue: 
                         - xmlizable: 
                           - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                          - MobileSmartSourceType: plain:Your password has been changed. You can now log in to your account with your new password.
+                          - MobileSmartSourceType: plain:DeleteAccount_Success
                     ↓Span [ngx.components.UIDynamicElement-1699020263040]: 
                       beanData: '{"ionBean":"SpanTag"}'
                       comment: Highlights key information inside the message
@@ -487,7 +487,7 @@ scriptContent:
                     textValue: 
                       - xmlizable: 
                         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                        - MobileSmartSourceType: 'plain:Suppression du compte et des données associées pour l''application : '
+                        - MobileSmartSourceType: plain:DeleteAccount_Intro
                   ↓Span [ngx.components.UIDynamicElement-1699020263070]: 
                     beanData: '{"ionBean":"SpanTag"}'
                     comment: Highlights key information inside the message
@@ -534,7 +534,7 @@ scriptContent:
                     textValue: 
                       - xmlizable: 
                         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                        - MobileSmartSourceType: plain:Veuillez saisir votre email et votre mot de passe, puis cliquer sur le bouton Supprimer définitivement mon compte
+                        - MobileSmartSourceType: plain:DeleteAccount_Instructions
                 ↓FormatLayout [ngx.components.UIDynamicAttr-1699020263088]: 
                   beanData: '{"ionBean":"FormatLayout","TextAlignment":"plain:ion-text-left"}'
                   comment: Formats dynamic text for display in this section
@@ -558,7 +558,7 @@ scriptContent:
                     textValue: 
                       - xmlizable: 
                         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                        - MobileSmartSourceType: plain:Veuillez saisir votre email et votre mot de passe, puis cliquer sur le bouton Supprimer définitivement mon compte
+                        - MobileSmartSourceType: plain:DeleteAccount_Instructions
                   ↓_innerHTML_ [ngx.components.UIAttribute-1699027729616]: 
                     attrName: '[innerHTML]'
                     attrValue: 
@@ -780,7 +780,7 @@ scriptContent:
                     textValue: 
                       - xmlizable: 
                         - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                        - MobileSmartSourceType: plain:Mot de passe
+                        - MobileSmartSourceType: plain:DeleteAccount_Password
                 ↓TextInput [ngx.components.UIDynamicElement-1699020263187]: 
                   beanData: |
                     '{
@@ -837,7 +837,7 @@ scriptContent:
                   textValue: 
                     - xmlizable: 
                       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                      - MobileSmartSourceType: plain:Supprimer définitivement mon compte et les données associées
+                      - MobileSmartSourceType: plain:DeleteAccount_Submit
                 ↓Style [ngx.components.UIStyle-1699020263208]: 
                   comment: Applies local CSS rules for this block
                   styleContent: 

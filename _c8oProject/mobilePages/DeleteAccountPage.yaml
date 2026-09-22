@@ -6,15 +6,35 @@ scriptContent:
         '/*Begin_c8o_PageImport*/
         /*End_c8o_PageImport*/
         /*Begin_c8o_PageDeclaration*/
-        	public newPassword : string = "";
-        	/*End_c8o_PageDeclaration*/
+            public newPassword : string = "";
+            /*End_c8o_PageDeclaration*/
         /*Begin_c8o_PageConstructor*/
-        		/*End_c8o_PageConstructor*/
+                let requestedLanguage = this.navParams?.data?.lang;
+                try {
+                    if (!requestedLanguage && typeof window !== ''undefined'') {
+                        requestedLanguage = new URLSearchParams(window.location.search).get(''lang'');
+                    }
+                } catch (e) {
+                    requestedLanguage = '''';
+                }
+                if (requestedLanguage) {
+                    const normalizeLocale = this.global?.normalizeUserManagerLocale;
+                    const normalizedLanguage = typeof normalizeLocale === ''function''
+                        ? normalizeLocale(requestedLanguage)
+                        : ''en'';
+                    this.translate.use(normalizedLanguage);
+                    try {
+                        window.localStorage.setItem(''c8o-lang'', normalizedLanguage);
+                    } catch (e) {
+                        // Storage can be unavailable in privacy-restricted environments.
+                    }
+                }
+                /*End_c8o_PageConstructor*/
         /*Begin_c8o_PageFunction*/
-        	/*End_c8o_PageFunction*/
+            /*End_c8o_PageFunction*/
         '
 segment: DeleteAccountPage
-title: Title for DeleteAccountPage
+title: DeleteAccount_Title
 ↓Header [ngx.components.UIDynamicElement-1772000204001]: 
   beanData: '{"ionBean":"Header"}'
   comment: Displays the standard page header
@@ -74,6 +94,8 @@ title: Title for DeleteAccountPage
           '{
            "ionBean": "Select",
            "ControlName": "plain:name1772000204015",
+           "CancelText": "script:this.translate.instant(''Cancel'')",
+           "OkText": "script:this.translate.instant(''Common_OK'')",
            "Justify": "plain:start"
           }'
         comment: Lets the user choose a language
@@ -99,77 +121,128 @@ title: Title for DeleteAccountPage
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
               - MobileSmartSourceType: script:'popover'
           comment: Configures how selection options are displayed
-        ↓Value [ngx.components.UIAttribute-1772000204019]: 
+        ↓Value [ngx.components.UIAttribute-1790004057816]: 
           attrName: '[value]'
           attrValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: 'script:typeof this.global?.currentLanguage === ''function'' ? this.global.currentLanguage() : (this.translate?.currentLang ?? ''en'')'
+              - MobileSmartSourceType: script:this.translate?.currentLang ?? 'en'
           comment: Binds the current value of this control
-        ↓SelectedText [ngx.components.UIAttribute-1772000204020]: 
+        ↓SelectedText [ngx.components.UIAttribute-1790004057874]: 
           attrName: '[selectedText]'
           attrValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: 'script:this.translate.currentLang == ''fr'' ? this.translate.instant(''Lang_French'') : this.translate.currentLang == ''it'' ? this.translate.instant(''Lang_Italian'') : this.translate.currentLang == ''es'' ? this.translate.instant(''Lang_Spanish'') : this.translate.instant(''Lang_English'')'
-          comment: Displays the selected value with a translated label
-        ↓ChangeEvent [ngx.components.UIControlEvent-1772000204021]: 
+              - MobileSmartSourceType: 'script:this.translate.currentLang == ''fr'' ? ''Français'' : this.translate.currentLang == ''es'' ? ''Español'' : this.translate.currentLang == ''it'' ? ''Italiano'' : this.translate.currentLang == ''zh-CN'' ? ''简体中文'' : ''English'''
+          comment: Displays the selected language autonym
+        ↓ChangeEvent [ngx.components.UIControlEvent-1790004057932]: 
           attrName: (ionChange)
           comment: Handles changes when the user selects a different value
           eventName: ionChange
-          ↓SetLanguage [ngx.components.UIDynamicAction-1772000204022]: 
+          ↓SetLanguage [ngx.components.UIDynamicAction-1790004058722]: 
             beanData: |
               '{
                "ionBean": "SetLanguageAction",
                "language": "script:event.detail.value",
+               "supportedLanguages": "script:[''en'',''fr'',''es'',''it'',''zh-CN'']",
                "storageKey": "plain:c8o-lang",
                "globalProperty": "plain:currentLanguage"
               }'
             comment: Updates the application language selected by the user
-        ↓LangEN [ngx.components.UIDynamicElement-1772000204023]: 
+            isEnabled: false
+          ↓InvokeSharedAction [ngx.components.UIDynamicInvoke-1790007680837]: 
+            beanData: '{"ionBean":"InvokeAction"}'
+            stack: lib_UserManager_ui_ngx.MobileApplication.Application.customSetLanguageAction
+            ↓language [ngx.components.UIControlVariable-1790007680840]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:event.detail.value
+            ↓fallbackLanguage [ngx.components.UIControlVariable-1790007680843]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:'en'
+            ↓supportedLanguages [ngx.components.UIControlVariable-1790007680846]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:['en','fr','es','it','zh-CN']
+            ↓storageKey [ngx.components.UIControlVariable-1790007680849]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:'c8o-lang'
+            ↓useStorage [ngx.components.UIControlVariable-1790007680852]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:true
+            ↓persist [ngx.components.UIControlVariable-1790007680855]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:true
+            ↓setDefaultLanguage [ngx.components.UIControlVariable-1790007680858]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:true
+            ↓globalProperty [ngx.components.UIControlVariable-1790007680861]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:'currentLanguage'
+            ↓pageOwner [ngx.components.UIControlVariable-1790007680864]: 
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:this
+        ↓LangEN [ngx.components.UIDynamicElement-1790004058963]: 
           beanData: '{"ionBean":"SelectOption","Value":"plain:en"}'
-          comment: Represents one selectable option
+          comment: Represents one selectable language
           tagName: ion-select-option
-          ↓Text [ngx.components.UIText-1772000204024]: 
-            comment: Displays translated text to guide the user
-            i18n: true
+          ↓Text [ngx.components.UIText-1790004058965]: 
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: plain:Lang_English
-        ↓LangFR [ngx.components.UIDynamicElement-1772000204025]: 
+                - MobileSmartSourceType: plain:English
+        ↓LangFR [ngx.components.UIDynamicElement-1790004060369]: 
           beanData: '{"ionBean":"SelectOption","Value":"plain:fr"}'
-          comment: Represents one selectable option
+          comment: Represents one selectable language
           tagName: ion-select-option
-          ↓Text [ngx.components.UIText-1772000204026]: 
-            comment: Displays translated text to guide the user
-            i18n: true
+          ↓Text [ngx.components.UIText-1790004060371]: 
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: plain:Lang_French
-        ↓LangIT [ngx.components.UIDynamicElement-1772000204027]: 
+                - MobileSmartSourceType: plain:Français
+        ↓LangIT [ngx.components.UIDynamicElement-1790004061693]: 
           beanData: '{"ionBean":"SelectOption","Value":"plain:it"}'
-          comment: Represents one selectable option
+          comment: Represents one selectable language
           tagName: ion-select-option
-          ↓Text [ngx.components.UIText-1772000204028]: 
-            comment: Displays translated text to guide the user
-            i18n: true
+          ↓Text [ngx.components.UIText-1790004061696]: 
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: plain:Lang_Italian
-        ↓LangES [ngx.components.UIDynamicElement-1772000204029]: 
+                - MobileSmartSourceType: plain:Italiano
+        ↓LangES [ngx.components.UIDynamicElement-1790004062796]: 
           beanData: '{"ionBean":"SelectOption","Value":"plain:es"}'
-          comment: Represents one selectable option
+          comment: Represents one selectable language
           tagName: ion-select-option
-          ↓Text [ngx.components.UIText-1772000204030]: 
-            comment: Displays translated text to guide the user
-            i18n: true
+          ↓Text [ngx.components.UIText-1790004062798]: 
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: plain:Lang_Spanish
+                - MobileSmartSourceType: plain:Español
+        ↓LangZH [ngx.components.UIDynamicElement-1790004062800]: 
+          beanData: '{"ionBean":"SelectOption","Value":"plain:zh-CN"}'
+          comment: Represents one selectable language
+          tagName: ion-select-option
+          ↓Text [ngx.components.UIText-1790004062802]: 
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:简体中文
 ↓Content [ngx.components.UIDynamicElement-1771586402747]: 
   beanData: '{"ionBean":"Content"}'
   comment: Contains the main content of this page
