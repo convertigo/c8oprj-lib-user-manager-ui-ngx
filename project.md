@@ -227,6 +227,135 @@ comment
 <details><summary><b>ConfirmAccount</b></summary><blockquote><p>
 
 
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uiactionstack_color_16x16.png?raw=true "UIActionStack") guardPages
+
+Handles access control and redirection based on the user's authentication status and the page they are attempting to access.
+
+This shared action should be invoked from an AppGuard component.
+
+<ins>Behavior:</ins>
+
+
+ - If the user is **not authenticated** and tries to access a page listed in `authorizedPagesOnlyWithAuthentication`, they will be redirected to `unauthenticatedAccessRedirectPage`.
+ - If the user is **authenticated** and tries to access a page listed in `authorizedPagesOnlyWithoutAuthentication`, they will be redirected to `authenticatedAccessRedirectPage`.
+ - If the current page is not restricted based on the user's authentication status, no redirection occurs.
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;authenticatedAccessRedirectPage
+</td>
+<td>
+Type: String | Specifies the page to redirect users to when they attempt to access a page that should not be accessible after they have already logged in (e.g., login or registration pages).
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;authorizedPagesOnlyWithAuthentication
+</td>
+<td>
+Type: Array of String | Specifies the list of pages that are only accessible to authenticated users. These pages should not be available to users who are not logged in (e.g., dashboard or profile pages). You can pass page names such as dashBoardPage, or segment values such as /path-to-dashborad-page?myParams=1
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;authorizedPagesOnlyWithoutAuthentication
+</td>
+<td>
+Type: Array of String | Specifies the list of pages that are only accessible to users who are **not** authenticated. These pages should be hidden or restricted once the user is logged in (e.g., login or registration pages). You can pass page names such as LoginPage, or segment values such as /path-to-first-page?myParams=1
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;unauthenticatedAccessRedirectPage
+</td>
+<td>
+Type: String | Specifies the page to redirect users to when they attempt to access a restricted page without being authenticated. (e.g., dashboard or profile pages).
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+
+<details><summary><b>isAuthenticatedSession</b> : Returns true if current session is authenticated</summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uiactionstack_color_16x16.png?raw=true "UIActionStack") isAuthenticatedSession
+
+Returns true if current session is authenticated
+</p></blockquote></details>
+
+<details><summary><b>SignIn</b> : The `SignIn` function handles user authentication and remember me feature</summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uiactionstack_color_16x16.png?raw=true "UIActionStack") SignIn
+
+The `SignIn` function handles user authentication and remember me feature
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;password
+</td>
+<td>
+The user's password
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;rememberMe
+</td>
+<td>
+Stay logged in for an extended period, even after closing the browser
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uistackvariable_16x16.png?raw=true "  alt="UIStackVariable" >&nbsp;user
+</td>
+<td>
+The userID (user's email)
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+
+<details><summary><b>SignOut</b> : The `SignOut` function handles user signout and remember me feature</summary><blockquote><p>
+
+
+### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uiactionstack_color_16x16.png?raw=true "UIActionStack") SignOut
+
+The `SignOut` function handles user signout and remember me feature
+</p></blockquote></details>
+</p></blockquote></details>
+
+<details><summary><span style="color:DarkGoldenRod"><i>Shared Components</i></span></summary><blockquote><p>
+
+
+<details><summary><b>ConfirmAccount</b></summary><blockquote><p>
+
+
 ### ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/ngx/components/images/uisharedcomponent_16x16.png?raw=true "UISharedRegularComponent") ConfirmAccount
 
 

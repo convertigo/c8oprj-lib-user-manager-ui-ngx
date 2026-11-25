@@ -40,7 +40,7 @@
     The OAuth action, its `state` values and the login sequences of lib_OAuth do not change: the Google and LinkedIn pages give the code with their own address as `redirect_uri`, which is the one sent to the provider.
     
     '
-  version: 8.4.1.0
+  version: 8.4.1.1
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓GetOAuthCallbacks [sequences.GenericSequence]: 🗏 sequences/GetOAuthCallbacks.yaml
   ↓GetSymbols [sequences.GenericSequence]: 🗏 sequences/GetSymbols.yaml

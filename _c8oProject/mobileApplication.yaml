@@ -189,6 +189,10 @@ componentScriptContent:
             /*End_c8o_AppFunction*/
         '
 tplProjectName: mobilebuilder_tpl_8_4_0_ngx
+↓isAuthenticatedSession [ngx.components.UIActionStack-1738933360670]: 🗏 mobileSharedActions/isAuthenticatedSession.yaml
+↓guardPages [ngx.components.UIActionStack-1738934318655]: 🗏 mobileSharedActions/guardPages.yaml
+↓SignIn [ngx.components.UIActionStack-1739186512260]: 🗏 mobileSharedActions/SignIn.yaml
+↓SignOut [ngx.components.UIActionStack-1739196825429]: 🗏 mobileSharedActions/SignOut.yaml
 ↓customSetLanguageAction [ngx.components.UIActionStack-1790006705487]: 🗏 mobileSharedActions/customSetLanguageAction.yaml
 ↓LoginComponent [ngx.components.UISharedRegularComponent-1572604124714]: 🗏 mobileSharedComponents/LoginComponent.yaml
 ↓ForgotPassword [ngx.components.UISharedRegularComponent-1582131761883]: 🗏 mobileSharedComponents/ForgotPassword.yaml
