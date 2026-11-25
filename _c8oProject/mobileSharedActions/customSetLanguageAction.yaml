@@ -1,0 +1,370 @@
+↓language [ngx.components.UIStackVariable-1790006800153]: 
+↓fallbackLanguage [ngx.components.UIStackVariable-1790006809133]: 
+↓supportedLanguages [ngx.components.UIStackVariable-1790006824793]: 
+↓storageKey [ngx.components.UIStackVariable-1790006839798]: 
+↓useStorage [ngx.components.UIStackVariable-1790006850756]: 
+↓persist [ngx.components.UIStackVariable-1790006882115]: 
+↓setDefaultLanguage [ngx.components.UIStackVariable-1790006895578]: 
+↓globalProperty [ngx.components.UIStackVariable-1790006909382]: 
+↓setLanguage [ngx.components.UICustomAction-1790006928426]: 
+  actionValue: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          '		try {
+          			var normalizeLang = function(value: any): string {
+          				if (value == null) {
+          					return "";
+          				}
+          
+          				var lang = ("" + value)
+          					.trim()
+          					.replace(/^[\[\]\s''"]+/, "")
+          					.replace(/[\[\]\s''"]+$/, "")
+          					.replace(/_/g, "-")
+          					.toLowerCase();
+          
+          				if (lang == "") {
+          					return "";
+          				}
+          
+          				// Simplified Chinese
+          				if (
+          					lang == "zh" ||
+          					lang == "zh-cn" ||
+          					lang == "zh-sg" ||
+          					lang == "zh-hans" ||
+          					lang.indexOf("zh-hans-") == 0
+          				) {
+          					return "zh-CN";
+          				}
+          
+          				var primary = lang.split("-")[0];
+          
+          				if (
+          					primary == "en" ||
+          					primary == "fr" ||
+          					primary == "es" ||
+          					primary == "it"
+          				) {
+          					return primary;
+          				}
+          
+          				return "";
+          			};
+          
+          
+          			var parseLanguages = function(value: any): string[] {
+          				var languages: string[] = [];
+          
+          				if (Array.isArray(value)) {
+          					languages = value;
+          				}
+          				else if (typeof value === "string") {
+          					var trimmed = value.trim();
+          
+          					if (trimmed == "") {
+          						return [];
+          					}
+          
+          					if (trimmed.charAt(0) == "[") {
+          						try {
+          							var parsed = JSON.parse(trimmed);
+          
+          							if (Array.isArray(parsed)) {
+          								languages = parsed;
+          							}
+          						}
+          						catch (e) {
+          						}
+          					}
+          
+          					if (languages.length == 0) {
+          						languages = trimmed.split(",");
+          					}
+          				}
+          
+          				return languages
+          					.map(function(item) {
+          						return normalizeLang(item);
+          					})
+          					.filter(function(item) {
+          						return item != "";
+          					});
+          			};
+          
+          
+          			var toBoolean = function(
+          				value: any,
+          				defaultValue: boolean
+          			): boolean {
+          
+          				if (value == null || value === "") {
+          					return defaultValue;
+          				}
+          
+          				if (typeof value === "boolean") {
+          					return value;
+          				}
+          
+          				return ("" + value).trim().toLowerCase() == "true";
+          			};
+          
+          
+          			var resolveLanguageLabelKey = function(value: any): string {
+          				var lang = normalizeLang(value);
+          
+          				if (lang == "fr") {
+          					return "Lang_French";
+          				}
+          
+          				if (lang == "es") {
+          					return "Lang_Spanish";
+          				}
+          
+          				if (lang == "it") {
+          					return "Lang_Italian";
+          				}
+          
+          				if (lang == "zh-CN") {
+          					return "Lang_Chinese";
+          				}
+          
+          				return "Lang_English";
+          			};
+          
+          
+          			/*
+          			 * Configuration
+          			 */
+          
+          			var fallbackLanguage =
+          				normalizeLang(vars.fallbackLanguage) || "en";
+          
+          			var supportedLanguages =
+          				parseLanguages(vars.supportedLanguages);
+          
+          			if (supportedLanguages.length == 0) {
+          				supportedLanguages = [
+          					"en",
+          					"fr",
+          					"es",
+          					"it",
+          					"zh-CN"
+          				];
+          			}
+          
+          			if (
+          				supportedLanguages.indexOf(fallbackLanguage) == -1
+          			) {
+          				fallbackLanguage = "en";
+          			}
+          
+          
+          			var storageKey =
+          				vars.storageKey != null &&
+          				("" + vars.storageKey).trim() != ""
+          					? ("" + vars.storageKey).trim()
+          					: "c8o.language";
+          
+          
+          			var globalProperty =
+          				vars.globalProperty != null &&
+          				("" + vars.globalProperty).trim() != ""
+          					? ("" + vars.globalProperty).trim()
+          					: "language";
+          
+          
+          			var useStorage =
+          				toBoolean(vars.useStorage, true);
+          
+          			var persist =
+          				toBoolean(vars.persist, true);
+          
+          			var setDefaultLanguage =
+          				toBoolean(vars.setDefaultLanguage, true);
+          
+          
+          			/*
+          			 * Language resolution
+          			 *
+          			 * Priority:
+          			 * 1. explicit language
+          			 * 2. localStorage
+          			 * 3. browser language
+          			 * 4. fallback
+          			 */
+          
+          			var selectedLanguage =
+          				normalizeLang(vars.language);
+          
+          
+          			if (
+          				selectedLanguage == "" &&
+          				useStorage &&
+          				typeof window !== "undefined" &&
+          				window.localStorage
+          			) {
+          				try {
+          					selectedLanguage = normalizeLang(
+          						window.localStorage.getItem(storageKey)
+          					);
+          				}
+          				catch (e) {
+          				}
+          			}
+          
+          
+          			if (
+          				selectedLanguage == "" &&
+          				typeof navigator !== "undefined"
+          			) {
+          				try {
+          					var browserLanguage =
+          						(navigator as any).language ||
+          						(navigator as any).userLanguage;
+          
+          					selectedLanguage =
+          						normalizeLang(browserLanguage);
+          				}
+          				catch (e) {
+          				}
+          			}
+          
+          
+          			if (selectedLanguage == "") {
+          				selectedLanguage = fallbackLanguage;
+          			}
+          
+          
+          			/*
+          			 * Ensure selected language is supported
+          			 */
+          
+          			if (
+          				supportedLanguages.indexOf(selectedLanguage) == -1
+          			) {
+          				selectedLanguage = fallbackLanguage;
+          			}
+          
+          
+          			/*
+          			 * ngx-translate
+          			 */
+          
+          			if (setDefaultLanguage) {
+          				vars.pageOwner.translate.setDefaultLang(
+          					fallbackLanguage
+          				);
+          			}
+          
+          			vars.pageOwner.translate.use(selectedLanguage);
+          
+          
+          			/*
+          			 * Persist selection
+          			 */
+          
+          			if (
+          				persist &&
+          				typeof window !== "undefined" &&
+          				window.localStorage
+          			) {
+          				try {
+          					window.localStorage.setItem(
+          						storageKey,
+          						selectedLanguage
+          					);
+          				}
+          				catch (e) {
+          				}
+          			}
+          
+          
+          			/*
+          			 * Expose current language globally
+          			 */
+          
+          			if (
+          				page &&
+          				page.global &&
+          				globalProperty != ""
+          			) {
+          				var currentGlobal =
+          					page.global[globalProperty];
+          
+          				// Preserve existing Angular signal if present
+          				if (
+          					typeof currentGlobal === "function" &&
+          					currentGlobal != null &&
+          					typeof currentGlobal.set === "function"
+          				) {
+          					try {
+          						currentGlobal.set(
+          							selectedLanguage
+          						);
+          					}
+          					catch (e) {
+          						page.global[globalProperty] =
+          							selectedLanguage;
+          					}
+          				}
+          				else {
+          					page.global[globalProperty] =
+          						selectedLanguage;
+          				}
+          
+          
+          				/*
+          				 * Helper used by language selectors
+          				 */
+          
+          				page.global.getLanguageLabelKey =
+          					function(inputLanguage: any): string {
+          
+          						var lang =
+          							normalizeLang(inputLanguage);
+          
+          						if (lang == "") {
+          							var current =
+          								page.global[globalProperty];
+          
+          							if (
+          								typeof current === "function"
+          							) {
+          								try {
+          									lang =
+          										normalizeLang(current());
+          								}
+          								catch (e) {
+          								}
+          							}
+          							else {
+          								lang =
+          									normalizeLang(current);
+          							}
+          						}
+          
+          						if (lang == "") {
+          							lang = fallbackLanguage;
+          						}
+          
+          						return resolveLanguageLabelKey(
+          							lang
+          						);
+          					};
+          			}
+          
+          
+          			resolve({
+          				lang: selectedLanguage,
+          				fallback: fallbackLanguage,
+          				supportedLanguages: supportedLanguages
+          			});
+          		}
+          		catch (e) {
+          			reject(e);
+          		}
+          '
+↓pageOwner [ngx.components.UIStackVariable-1790007492690]: 

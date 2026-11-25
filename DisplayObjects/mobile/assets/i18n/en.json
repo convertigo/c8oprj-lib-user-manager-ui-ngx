@@ -1,4 +1,5 @@
 {
+	"version_c8o": "",
     "Login_with_": "Login with ",
     "Or_use_your_login___password": "Or use your login / password",
     "Email": "Email",
@@ -74,6 +75,5 @@
     "Auth_ForgotPassword_Error_Unknown": "Password reset failed",
     "Auth_ForgotPassword_Email_Subject": "Password reset request",
     "Auth_Home_Title": "Welcome",
-    "Auth_Home_Welcome": "You are signed in as",
-    "version_c8o": ""
+    "Auth_Home_Welcome": "You are signed in as"
 }

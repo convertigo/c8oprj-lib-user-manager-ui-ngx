@@ -1,5 +1,6 @@
 {
-    "Login_with_": "Connectez-vous avec",
+	"version_c8o": "",
+	"Login_with_": "Connectez-vous avec",
     "Or_use_your_login___password": "Ou utilisez votre identifiant / mot de passe",
     "Email": "E-mail",
     "Password": "Mot de passe",
@@ -74,6 +75,5 @@
     "Auth_ForgotPassword_Error_Unknown": "La réinitialisation a échoué",
     "Auth_ForgotPassword_Email_Subject": "Demande de réinitialisation du mot de passe",
     "Auth_Home_Title": "Bienvenue",
-    "Auth_Home_Welcome": "Vous êtes connecté en tant que",
-    "version_c8o": ""
+    "Auth_Home_Welcome": "Vous êtes connecté en tant que"
 }

@@ -1,0 +1,38 @@
+comment: |
+  Returns the callback URLs of the OAuth sign-ins (lib_OAuth pages getToken.html, getTokenGoogle.html, getTokenLinkedIn.html) for the OAuth actions of an application (js/oauth_callback_url.js).
+  
+  By default they are the pages of https://c8ocloud.convertigo.net/convertigo, the callback registered on the OAuth applications of Convertigo. The symbol lib_oauth.callback.base_url (a Convertigo base URL, as https://forms.example.com/convertigo) replaces it for a server that uses OAuth applications of its own.
+  
+  Called once by the page that shows the sign-in buttons (LoginComponent), whose OAuth actions listen to its answer: microsoft, openid, google, linkedin.
+↓Callbacks [steps.SimpleStep-1799810000001]: 
+  comment: The callbacks of the symbol lib_oauth.callback.base_url when it is set, else of c8ocloud; an invalid symbol is ignored and logged.
+  expression: |
+    include("js/oauth_callback_url.js");
+    var callbacks = oauthCallbacksOfServer();
+    if (callbacks.invalidSymbol) {
+    	log.warn("[lib_UserManager_ui_ngx] the symbol lib_oauth.callback.base_url is not an http(s) base URL (as https://server/convertigo): ignored, the callbacks are the c8ocloud pages");
+    }
+↓base [steps.ElementStep-1799810000002]: 
+  comment: The Convertigo base URL of the callback pages
+  expression: callbacks.base
+  nodeName: base
+↓source [steps.ElementStep-1799810000003]: 
+  comment: Where the base comes from: symbol (lib_oauth.callback.base_url) or default (c8ocloud)
+  expression: callbacks.source
+  nodeName: source
+↓microsoft [steps.ElementStep-1799810000004]: 
+  comment: Callback of the Microsoft sign-in (getToken.html)
+  expression: callbacks.microsoft
+  nodeName: microsoft
+↓openid [steps.ElementStep-1799810000005]: 
+  comment: Callback of the OpenID sign-in (getToken.html)
+  expression: callbacks.openid
+  nodeName: openid
+↓google [steps.ElementStep-1799810000006]: 
+  comment: Callback of the Google sign-in (getTokenGoogle.html)
+  expression: callbacks.google
+  nodeName: google
+↓linkedin [steps.ElementStep-1799810000007]: 
+  comment: Callback of the LinkedIn sign-in (getTokenLinkedIn.html)
+  expression: callbacks.linkedin
+  nodeName: linkedin

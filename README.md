@@ -8,6 +8,39 @@ The lib_UserManager enables your projects to include user management and authent
 - user login with user/password using a salted password security
 - user login using OpenID
 
+## OAuth callback
+
+The Microsoft, Google, LinkedIn and OpenID buttons of *LoginComponent* send the user to the provider, which sends the user back to a callback page of lib_OAuth: *getToken.html* (Microsoft, OpenID), *getTokenGoogle.html* or *getTokenLinkedIn.html*. The page gives the answer of the provider to the application.
+
+The callbacks are `<base>/projects/lib_OAuth/<page>`. The component calls the *GetOAuthCallbacks* sequence when it starts (*js/oauth_callback_url.js*) and its OAuth actions use the URLs it answers as redirect URIs. Other applications can do the same: call *lib_UserManager_ui_ngx.GetOAuthCallbacks* once, then use `listen(['lib_UserManager_ui_ngx.GetOAuthCallbacks'])?.microsoft` (or `google`, `linkedin`, `openid`) as the callback URL of the OAuth action.
+
+### Symbol
+
+| Symbol | Usage |
+|---|---|
+| lib_oauth.callback.base_url | Optional. The Convertigo base URL whose lib_OAuth callback pages the sign-ins use. Empty: `https://c8ocloud.convertigo.net/convertigo`, the callback registered on the OAuth applications of Convertigo. |
+
+Without the symbol nothing changes: the sign-ins come back to the c8ocloud pages, as up to 8.4.0.13.
+
+Trailing slashes, and a trailing `/projects/lib_OAuth` or page name, are ignored; the value may reference an environment variable (`%NAME%`). A value that is not an http(s) base URL (credentials, query, fragment, `%`, `&` or spaces) is ignored: *GetOAuthCallbacks* logs a warning and the c8ocloud pages are used.
+
+The *openidCallbackUrl* variable of *LoginComponent* still replaces the callback of the OpenID button when it is set.
+
+### A server with OAuth applications of its own
+
+A server that uses its own Microsoft, Google or LinkedIn applications (its own `lib_oauth.*.clientid`) sets `lib_oauth.callback.base_url` to its own Convertigo base URL, for example `https://forms.example.com/convertigo`, and registers its redirect URIs:
+
+| Provider | Where | Redirect URI |
+|---|---|---|
+| Microsoft | Entra ID app registration, Authentication, in the same platform as the existing redirect URI (implicit grant: access tokens and ID tokens) | `https://forms.example.com/convertigo/projects/lib_OAuth/getToken.html` |
+| Google | OAuth 2.0 client ID, Authorized redirect URIs | `https://forms.example.com/convertigo/projects/lib_OAuth/getTokenGoogle.html` |
+| LinkedIn | App, Auth, Authorized redirect URLs for your app | `https://forms.example.com/convertigo/projects/lib_OAuth/getTokenLinkedIn.html` |
+| OpenID | Client of the identity provider, redirect URIs | `https://forms.example.com/convertigo/projects/lib_OAuth/getToken.html` |
+
+The URI is the exact address the browser uses (scheme, host, port, the path of Convertigo behind a reverse proxy). The lib_OAuth pages of that server (8.0.0.7 or later) give the answer to the applications of their own origin with no other setting; *lib_oauth.callback.allowed_origins* is only for applications of other servers.
+
+The OAuth action, its `state` values and the login sequences of lib_OAuth do not change: the Google and LinkedIn pages give the code with their own address as `redirect_uri`, which is the one sent to the provider.
+
 
 
 
@@ -31,13 +64,13 @@ For more technical informations : [documentation](./project.md)
      <tr><td>To contribute</td><td>
 
      ```
-     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx.git:branch=8.4.0
+     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx.git:branch=8.4.1
      ```
      </td></tr>
      <tr><td>To simply use</td><td>
 
      ```
-     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx/archive/8.4.0.zip
+     lib_UserManager_ui_ngx=git@github.com:convertigo/c8oprj-lib-user-manager-ui-ngx/archive/8.4.1.zip
      ```
      </td></tr>
     </table>
@@ -195,7 +228,9 @@ Use this event to close a modal page or route to an authenticated page.
 <td>openidAuthorizationEndpoint</td><td>Sets the OpenID authorization endpoint used during sign in</td>
 </tr>
 <tr>
-<td>openidCallbackUrl</td><td>Defines the callback URL where the OpenID provider returns the user</td>
+<td>openidCallbackUrl</td><td>Defines the callback URL where the OpenID provider returns the user.
+Empty: getToken.html of lib_OAuth on c8ocloud, or on the server of the symbol lib_oauth.callback.base_url (sequence GetOAuthCallbacks), as for the other providers.
+</td>
 </tr>
 <tr>
 <td>openidClientID</td><td>Sets the OpenID client identifier used for authentication</td>

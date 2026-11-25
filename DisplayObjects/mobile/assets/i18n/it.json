@@ -1,4 +1,5 @@
 {
+	"version_c8o": "",
     "Login_with_": "Accedi con ",
     "Or_use_your_login___password": "Oppure usa il tuo login / password",
     "Email": "Email",
@@ -74,6 +75,5 @@
     "Auth_ForgotPassword_Error_Unknown": "Reimpostazione password non riuscita",
     "Auth_ForgotPassword_Email_Subject": "Richiesta di reimpostazione password",
     "Auth_Home_Title": "Benvenuto",
-    "Auth_Home_Welcome": "Hai effettuato l'accesso come",
-    "version_c8o": ""
+    "Auth_Home_Welcome": "Hai effettuato l'accesso come"
 }

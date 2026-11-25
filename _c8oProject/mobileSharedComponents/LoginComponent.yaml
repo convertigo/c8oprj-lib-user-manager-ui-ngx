@@ -537,7 +537,7 @@ scriptContent:
                          "loginRequestable": "plain:lib_OAuth.loginGoogleWithCode",
                          "checkAccessTokenRequestable": "plain:lib_OAuth.checkAccessTokenGoogle",
                          "authorization_endpoint": "plain:https:\/\/accounts.google.com\/o\/oauth2\/v2\/auth",
-                         "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenGoogle.html"
+                         "callbackurl": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_UserManager_ui_ngx.GetOAuthCallbacks''])?.google\"}"
                         }'
                       comment: Runs this action in the authentication workflow
                       ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000062]: 
@@ -590,7 +590,7 @@ scriptContent:
                          "provider": "plain:linkedin",
                          "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.LinkedInClientID\"}",
                          "scope": "script:this.scope ? this.scope: ''r_liteprofile,r_emailaddress''",
-                         "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getTokenLinkedIn.html"
+                         "callbackurl": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_UserManager_ui_ngx.GetOAuthCallbacks''])?.linkedin\"}"
                         }'
                       comment: Runs this action in the authentication workflow
                       ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000070]: 
@@ -643,7 +643,7 @@ scriptContent:
                          "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.AzureAdClientID\"}",
                          "tenantid": "source:{\"filter\":\"Shared\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"\",\"model\":{\"data\":[{\"priority\":1572604124714,\"regular\":true}],\"path\":\"?.tenantid\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}",
                          "scope": "script:''openid+profile+email+https:\/\/graph.microsoft.com\/Files.ReadWrite+https:\/\/graph.microsoft.com\/User.Read'' + (this.scope ? this.scope : '''')",
-                         "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
+                         "callbackurl": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_UserManager_ui_ngx.GetOAuthCallbacks''])?.microsoft\"}"
                         }'
                       comment: Runs this action in the authentication workflow
                       ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000078]: 
@@ -700,7 +700,7 @@ scriptContent:
                          "loginRequestable": "plain:lib_OAuth.loginOpenIDWithAccessToken",
                          "checkAccessTokenRequestable": "plain:lib_OAuth.checkAccessOpenID",
                          "authorization_endpoint": "source:{\"filter\":\"Sequence\",\"project\":\"lib_UserManager_ui_ngx\",\"input\":\"listen([''lib_OAuth.GetOAuthCredentials''])?.OpenIDEndpoint\"}",
-                         "callbackurl": "script:this.openidCallbackUrl ? this.openidCallbackUrl : ''https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html''"
+                         "callbackurl": "script:this.openidCallbackUrl ? this.openidCallbackUrl : this.listen([''lib_UserManager_ui_ngx.GetOAuthCallbacks''])?.openid"
                         }'
                       comment: Runs this action in the authentication workflow
                       ↓EmitEvent [ngx.components.UIDynamicEmit-1783000000119]: 
@@ -1329,6 +1329,10 @@ scriptContent:
   ↓CallSequence [ngx.components.UIDynamicAction-1572952599704]: 
     beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_OAuth.GetOAuthCredentials"}'
     comment: Calls the backend sequence required by this action
+  ↓CallOAuthCallbacks [ngx.components.UIDynamicAction-1799810000009]: 
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_UserManager_ui_ngx.GetOAuthCallbacks"}'
+    comment: |
+      Reads the callback URLs of the OAuth sign-ins, which the OAuth actions listen to: the lib_OAuth pages of c8ocloud, or of the server of the symbol lib_oauth.callback.base_url
 ↓enableGoogleLogin [ngx.components.UICompVariable-1572626360536]: 
   comment: Enable this to hide the Google sign in option when needed
   value: true
@@ -1387,5 +1391,7 @@ scriptContent:
   comment: Defines the OpenID response type expected from the provider
   value: '''id_token+token'''
 ↓openidCallbackUrl [ngx.components.UICompVariable-1783000000128]: 
-  comment: Defines the callback URL where the OpenID provider returns the user
-  value: '''https://c8ocloud.convertigo.net/convertigo/projects/lib_OAuth/getToken.html'''
+  comment: |
+    Defines the callback URL where the OpenID provider returns the user.
+    Empty: getToken.html of lib_OAuth on c8ocloud, or on the server of the symbol lib_oauth.callback.base_url (sequence GetOAuthCallbacks), as for the other providers.
+  value: ''''''

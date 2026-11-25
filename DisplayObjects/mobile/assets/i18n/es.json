@@ -1,4 +1,5 @@
 {
+	"version_c8o": "",
     "Login_with_": "Iniciar sesión con ",
     "Or_use_your_login___password": "O usa tu usuario / contraseña",
     "Email": "Correo electrónico",
@@ -74,6 +75,5 @@
     "Auth_ForgotPassword_Error_Unknown": "Falló el restablecimiento de contraseña",
     "Auth_ForgotPassword_Email_Subject": "Solicitud de restablecimiento de contraseña",
     "Auth_Home_Title": "Bienvenido",
-    "Auth_Home_Welcome": "Has iniciado sesión como",
-    "version_c8o": ""
+    "Auth_Home_Welcome": "Has iniciado sesión como"
 }
